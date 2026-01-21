@@ -1,0 +1,43 @@
+# --- System Files ---
+.DS_Store
+Thumbs.db
+
+# --- Programming Languages ---
+# Python (Byte-compiled / optimized / DLL files)
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+env/
+venv/
+
+# Node.js / JavaScript
+node_modules/
+npm-debug.log*
+
+# Java / C++ / Compiled languages
+*.class
+*.exe
+*.o
+*.so
+bin/
+build/
+
+# --- IDEs and Editors ---
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# --- Testing & Coverage ---
+.pytest_cache/
+.coverage
+htmlcov/
+nosetests.xml
+coverage.xml
+
+# --- Project Specific ---
+# Ignore large datasets you might use for benchmarking
+data/*.csv
+data/*.json
+!data/sample.json  # But keep the sample files
