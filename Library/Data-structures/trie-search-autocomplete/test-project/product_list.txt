@@ -1,0 +1,31 @@
+# --- LANGUAGE MODELS (LLMs) ---
+llama-3-70b-quantized
+llama-3-8b-instruct
+llama-2-13b-chat
+falcon-180b-raw
+mistral-7b-v0.1
+mixtral-8x7b-moe
+
+# --- COMPUTER VISION ---
+yolov8-object-detector
+yolov9-realtime-seg
+resnet-50-classifier
+vit-base-patch16
+stable-diffusion-xl
+stable-diffusion-v1.5
+
+# --- CLASSIC MACHINE LEARNING ---
+linear-regression-pro
+logistic-regression-v2
+random-forest-classifier
+xgboost-gradient-booster
+k-means-clustering-tool
+principal-component-analyzer
+
+# --- SOFTWARE & DEV TOOLS ---
+docker-container-optimizer
+kubernetes-cluster-manager
+terraform-provider-aws
+react-ui-component-library
+typescript-api-boilerplate
+postgresql-query-index-tuner
