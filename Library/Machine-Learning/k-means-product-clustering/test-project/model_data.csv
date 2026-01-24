@@ -1,0 +1,6 @@
+ModelName,Complexity,ComputeDemand
+llama-3-70b,9.5,9.8
+resnet-50,4.5,5.2
+yolov8,6.0,6.5
+linear-reg,1.2,1.0
+trie-search,2.5,1.5
