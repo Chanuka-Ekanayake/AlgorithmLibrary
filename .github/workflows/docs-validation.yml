@@ -1,0 +1,128 @@
+name: Documentation Validation
+
+on:
+  push:
+    branches: [ main, master, develop ]
+  pull_request:
+    branches: [ main, master, develop ]
+
+jobs:
+  validate-docs:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Validate README files exist
+      run: |
+        echo "Checking for README files in algorithm directories..."
+        
+        # Check Data Structures
+        if [ ! -f "Library/Data-structures/trie-search-autocomplete/README.md" ]; then
+          echo "❌ Missing: Trie README.md"
+          exit 1
+        fi
+        
+        # Check Graph Theory
+        if [ ! -f "Library/Graph-Theory/a-star-pathfinder/README.md" ]; then
+          echo "❌ Missing: A-Star README.md"
+          exit 1
+        fi
+        
+        if [ ! -f "Library/Graph-Theory/dijkstra-delivery-optimizer/README.md" ]; then
+          echo "❌ Missing: Dijkstra README.md"
+          exit 1
+        fi
+        
+        # Check Machine Learning
+        if [ ! -f "Library/Machine-Learning/k-means-product-clustering/README.md" ]; then
+          echo "❌ Missing: K-Means README.md"
+          exit 1
+        fi
+        
+        echo "✅ All README files present!"
+
+    - name: Validate documentation structure
+      run: |
+        echo "Checking for required documentation files..."
+        
+        # Define algorithms and their expected docs
+        algorithms=(
+          "Library/Data-structures/trie-search-autocomplete"
+          "Library/Graph-Theory/a-star-pathfinder"
+          "Library/Graph-Theory/dijkstra-delivery-optimizer"
+          "Library/Machine-Learning/k-means-product-clustering"
+        )
+        
+        missing_files=0
+        
+        for algo in "${algorithms[@]}"; do
+          echo "Checking $algo..."
+          
+          # Check for core implementation
+          if [ ! -d "$algo/core" ]; then
+            echo "  ⚠️  Missing core/ directory"
+            missing_files=$((missing_files + 1))
+          fi
+          
+          # Check for docs directory
+          if [ ! -d "$algo/docs" ]; then
+            echo "  ⚠️  Missing docs/ directory"
+            missing_files=$((missing_files + 1))
+          else
+            # Check for logic.md
+            if [ ! -f "$algo/docs/logic.md" ]; then
+              echo "  ⚠️  Missing docs/logic.md"
+              missing_files=$((missing_files + 1))
+            fi
+            
+            # Check for complexity.md
+            if [ ! -f "$algo/docs/complexity.md" ]; then
+              echo "  ⚠️  Missing docs/complexity.md"
+              missing_files=$((missing_files + 1))
+            fi
+          fi
+          
+          # Check for test-project
+          if [ ! -d "$algo/test-project" ]; then
+            echo "  ⚠️  Missing test-project/ directory"
+            missing_files=$((missing_files + 1))
+          fi
+        done
+        
+        if [ $missing_files -gt 0 ]; then
+          echo "⚠️  Found $missing_files missing documentation files"
+          echo "This is a warning, not blocking the build"
+        else
+          echo "✅ All expected documentation files present!"
+        fi
+
+    - name: Check markdown syntax
+      uses: DavidAnson/markdownlint-action@v1
+      with:
+        files: '**/*.md'
+        config: '{
+          "MD013": false,
+          "MD033": false,
+          "MD041": false
+        }'
+      continue-on-error: true
+
+    - name: Validate code blocks in documentation
+      run: |
+        echo "Checking for properly formatted code blocks..."
+        
+        # Find all markdown files
+        md_files=$(find Library -name "*.md")
+        
+        for file in $md_files; do
+          # Check if code blocks are properly closed
+          open_blocks=$(grep -c '^```' "$file" || echo "0")
+          
+          if [ $((open_blocks % 2)) -ne 0 ]; then
+            echo "⚠️  Potential unclosed code block in $file"
+          fi
+        done
+        
+        echo "✅ Code block validation complete!"
