@@ -1,0 +1,36 @@
+# Currency Exchange Rates (Format: FROM TO RATE)
+# Example: USD EUR 0.85 means 1 USD = 0.85 EUR
+
+# Major Currency Pairs
+USD EUR 0.85
+EUR GBP 0.90
+GBP USD 1.30
+
+USD JPY 110.0
+JPY EUR 0.0078
+EUR USD 1.18
+
+USD CAD 1.25
+CAD GBP 0.60
+GBP CAD 1.65
+
+USD CHF 0.92
+CHF EUR 0.93
+EUR CHF 1.08
+
+# Emerging Markets
+USD BRL 5.20
+BRL EUR 0.16
+EUR BRL 6.30
+
+USD INR 74.5
+INR EUR 0.011
+EUR INR 90.0
+
+# Cryptocurrency (for demonstration - highly volatile)
+USD BTC 0.000025
+BTC EUR 34000.0
+EUR BTC 0.000028
+
+# Add custom rates below for testing:
+# FROM TO RATE
