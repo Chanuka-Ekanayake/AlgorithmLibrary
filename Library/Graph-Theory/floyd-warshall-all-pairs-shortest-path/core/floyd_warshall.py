@@ -91,6 +91,9 @@ def reconstruct_path(
     Returns:
         List of vertices representing the path, or None if no path exists
     """
+    # Handle trivial path from a node to itself explicitly
+    if start == end:
+        return [start]
     if next_node[(start, end)] is None:
         return None
     
