@@ -1,0 +1,56 @@
+# City Transportation Network (Format: FROM TO COST)
+# Example: NYC BOS 215 means NYC to Boston costs 215 (distance in km, time in min, or cost in $)
+
+# East Coast Major Cities
+NYC BOS 215
+NYC PHI 95
+NYC DC 225
+BOS NYC 220
+BOS PHI 300
+PHI NYC 100
+PHI DC 140
+PHI BOS 295
+DC NYC 230
+DC PHI 145
+
+# West Coast Cities
+LA SF 380
+SF LA 385
+LA LV 270
+LV LA 275
+LA SD 120
+SD LA 125
+SF SEA 810
+SEA SF 815
+SEA POR 175
+POR SEA 180
+
+# Central Cities
+CHI DET 280
+DET CHI 285
+CHI STL 300
+STL CHI 295
+DEN PHX 870
+PHX DEN 865
+
+# Cross-Country Routes
+NYC LA 2800
+LA NYC 2790
+NYC CHI 790
+CHI NYC 785
+CHI LA 2015
+LA CHI 2010
+CHI SEA 2015
+SEA CHI 2020
+DEN LA 1015
+LA DEN 1010
+
+# Additional Connections
+ATL NYC 865
+NYC ATL 860
+ATL MIA 665
+MIA ATL 670
+MIA NYC 1280
+NYC MIA 1275
+
+# Add your own cities below:
