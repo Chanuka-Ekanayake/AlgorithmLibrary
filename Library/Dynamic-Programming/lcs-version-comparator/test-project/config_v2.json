@@ -1,0 +1,9 @@
+[
+    "enable_logging",
+    "timeout=60s",
+    "gpu_acceleration=true",
+    "batch_size=32",
+    "memory_limit=4GB",
+    "alert_on_fail",
+    "strict_mode"
+]
