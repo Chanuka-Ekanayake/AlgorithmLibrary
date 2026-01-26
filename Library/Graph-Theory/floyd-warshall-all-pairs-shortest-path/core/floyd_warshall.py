@@ -52,8 +52,10 @@ def floyd_warshall(
     # Initialize with direct edges
     for u in graph:
         for v, weight in graph[u].items():
-            distances[(u, v)] = weight
-            next_node[(u, v)] = v
+            current_distance = distances[(u, v)]
+            if weight < current_distance:
+                distances[(u, v)] = weight
+                next_node[(u, v)] = v
     
     # --- 3. Floyd-Warshall Main Loop ---
     # Try each vertex as an intermediate point
