@@ -1,0 +1,8 @@
+[
+    "enable_logging",
+    "max_retries=3",
+    "timeout=30s",
+    "gpu_acceleration=true",
+    "memory_limit=4GB",
+    "alert_on_fail"
+]
