@@ -166,12 +166,44 @@ def get_graph_diameter(
     """
     distances = get_distance_matrix(graph)
     
-    max_distance = 0
-    for (i, j), dist in distances.items():
-        if i != j and dist != float('inf'):
-            max_distance = max(max_distance, dist)
+    # Reconstruct the set of vertices
+    vertices: Set[str] = set(graph.keys())
+    for neighbors in graph.values():
+        vertices.update(neighbors.keys())
     
-    return max_distance if max_distance > 0 else float('inf')
+    # Handle empty graph explicitly
+    if not vertices:
+        return 0.0
+    
+    finite_max: Optional[float] = None
+    has_unreachable = False
+    
+    # Examine all pairs of distinct vertices
+    for i in vertices:
+        for j in vertices:
+            if i == j:
+                continue
+            dist = distances[(i, j)]
+            if dist == float('inf'):
+                has_unreachable = True
+            else:
+                if finite_max is None or dist > finite_max:
+                    finite_max = dist
+    
+    # If no finite distances between distinct vertices exist
+    if finite_max is None:
+        # Single-vertex graph: diameter is 0, even though there are no pairs
+        if len(vertices) <= 1 and not has_unreachable:
+            return 0.0
+        # Multiple vertices but no finite paths: graph is disconnected
+        return float('inf')
+    
+    # If any pair of vertices is unreachable, the graph is disconnected
+    if has_unreachable:
+        return float('inf')
+    
+    # Otherwise, the diameter is the maximum finite shortest-path distance
+    return finite_max
 
 
 def get_graph_center(
