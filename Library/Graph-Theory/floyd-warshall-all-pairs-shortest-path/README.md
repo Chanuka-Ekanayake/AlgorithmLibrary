@@ -44,7 +44,7 @@ This makes it essential for network analysis, routing tables, social network met
 | **Time Complexity** | O(V³) | Three nested loops over vertices |
 | **Space Complexity** | O(V²) | Stores distance matrix |
 | **Best for** | Dense graphs, all-pairs queries | When E ≈ V² |
-| **Negative Cycle Detection** | O(1) | Check diagonal after main loop |
+| **Negative Cycle Detection** | O(V) | Scan diagonal of distance matrix after main loop |
 
 **Comparison with Alternatives:**
 - **V × Dijkstra:** O(V²log V) for sparse graphs - Better when E << V²
