@@ -280,25 +280,104 @@ def compare_with_kruskal_result(
     Verifies that Prim's MST has the same total cost as what Kruskal's would give.
     Both algorithms should produce MSTs with identical total weight.
     
+    This function:
+      1. Reconstructs an undirected edge list from the input graph.
+      2. Runs Kruskal's algorithm to compute an MST and its total cost.
+      3. Validates that the Kruskal MST is spanning (i.e., connects all vertices)
+         and has exactly |V| - 1 edges.
+      4. Compares the total cost of Prim's result to Kruskal's MST cost.
+    
     Args:
         graph: Original graph
-        prims_result: MST from Prim's algorithm
+        prims_result: MST from Prim's algorithm as a list of (u, v, weight)
     
     Returns:
-        True if costs match (validation passed)
+        True if:
+          * the graph is connected (so an MST exists),
+          * Kruskal's algorithm produces a valid MST, and
+          * Prim's and Kruskal's MST total costs match (within a small tolerance).
+        False otherwise.
     """
-    # Simple validation: check if number of edges is correct
-    # MST should have exactly |V| - 1 edges
-    vertices = set(graph.keys())
+    # Collect all vertices
+    vertices: Set[str] = set(graph.keys())
     for neighbors in graph.values():
         vertices.update(neighbors.keys())
-    
-    expected_edges = len(vertices) - 1
-    actual_edges = len(prims_result)
-    
-    return actual_edges == expected_edges
 
+    if not vertices:
+        # Empty graph: expect no edges from Prim's as well
+        return len(prims_result) == 0
 
+    # Build undirected edge list without duplicates: (weight, u, v)
+    edges: List[Tuple[float, str, str]] = []
+    seen_edges: Set[Tuple[str, str]] = set()
+    for u, neighbors in graph.items():
+        for v, weight in neighbors.items():
+            # Ensure each undirected edge is only added once
+            a, b = sorted((u, v))
+            key = (a, b)
+            if key in seen_edges:
+                continue
+            seen_edges.add(key)
+            edges.append((float(weight), a, b))
+
+    # If there are no edges but there are vertices, the graph is disconnected
+    if not edges and len(vertices) > 1:
+        return False
+
+    # Disjoint Set Union (Union-Find) for Kruskal
+    parent: Dict[str, str] = {v: v for v in vertices}
+    rank: Dict[str, int] = {v: 0 for v in vertices}
+
+    def find(x: str) -> str:
+        # Path compression
+        if parent[x] != x:
+            parent[x] = find(parent[x])
+        return parent[x]
+
+    def union(x: str, y: str) -> bool:
+        # Union by rank; returns True if union was performed
+        root_x = find(x)
+        root_y = find(y)
+        if root_x == root_y:
+            return False
+        if rank[root_x] < rank[root_y]:
+            parent[root_x] = root_y
+        elif rank[root_x] > rank[root_y]:
+            parent[root_y] = root_x
+        else:
+            parent[root_y] = root_x
+            rank[root_x] += 1
+        return True
+
+    # Run Kruskal's algorithm
+    edges.sort(key=lambda e: e[0])
+    kruskal_cost: float = 0.0
+    kruskal_edges_count = 0
+
+    for weight, u, v in edges:
+        if union(u, v):
+            kruskal_cost += weight
+            kruskal_edges_count += 1
+            # Early stop: MST for connected graph has |V| - 1 edges
+            if kruskal_edges_count == len(vertices) - 1:
+                break
+
+    # Validate that the graph is connected and we indeed built a spanning tree
+    if kruskal_edges_count != len(vertices) - 1:
+        # Not enough edges to connect all vertices: graph is disconnected
+        return False
+
+   # Ensure all vertices are in a single component
+    roots = {find(v) for v in vertices}
+    if len(roots) != 1:
+        return False
+
+    # Compute Prim's MST total cost from the provided result
+    prims_cost: float = sum(float(weight) for _, _, weight in prims_result)
+
+    # Compare costs with a small tolerance to account for floating-point arithmetic
+    tolerance = 1e-9
+    return abs(prims_cost - kruskal_cost) <= tolerance
 def get_mst_statistics(
     graph: Graph,
     mst_edges: List[Tuple[str, str, float]]
