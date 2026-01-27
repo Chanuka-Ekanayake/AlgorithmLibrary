@@ -30,8 +30,7 @@ This makes it essential for network design problems: building roads, laying cabl
 │   └── complexity.md              # O(E log V) analysis
 ├── test-project/                  # Real-World Simulation
 │   ├── app.py                     # Cable network optimizer
-│   ├── instructions.md            # User guide
-│   └── network_nodes.txt          # Sample infrastructure data
+│   └── instructions.md            # User guide
 └── README.md                      # Module Entry Point (Current File)
 ```
 
