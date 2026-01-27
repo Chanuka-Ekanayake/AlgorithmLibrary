@@ -183,18 +183,24 @@ def calculate_mst_savings(
 
 def find_all_msts(graph: Graph) -> List[List[Tuple[str, str, float]]]:
     """
-    Finds all possible MSTs if multiple exist (when edge weights have ties).
+    Returns a list of minimum spanning trees (MSTs) for the given graph.
     
-    Note: This is computationally expensive and should only be used on small graphs.
+    Current behavior:
+        This helper currently computes a single MST using ``prims_mst`` and
+        returns it wrapped in a list. It does *not* enumerate all possible MSTs
+        when multiple MSTs exist due to tied edge weights; it only returns one
+        representative MST.
     
     Args:
-        graph: The graph to analyze
+        graph: The graph to analyze.
     
     Returns:
-        List of MSTs, where each MST is a list of edges
+        List of MSTs, where each MST is a list of edges. At present this list
+        contains either zero or one MST.
     """
-    # For simplicity, we return a list with just one MST
-    # A complete implementation would explore all possibilities with equal weights
+    # NOTE: This function intentionally returns a single MST wrapped in a list.
+    # Full enumeration of all MSTs in the presence of equal-weight edges is
+    # not implemented here and would be significantly more expensive.
     mst_edges, _ = prims_mst(graph)
     return [mst_edges] if mst_edges else []
 
