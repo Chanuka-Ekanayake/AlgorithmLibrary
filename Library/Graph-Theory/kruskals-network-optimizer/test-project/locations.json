@@ -1,0 +1,22 @@
+{
+    "nodes": [
+        "San Francisco", 
+        "New York", 
+        "London", 
+        "Tokyo", 
+        "Singapore", 
+        "Frankfurt"
+    ],
+    "potential_connections": [
+        {"u": 0, "v": 1, "cost": 45},
+        {"u": 1, "v": 2, "cost": 70},
+        {"u": 2, "v": 5, "cost": 20},
+        {"u": 5, "v": 3, "cost": 95},
+        {"u": 3, "v": 4, "cost": 30},
+        {"u": 4, "v": 0, "cost": 85},
+        {"u": 0, "v": 2, "cost": 65},
+        {"u": 1, "v": 5, "cost": 60},
+        {"u": 2, "v": 3, "cost": 110},
+        {"u": 4, "v": 1, "cost": 90}
+    ]
+}
