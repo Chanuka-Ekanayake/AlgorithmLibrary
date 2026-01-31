@@ -1,0 +1,11 @@
+{
+    "model_name": "ResNet-50-Optimizer",
+    "version": "v2.0.26",
+    "layers": [
+        {"type": "convolutional", "filters": 64, "kernel": 3, "activation": "relu"},
+        {"type": "convolutional", "filters": 64, "kernel": 3, "activation": "relu"},
+        {"type": "dense", "units": 1024, "activation": "softmax"}
+    ],
+    "precision": "float32",
+    "status": "active"
+}
