@@ -2,7 +2,7 @@
 
 ## 1. The Core Objective
 
-The goal of an LRU Cache is to manage a fixed amount of memory by keeping the most frequently accessed items readily available and automatically discarding the items that haven't been touched in the longest time.
+The goal of an LRU Cache is to manage a fixed amount of memory by keeping the most recently accessed items readily available and automatically discarding the items that haven't been touched in the longest time.
 
 To achieve ** time complexity**, we combine two distinct data structures:
 
