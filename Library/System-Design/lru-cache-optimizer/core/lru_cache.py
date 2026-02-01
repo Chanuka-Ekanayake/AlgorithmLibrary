@@ -49,14 +49,14 @@ class LRUCache:
             node.next = temp
             temp.prev = node
 
-    def get(self, key: Any) -> Any:
-        """Retrieves value and moves node to the front."""
+    def get(self, key: Any, default: Any = -1) -> Any:
+        """Retrieves value and moves node to the front. Returns `default` if key is not found."""
         if key in self.cache:
             node = self.cache[key]
             self._remove(node)
             self._add_to_front(node)
             return node.value
-        return -1
+        return default
 
     def put(self, key: Any, value: Any) -> None:
         """Inserts/Updates value. Evicts least recently used if over capacity."""
