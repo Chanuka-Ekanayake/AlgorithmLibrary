@@ -61,11 +61,16 @@ class LRUCache:
     def put(self, key: Any, value: Any) -> None:
         """Inserts/Updates value. Evicts least recently used if over capacity."""
         if key in self.cache:
-            self._remove(self.cache[key])
-        
-        new_node = Node(key, value)
-        self.cache[key] = new_node
-        self._add_to_front(new_node)
+            # Update existing node value and move it to the front (MRU)
+            existing_node = self.cache[key]
+            existing_node.value = value
+            self._remove(existing_node)
+            self._add_to_front(existing_node)
+        else:
+            # Insert new node for previously unseen key
+            new_node = Node(key, value)
+            self.cache[key] = new_node
+            self._add_to_front(new_node)
         
         if len(self.cache) > self.capacity:
             # The 'Least Recently Used' node is always tail.prev
