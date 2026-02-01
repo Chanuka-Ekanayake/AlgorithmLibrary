@@ -4,16 +4,16 @@
 
 The goal of an LRU Cache is to manage a fixed amount of memory by keeping the most recently accessed items readily available and automatically discarding the items that haven't been touched in the longest time.
 
-To achieve ** time complexity**, we combine two distinct data structures:
+To achieve **O(1)** time complexity for cache operations, we combine two distinct data structures:
 
-1. **Hash Map (Dictionary):** For instant  search.
-2. **Doubly Linked List:** For instant  re-ordering and eviction.
+1. **Hash Map (Dictionary):** For instant **O(1)** search.
+2. **Doubly Linked List:** For instant **O(1)** re-ordering and eviction.
 
 ---
 
 ## 2. Why a Doubly Linked List?
 
-In a standard array or singly linked list, removing an item or moving it to the front is expensive () because you have to shift elements or traverse the list to find the previous node.
+In a standard array or singly linked list, removing an item or moving it to the front is expensive (O(n)) because you have to shift elements or traverse the list to find the previous node.
 
 * A **Doubly Linked List** allows a node to know both its successor (`next`) and its predecessor (`prev`).
 * This allows us to "snip" a node out of the middle and reconnect its neighbors in constant time.
