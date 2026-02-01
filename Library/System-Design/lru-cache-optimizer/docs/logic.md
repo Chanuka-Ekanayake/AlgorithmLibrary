@@ -46,9 +46,9 @@ We use two "dummy" nodes: a **Head** and a **Tail**.
 
 ### 4.2 The `put(key, value)` Logic
 
-1. **If the key exists:** Remove the old node from the list and the map.
+1. **If the key exists:** Remove the old node from the list (its map entry will be overwritten).
 2. **Create** a new node and add it to the front of the list.
-3. **Add** the new node to the map.
+3. **Update** the map so that `map[key]` now points to the new node (overwriting the previous entry for that key).
 4. **Capacity Check:**
 * If `map.size > capacity`:
 * Identify the **LRU node** (at `tail.prev`).
