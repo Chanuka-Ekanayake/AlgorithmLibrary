@@ -16,7 +16,7 @@ Space Complexity: O(V + E) where V is the number of vertices
 Author: Algorithm Library
 """
 
-from typing import Dict, List, Tuple, Optional, Set
+from typing import Any, Dict, List, Tuple, Optional, Set
 
 
 class UnionFind:
