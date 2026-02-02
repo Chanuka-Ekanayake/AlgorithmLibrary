@@ -210,10 +210,8 @@ def display_mst_results(graph, mst_edges, total_cost):
     print(f"   Edges Used: {len(mst_edges)} of {sum(len(n) for n in graph.values()) // 2} possible")
     
     # Savings
-    savings = calculate_mst_savings(graph, total_cost)
+    savings, full_cost, savings_percent = calculate_mst_savings(graph, mst_edges)
     if savings > 0:
-        full_cost = sum(w for n in graph.values() for w in n.values()) / 2
-        savings_percent = (savings / full_cost) * 100
         print(f"   💰 Cost Savings: ${savings:.2f}K ({savings_percent:.1f}%)")
     
     # Build MST graph for further analysis
