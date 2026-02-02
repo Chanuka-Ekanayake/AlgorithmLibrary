@@ -143,7 +143,7 @@ def kruskals_mst(graph: Dict[str, Dict[str, float]]) -> Optional[Tuple[List[Tupl
     for u in graph:
         for v, weight in graph[u].items():
             # Avoid duplicate edges in undirected graph
-            edge_id = tuple(sorted([u, v]))
+            edge_id = (u, v) if u < v else (v, u)
             if edge_id not in seen_edges:
                 edges.append((weight, u, v))
                 seen_edges.add(edge_id)
