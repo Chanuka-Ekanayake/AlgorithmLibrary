@@ -30,7 +30,8 @@ This makes it essential for network design problems: building roads, laying cabl
 │   └── complexity.md              # O(E log V) analysis
 ├── test-project/                  # Real-World Simulation
 │   ├── app.py                     # Cable network optimizer
-│   └── instructions.md            # User guide
+│   ├── instructions.md            # User guide
+│   └── network_nodes.txt          # Sample infrastructure data
 └── README.md                      # Module Entry Point (Current File)
 ```
 
@@ -41,7 +42,7 @@ This makes it essential for network design problems: building roads, laying cabl
 | Operation | Complexity | Efficiency Note |
 |-----------|-----------|-----------------|
 | **Time Complexity** | O(E log V) | With binary heap priority queue |
-| **Space Complexity** | O(E + V) | Priority queue and visited set |
+| **Space Complexity** | O(V) | Priority queue and visited set |
 | **Best for** | Dense graphs | When E ≈ V² |
 | **Optimal** | ✅ Always | Guaranteed to find MST |
 

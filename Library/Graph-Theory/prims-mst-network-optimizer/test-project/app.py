@@ -423,13 +423,13 @@ def main_menu():
                     visualize_mst(mst_edges)
                     
         elif choice == '5':
-            if mst_edges is None:
+            if not mst_edges:
                 print("❌ Calculate MST first (option 4).")
             else:
                 analyze_critical_connections(mst_edges)
                 
         elif choice == '6':
-            if mst_edges is None:
+            if not mst_edges:
                 print("❌ Calculate MST first (option 4).")
             else:
                 simulate_network_expansion(graph, mst_edges)
