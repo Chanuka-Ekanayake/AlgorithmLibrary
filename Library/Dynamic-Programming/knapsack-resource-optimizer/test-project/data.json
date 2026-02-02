@@ -1,0 +1,9 @@
+[
+    {"name": "LLM-Large-70B", "vram_gb": 40, "revenue": 1200},
+    {"name": "LLM-Medium-13B", "vram_gb": 12, "revenue": 500},
+    {"name": "Image-Gen-XL", "vram_gb": 8, "revenue": 450},
+    {"name": "Whisper-Speech-To-Text", "vram_gb": 4, "revenue": 200},
+    {"name": "BERT-Sentiment-Analysis", "vram_gb": 2, "revenue": 150},
+    {"name": "Real-Time-Object-Detection", "vram_gb": 6, "revenue": 300},
+    {"name": "Recommendation-Engine", "vram_gb": 10, "revenue": 400}
+]
