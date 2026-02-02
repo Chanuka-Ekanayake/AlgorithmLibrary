@@ -40,11 +40,10 @@ The space complexity is:
 
 A shuffle is considered **unbiased** if every possible permutation of the list is equally likely to occur.
 
-* For a list of size , there are  (n factorial) possible permutations.
+* For a list of size n, there are n! (n factorial) possible permutations.
 * Fisher-Yates ensures that the probability of any specific permutation appearing is exactly:
 
-
-
+  1/n!
 ### 3.2 Comparison with "Random Sort"
 
 Many developers shuffle by assigning a random number to each element and sorting them (O(n log n)).
