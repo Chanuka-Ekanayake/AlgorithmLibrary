@@ -47,9 +47,9 @@ A shuffle is considered **unbiased** if every possible permutation of the list i
 
 ### 3.2 Comparison with "Random Sort"
 
-Many developers shuffle by assigning a random number to each element and sorting them ().
+Many developers shuffle by assigning a random number to each element and sorting them (O(n log n)).
 
-* **Efficiency:** Fisher-Yates is faster ( vs ).
+* **Efficiency:** Fisher-Yates is faster (O(n) vs O(n log n)).
 * **Bias:** Sorting algorithms can introduce subtle biases depending on the sorting implementation, whereas Fisher-Yates is mathematically proven to be fair.
 
 ---
