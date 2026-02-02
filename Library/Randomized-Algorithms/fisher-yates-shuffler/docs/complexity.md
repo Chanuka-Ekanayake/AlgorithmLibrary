@@ -59,6 +59,6 @@ Many developers shuffle by assigning a random number to each element and sorting
 | Metric | Performance |
 | --- | --- |
 | **Passes over data** | 1 (Single Pass) |
-| **Swaps performed** |  |
-| **Random numbers generated** |  |
-| **Auxiliary Space** |  |
+| **Swaps performed** | n |
+| **Random numbers generated** | n |
+| **Auxiliary Space** | O(1) |
