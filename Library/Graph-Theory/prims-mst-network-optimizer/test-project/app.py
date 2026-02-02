@@ -221,15 +221,14 @@ def display_mst_results(graph, mst_edges, total_cost):
     diameter = get_mst_diameter(mst_graph)
     print(f"   📏 Network Diameter: ${diameter:.2f}K (longest path)")
     
-    # Statistics
-    stats = get_mst_statistics(mst_graph)
+    # Statistics (aligned with core get_mst_statistics(graph, mst_edges) API)
+    stats = get_mst_statistics(graph, mst_edges)
     print(f"\n📈 NETWORK STATISTICS:")
-    print(f"   Average Node Degree: {stats['avg_degree']:.2f}")
-    print(f"   Max Node Degree (hub): {stats['max_degree']} ({stats['max_degree_node']})")
-    print(f"   Leaf Nodes: {stats['leaf_count']}")
-    
-    if stats['leaf_nodes']:
-        print(f"   Leaf Districts: {', '.join(sorted(stats['leaf_nodes']))}")
+    num_vertices = stats.get("num_vertices")
+    if num_vertices is not None:
+        print(f"   Number of Vertices: {num_vertices}")
+    mst_total_cost = stats.get("mst_total_cost", total_cost)
+    print(f"   MST Total Cost (reported): ${mst_total_cost:.2f}K")
     
     print("═" * 70)
 
