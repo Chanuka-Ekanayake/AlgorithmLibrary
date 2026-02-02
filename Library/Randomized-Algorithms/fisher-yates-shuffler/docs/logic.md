@@ -47,4 +47,4 @@ In your 2026 software marketplace, this logic is used to maintain **Vendor Fairn
 
 * **The Problem:** If "Machine Learning Models" are always sorted alphabetically or by date, the same sellers always stay at the top.
 * **The Solution:** Use Fisher-Yates to shuffle the "Featured" results for every new session. Because the algorithm is unbiased, every developer has a mathematically identical chance of appearing in the top spot over a million sessions.
-* **Performance:** Because it is  and in-place, you can shuffle a list of thousands of product IDs instantly without taxing the server's memory.
+* **Performance:** Because it is O(n) and in-place, you can shuffle a list of thousands of product IDs instantly without taxing the server's memory.
