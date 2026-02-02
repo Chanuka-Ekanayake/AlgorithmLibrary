@@ -132,9 +132,6 @@ def kruskals_mst(graph: Dict[str, Dict[str, float]]) -> Optional[Tuple[List[Tupl
     vertices = list(graph.keys())
     num_vertices = len(vertices)
     
-    if num_vertices == 0:
-        return None
-    
     # Edge case: single vertex
     if num_vertices == 1:
         return ([], 0.0)
