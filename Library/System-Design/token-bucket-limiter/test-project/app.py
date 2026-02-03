@@ -29,8 +29,8 @@ def run_rate_limit_simulation():
     free_manager = RateLimitManager(default_capacity=5, default_refill_rate=1.0)
     
     # Tier 2: 'Pro-User' (High Capacity, Fast Refill)
-    # 15 burst requests allowed, refills 5 per second
-    pro_manager = RateLimitManager(default_capacity=15, default_refill_rate=5.0)
+    # 50 burst requests allowed, refills 10 per second
+    pro_manager = RateLimitManager(default_capacity=50, default_refill_rate=10.0)
 
     print("SCENARIO 1: The 'Free User' Spam Attack")
     print("Strategy: Attempting 10 rapid-fire requests...")
