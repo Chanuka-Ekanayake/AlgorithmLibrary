@@ -21,9 +21,7 @@ Instead of running a background thread that wakes up every second to add tokens 
 
 ## 2. Space Complexity
 
-The space complexity is:
-
-Where \***\* is the number of **Unique Identifiers\*\* (Users/IPs) currently being tracked.
+The space complexity is **O(n)**, where *n* is the number of unique identifiers (users/IPs) currently being tracked.
 
 ### 2.1 Memory Footprint
 
