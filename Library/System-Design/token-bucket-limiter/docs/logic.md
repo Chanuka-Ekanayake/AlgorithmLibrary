@@ -39,10 +39,7 @@ When `is_allowed(user_id)` is called:
 1. **Retrieve:** Find the bucket associated with the `user_id`.
 2. **Synchronize:** Acquire a lock to ensure thread safety (crucial for multi-threaded web servers).
 3. **Refill:** Run the "Lazy Refill" math to bring the token count up to date.
-4. **Check:** \* **IF** : Subtract 1 token and return `True` (Allow).
-
-- **ELSE**: Return `False` (Rate Limited).
-
+4. **Check:** If there is at least 1 token available, subtract 1 token and return `True` (Allow); otherwise, return `False` (Rate Limited).
 5. **Release:** Unlock and return the result.
 
 ---
