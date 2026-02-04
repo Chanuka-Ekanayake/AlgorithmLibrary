@@ -65,14 +65,20 @@ class MerkleTree:
             # Determine the sibling's index
             is_right_node = current_index % 2 == 1
             sibling_index = current_index - 1 if is_right_node else current_index + 1
-            
-            # If the index is out of bounds (odd node at end), the sibling is itself
+
+            # If the index is out of bounds (odd node at end), the sibling is the node itself
             if sibling_index < len(level):
                 direction = "left" if is_right_node else "right"
-                proof.append((level[sibling_index], direction))
-            
+                sibling_hash = level[sibling_index]
+            else:
+                # Self-pairing: use the current node's hash as its own sibling
+                # Direction is arbitrary here since H(x + x) is symmetric w.r.t. naming,
+                # but we treat the node as the left child with a "right" sibling.
+                direction = "right"
+                sibling_hash = level[current_index]
+
+            proof.append((sibling_hash, direction))
             current_index //= 2
-            
         return proof
 
     @staticmethod
