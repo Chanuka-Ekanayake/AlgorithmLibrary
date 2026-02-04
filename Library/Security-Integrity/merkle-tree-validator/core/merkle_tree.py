@@ -5,7 +5,7 @@ Ideal for verifying large software binaries or ML model weights.
 """
 
 import hashlib
-from typing import List, Optional, Tuple
+from typing import List, Tuple
 
 class MerkleTree:
     """
