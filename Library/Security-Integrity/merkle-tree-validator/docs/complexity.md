@@ -33,7 +33,7 @@ Where **** is the number of data blocks.
 
 * **Leaf Nodes:**  hashes.
 * **Internal Nodes:** Approximately  hashes to build the tree to the root.
-* **Total Storage:**  hashes. Using SHA-256, each hash is 32 bytes (256 bits). For 1,000 blocks, this is roughly **64 KB** of metadata—an negligible footprint for modern systems.
+* **Total Storage:**  hashes. Using SHA-256, each hash is 32 bytes (256 bits). For 1,000 blocks, this is roughly **64 KB** of metadata—a negligible footprint for modern systems.
 
 ---
 
