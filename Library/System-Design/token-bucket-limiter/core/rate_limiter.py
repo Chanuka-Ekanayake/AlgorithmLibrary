@@ -74,7 +74,9 @@ class RateLimitManager:
         Checks if a specific identifier (User ID or IP) is within their rate limit.
         """
         with self.manager_lock:
-            if identifier not in self.buckets:
-                self.buckets[identifier] = TokenBucket(self.capacity, self.refill_rate)
-            
-        return self.buckets[identifier].consume()
+            bucket = self.buckets.get(identifier)
+            if bucket is None:
+                bucket = TokenBucket(self.capacity, self.refill_rate)
+                self.buckets[identifier] = bucket
+
+        return bucket.consume()
