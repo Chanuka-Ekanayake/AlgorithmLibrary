@@ -8,7 +8,7 @@ sys.path.append(str(root_dir))
 try:
     from core.merkle_tree import MerkleTree
 except ImportError:
-    print("Error: Ensure 'core/merkle_tree.py' and 'core/__init__.py' exist.")
+    print("Error: Unable to import 'core.merkle_tree.MerkleTree'. Ensure 'core/merkle_tree.py' exists and is importable.")
     sys.exit(1)
 
 def run_integrity_simulation():
