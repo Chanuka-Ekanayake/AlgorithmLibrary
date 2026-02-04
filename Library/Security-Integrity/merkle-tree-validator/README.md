@@ -11,7 +11,7 @@ By hashing data into a binary tree format, any tampering with a single bit of da
 ## 2. Technical Features
 
 * **Cryptographic Integrity:** Utilizes **SHA-256** to provide collision-resistant digital fingerprints for every data block.
-* **Logarithmic Verification:** Enables  verification of data blocks. For example, a file with 1 million blocks can be verified with just 20 hashes.
+* **Logarithmic Verification:** Enables O(log n) verification of data blocks. For example, a file with 1 million blocks can be verified with just 20 hashes.
 * **Merkle Proof Generation:** Provides a "path of trust" that can be sent to clients to prove a specific file chunk is authentic.
 * **Deterministic Padding:** Automatically handles odd numbers of data blocks by duplicating the final node, ensuring a consistent binary structure.
 
