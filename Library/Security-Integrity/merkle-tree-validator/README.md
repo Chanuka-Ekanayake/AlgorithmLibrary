@@ -39,9 +39,9 @@ By hashing data into a binary tree format, any tampering with a single bit of da
 
 | Metric | Specification |
 | --- | --- |
-| **Verification Time** |  |
-| **Construction Time** |  |
-| **Space Complexity** |  |
+| **Verification Time** | O(log n) — verifying a single leaf requires hashing along a path proportional to the height of the tree. |
+| **Construction Time** | O(n) — building the tree requires hashing each leaf and internal node once. |
+| **Space Complexity** | O(n) — the tree stores all leaf and internal hashes. |
 | **Integrity Standard** | SHA-256 |
 
 ---
