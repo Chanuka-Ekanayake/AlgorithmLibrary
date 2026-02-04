@@ -12,7 +12,7 @@ In your software marketplace, if you are selling a **10GB Machine Learning Model
 
 Our implementation follows these logical steps:
 
-1. **Chunking:** The input data is split into  blocks.
+1. **Chunking:** The input data is split into fixed-size blocks (chunks).
 2. **Leaf Hashing:** Each block is passed through **SHA-256**. These become the "leaves" (Level 0).
 3. **Pairing:** We take two adjacent hashes and concatenate them: `H(A) + H(B)`.
 4. **Parent Hashing:** We hash the concatenated string to create a parent node: `H(AB) = SHA256(H(A) + H(B))`.
