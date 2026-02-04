@@ -22,7 +22,6 @@ By hashing data into a binary tree format, any tampering with a single bit of da
 ```text
 .
 ├── core/                  # Engine Logic
-│   ├── __init__.py        # Package initialization
 │   └── merkle_tree.py     # Recursive hashing and proof logic
 ├── docs/                  # Technical Documentation
 │   ├── logic.md           # Recursive "Tree Climbing" and sibling hashing
