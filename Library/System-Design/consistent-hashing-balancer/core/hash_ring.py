@@ -34,7 +34,9 @@ class ConsistentHashRing:
     def _hash(self, key: str) -> int:
         """
         Generates an MD5 hash for a string and converts it to an integer.
-        MD5 is used here for its speed and distribution properties.
+        MD5 is used here only for non-cryptographic purposes (consistent hashing)
+        because of its speed and distribution properties. It is not used for, and
+        is not suitable for, any security-sensitive functionality.
         """
         return int(hashlib.md5(key.encode('utf-8')).hexdigest(), 16)
 
