@@ -40,9 +40,9 @@ Consistent Hashing solves this by utilizing a **Circular Hash Ring**, ensuring t
 
 | Metric | Specification |
 | --- | --- |
-| **Lookup Complexity** |  |
-| **Data Migration** |  of total keys (Minimal) |
-| **Memory Footprint** |  |
+| **Lookup Complexity** | `O(log (N * V))` |
+| **Data Migration** | `1 / N` of total keys (Minimal) |
+| **Memory Footprint** | `O(N * V)` |
 | **Scaling Property** | High Elasticity |
 
 ---
