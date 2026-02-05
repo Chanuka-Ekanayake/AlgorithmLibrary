@@ -57,11 +57,12 @@ class ConsistentHashRing:
         for i in range(self.virtual_nodes):
             v_node_name = f"{node}#vnode-{i}"
             v_hash = self._hash(v_node_name)
-            
+
             if v_hash in self.ring:
                 del self.ring[v_hash]
                 # Remove from sorted list (O(N) operation)
-                self.sorted_keys.remove(v_hash)
+                if v_hash in self.sorted_keys:
+                    self.sorted_keys.remove(v_hash)
 
     def get_node(self, request_key: str) -> Optional[str]:
         """
