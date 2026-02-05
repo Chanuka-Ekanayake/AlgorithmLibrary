@@ -58,6 +58,6 @@ If you have 10 servers and add an 11th, standard hashing would force nearly **10
 
 | Metric | Performance |
 | --- | --- |
-| **Routing Efficiency** | Logarithmic () |
-| **Scaling Stability** | High ( Movement) |
+| **Routing Efficiency** | Logarithmic (O(log V)) |
+| **Scaling Stability** | High (O(1/N) movement) |
 | **Load Balancing** | Adjustable via Virtual Nodes |
