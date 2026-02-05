@@ -6,7 +6,7 @@ Ensures minimal data movement when scaling the server cluster.
 
 import hashlib
 import bisect
-from typing import List, Dict, Optional, Any
+from typing import List, Dict, Optional
 
 class ConsistentHashRing:
     """
