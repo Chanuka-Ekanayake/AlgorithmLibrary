@@ -55,7 +55,7 @@ def build_system_scheduler():
         print("\n❌ ERROR: Circular dependency detected!")
         print("Cannot determine build order.")
     else:
-        print("\n✓ Build Order (DFS-based):")
+        print("\n✓ Build Order (Kahn's algorithm, BFS-based):")
         for i, file in enumerate(order, 1):
             print(f"  {i}. Compile {file}")
 
