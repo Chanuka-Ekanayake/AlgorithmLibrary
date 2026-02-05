@@ -53,11 +53,16 @@ class TopologicalSort:
     
     def topological_sort_dfs(self):
         """
-        Perform topological sort using DFS approach
+        Perform topological sort using a DFS-based approach.
+        
+        This method assumes the graph is a Directed Acyclic Graph (DAG) and
+        does not perform cycle detection. If the graph contains a cycle, the
+        returned order may be incorrect.
+        
+        For cycle detection, use `has_cycle()` or `topological_sort_kahn()`.
         
         Returns:
-            list: Vertices in topological order
-            None: If graph contains a cycle
+            list: Vertices in topological order.
         """
         visited = [False] * self.vertices
         stack = []
