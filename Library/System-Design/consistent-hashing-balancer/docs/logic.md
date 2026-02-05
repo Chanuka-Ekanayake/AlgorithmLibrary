@@ -50,6 +50,6 @@ If a server crashes:
 ## 5. Logic Flow: `get_node(key)`
 
 1. **Hash the Request:** Calculate `h = hash(key)`.
-2. **Binary Search:** Find the smallest hash in our sorted list of virtual nodes that is .
-3. **Handle Overflow:** If is larger than any node hash, return the very first node in the list (wrapping around the ring).
+2. **Binary Search:** Find the smallest hash in our sorted list of virtual nodes that is greater than or equal to `h`.
+3. **Handle Overflow:** If `h` is larger than any node hash, return the very first node in the list (wrapping around the ring).
 4. **Return:** Provide the physical node identifier associated with that hash.
