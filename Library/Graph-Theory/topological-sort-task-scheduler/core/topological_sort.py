@@ -164,11 +164,7 @@ def topological_sort_with_names(tasks, dependencies):
     for prereq, task in dependencies:
         topo.add_edge(task_to_idx[prereq], task_to_idx[task])
     
-    # Check for cycles
-    if topo.has_cycle():
-        return None
-    
-    # Get topological order
+    # Get topological order (returns None if a cycle exists)
     order = topo.topological_sort_kahn()
     if order is None:
         return None
