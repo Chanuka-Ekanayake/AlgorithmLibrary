@@ -44,10 +44,10 @@ def run_balancer_simulation():
     # 3. Scale Up: Adding a new server
     print("\nSCENARIO 2: Scaling Up (Adding Server-Delta)")
     ring.add_node("Server-Delta")
-    stats2 = get_stats(ring, requests)
     
     # Calculate how many keys actually moved
     moved_keys = 0
+    for req in requests:
     for req in requests:
         if ring.get_node(req) == "Server-Delta":
             moved_keys += 1
