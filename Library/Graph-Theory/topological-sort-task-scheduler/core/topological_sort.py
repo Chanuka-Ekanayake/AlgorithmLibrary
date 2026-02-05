@@ -1,6 +1,6 @@
 """
 Topological Sort Algorithm Implementation
-Uses DFS-based approach to order vertices in a Directed Acyclic Graph (DAG)
+Supports both DFS-based and Kahn's (BFS-based) approaches to order vertices in a Directed Acyclic Graph (DAG)
 """
 
 from collections import defaultdict, deque
