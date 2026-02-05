@@ -236,6 +236,11 @@ def project_task_scheduler():
     for prereq, task in dependencies:
         topo.add_edge(task_to_idx[prereq], task_to_idx[task])
     
+    # Check for cycles before attempting topological sort
+    if topo.has_cycle():
+        print("\n✗ Error: Task dependency graph contains a cycle. Unable to compute a valid schedule.")
+        return
+    
     # Get task order
     order_indices = topo.topological_sort_dfs()
     
