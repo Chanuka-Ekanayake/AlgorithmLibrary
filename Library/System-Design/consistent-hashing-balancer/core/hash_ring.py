@@ -17,9 +17,12 @@ class ConsistentHashRing:
         """
         Args:
             nodes: Initial list of server identifiers (IPs or names).
-            virtual_nodes: The number of virtual points per physical node. 
-                          Higher values result in more even distribution.
+            virtual_nodes: The number of virtual points per physical node.
+                          Must be a positive integer. Higher values result in
+                          more even distribution.
         """
+        if not isinstance(virtual_nodes, int) or virtual_nodes <= 0:
+            raise ValueError("virtual_nodes must be a positive integer")
         self.virtual_nodes = virtual_nodes
         self.ring: Dict[int, str] = {}      # Maps hash -> Physical Node Name
         self.sorted_keys: List[int] = []    # Sorted list of hashes for binary search
