@@ -123,7 +123,7 @@ graph.add_edge(3, 4)
 
 # Find articulation points
 ap = graph.find_articulation_points()
-print(f"Articulation Points: {ap}")  # [0, 1]
+print(f"Articulation Points: {ap}")  # [1]
 
 # Find bridges
 bridges = graph.find_bridges()
