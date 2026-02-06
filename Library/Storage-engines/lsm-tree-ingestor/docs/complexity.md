@@ -13,7 +13,7 @@ The Log-Structured Merge-Tree (LSM) is designed to handle **extreme write pressu
 
 ### 1.1 The Write-Amplification Trade-off
 
-While writes are  in memory, the system eventually pays a cost during **Compaction** (merging multiple SSTables on disk). However, for the application layer, the perceived latency remains , which is why LSM-trees are preferred for logging, telemetry, and real-time analytics.
+While writes are first buffered in memory, the system eventually pays a cost during **Compaction** (merging multiple SSTables on disk). However, for the application layer, the perceived write latency remains low and stable, which is why LSM-trees are preferred for logging, telemetry, and real-time analytics.
 
 ---
 
