@@ -10,7 +10,7 @@ The LSM-Tree architecture solves this by treating all writes as a high-speed seq
 
 ## 2. Technical Features
 
-* **Write-Back Architecture:** All incoming `put` operations are handled in memory with **** complexity, shielding the application from disk latency.
+* **Write-Back Architecture:** All incoming `put` operations are handled in memory with amortized O(1) time complexity, shielding the application from disk latency.
 * **Sequential I/O Optimization:** By sorting data in memory before flushing, the engine ensures the disk only performs sequential writes—the fastest possible operation for both SSDs and HDDs.
 * **Immutable SSTable Generation:** Once a threshold is reached, the MemTable is "frozen" and written to disk. These files are never modified, which simplifies concurrency and recovery.
 * **Tombstone Support:** Deletions are handled as "Tombstone" writes, allowing the system to maintain high write speeds even for delete-heavy workloads.
