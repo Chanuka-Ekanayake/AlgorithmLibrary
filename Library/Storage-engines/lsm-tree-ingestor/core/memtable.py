@@ -50,17 +50,18 @@ class MemTable:
         Sorts the keys to ensure the resulting file is a 'Sorted String Table'.
         """
         self._is_flushing = True
-        # Sorting is the 'Merge' part of LSM. 
-        # It ensures disk reads remain O(log N).
-        sorted_data = sorted(self.table.items())
-        
-        # In a real system, we'd write to disk here.
-        # After flush, the table is cleared for new writes.
-        self.table.clear()
-        self.created_at = time.time()
-        self._is_flushing = False
-        
-        return sorted_data
+        try:
+            # Sorting is the 'Merge' part of LSM. 
+            # It ensures disk reads remain O(log N).
+            sorted_data = sorted(self.table.items())
+            
+            # In a real system, we'd write to disk here.
+            # After flush, the table is cleared for new writes.
+            self.table.clear()
+            self.created_at = time.time()
+            return sorted_data
+        finally:
+            self._is_flushing = False
 
     def get_size(self) -> int:
         """Returns the current number of entries."""
