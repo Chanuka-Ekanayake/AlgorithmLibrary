@@ -19,6 +19,8 @@ class MemTable:
             threshold_size: Max number of keys before the table must be 
                            flushed to persistent storage (SSTable).
         """
+        if threshold_size <= 0:
+            raise ValueError("threshold_size must be a positive integer")
         self.table: Dict[str, str] = {}
         self.threshold_size = threshold_size
         self.created_at = time.time()
