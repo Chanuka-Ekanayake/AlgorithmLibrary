@@ -35,7 +35,7 @@ To ensure disk reads are efficient later, we cannot just dump the memory to a fi
 
 When looking for a key (`get`):
 
-1. **Check MemTable:** Is the data in RAM? (Fastest ).
+1. **Check MemTable:** Is the data in RAM? (Fastest access.).
 2. **Check SSTables:** If not in RAM, search the sorted files on disk. Because they are sorted, we can use **Binary Search** or **Bloom Filters** (Algorithm #6) to find the data without reading the whole file.
 
 ---
