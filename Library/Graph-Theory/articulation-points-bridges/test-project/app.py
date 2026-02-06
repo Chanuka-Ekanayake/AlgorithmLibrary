@@ -344,13 +344,13 @@ def simple_example():
     
     print("Analysis Results:")
     print(f"\n  Articulation Points: {ap}")
-    print("    → Vertex 0: Connects {1,2} to {3,4}")
-    print("    → Vertex 1: Connects 2 to rest of graph")
+    print("    → Vertex 1: Articulation point; removing it isolates vertex 2")
+    
     
     print(f"\n  Bridges: {bridges}")
     print("    → Edge (1,2): Only connection to vertex 2")
     
-    print("\n  Removing vertex 0: Graph splits into {3,4,1,2} and isolated components")
+    print("\n  Removing vertex 0: Graph remains connected (vertices {1,2,3,4})")
     print("  Removing vertex 1: Vertex 2 becomes isolated")
     print("  Removing edge (1,2): Vertex 2 becomes isolated")
 
