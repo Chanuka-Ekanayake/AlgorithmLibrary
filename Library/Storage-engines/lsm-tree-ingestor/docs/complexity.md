@@ -21,10 +21,9 @@ While writes are  in memory, the system eventually pays a cost during **Compacti
 
 The space complexity is:
 
+`O(T)`
 
-
-Where **** is the **Threshold Capacity** of the MemTable.
-
+Where `T` is the **threshold capacity** of the MemTable (for example, the maximum number of entries or bytes it can hold before a flush).
 ### 2.1 Memory Management
 
 * **Memory Bound:** The MemTable occupies a fixed amount of RAM. Once it hits the threshold (e.g., 64MB), it transforms into an immutable state and flushes.
