@@ -172,7 +172,7 @@ For each unvisited vertex u:
 - **No bridges**: Removing any edge doesn't disconnect the graph
 
 ### 2. Tree Structure
-- **All non-leaf vertices are articulation points** (except single-child parents)
+- **All non-leaf vertices are articulation points** (except when the root has only one child)
 - **All edges are bridges**: Removing any edge disconnects the tree
 
 ### 3. Cycle
