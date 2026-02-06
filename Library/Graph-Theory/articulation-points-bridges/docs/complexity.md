@@ -37,8 +37,9 @@ Total:                O(V log V)
 Initialization:       O(V)
 DFS:                  O(V + E)
 Processing:           O(V log V)
-Overall:              O(V + E + V log V) = O(V + E)  (for sparse graphs)
-                      O(V + E)  (when E dominates)
+Overall:              O(V + E + V log V)
+Sparse graphs (E = O(V)):       O(V log V)
+Dense graphs (E = Θ(V²)):       O(E)
 ```
 
 ### Per-Operation Analysis
