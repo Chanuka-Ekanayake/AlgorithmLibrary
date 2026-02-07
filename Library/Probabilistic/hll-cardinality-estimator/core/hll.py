@@ -21,6 +21,9 @@ class HyperLogLog:
                        Higher precision reduces the error rate but uses more memory.
                        Standard error is approx 1.04 / sqrt(m).
         """
+        # Validate precision to avoid invalid shifts or excessive memory usage
+        if not isinstance(precision, int) or not (4 <= precision <= 20):
+            raise ValueError("precision must be an integer between 4 and 20 inclusive")
         self.p = precision
         self.m = 1 << precision  # Number of registers (buckets)
         self.registers = [0] * self.m
