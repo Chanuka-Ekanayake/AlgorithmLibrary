@@ -2,7 +2,7 @@
 
 ## 1. Overview
 
-The **HyperLogLog (HLL)** is a probabilistic data structure designed to solve the "count-distinct" problem (cardinality estimation) at an massive scale. In traditional systems, counting unique elements requires a hash set that grows linearly with the number of items. For billions of unique users or events, this becomes memory-prohibitive.
+The **HyperLogLog (HLL)** is a probabilistic data structure designed to solve the "count-distinct" problem (cardinality estimation) at a massive scale. In traditional systems, counting unique elements requires a hash set that grows linearly with the number of items. For billions of unique users or events, this becomes memory-prohibitive.
 
 HLL provides a 98-99% accurate estimate using **near-constant memory** (). It is the primary algorithm used by 2026's leading data platforms like **Redis**, **Snowflake**, and **Google BigQuery**.
 
