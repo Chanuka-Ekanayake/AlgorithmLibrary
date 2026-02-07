@@ -6,10 +6,11 @@ HyperLogLog is a probabilistic algorithm used to estimate the number of unique e
 
 | Operation | Complexity | Description |
 | --- | --- | --- |
-| **`add(item)`** |  | Hashing the item and updating a single register index are constant-time operations. |
-| **`count()`** |  | Calculating the harmonic mean requires iterating through all  registers once. |
-| **Merge** |  | Two HLL structures can be merged by taking the maximum of each corresponding register. |
+| **`add(item)`** | `O(1)` | Hashing the item and updating a single register index are constant-time operations. |
+| **`count()`** | `O(m)` | Calculating the harmonic mean requires iterating through all registers once. |
+| **Merge** | `O(m)` | Two HLL structures can be merged by taking the maximum of each corresponding register. |
 
+Here, **m** denotes the number of registers in the HyperLogLog structure.
 ### 1.1 Independence of 
 
 Note that the time complexity for `add` is completely independent of the number of unique elements () already in the set. Whether you have 100 or 100,000,000 items, the cost to add a new one remains exactly the same.
