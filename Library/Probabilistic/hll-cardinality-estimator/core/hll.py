@@ -64,13 +64,21 @@ class HyperLogLog:
         self.registers[idx] = max(self.registers[idx], rho)
 
     def _count_leading_zeros(self, w: int) -> int:
-        """Returns the position of the first 1-bit from the right."""
-        if w == 0:
-            return 64 - self.p # Max possible zeros for a 64-bit hash
-        
-        # Standard bit-manipulation to find the first '1'
-        return (w & -w).bit_length()
+        """
+        Returns the HyperLogLog leading-zero rank for the (64 - p)-bit value w.
 
+        The rank is defined as the number of leading zeros in w (within a
+        logical width of 64 - p bits), plus 1. For w == 0, the rank is
+        (64 - p) + 1.
+        """
+        width = 64 - self.p
+        if w == 0:
+            # When all bits are zero, the rank is maximal: (64 - p) + 1
+            return width + 1
+
+        # Compute leading zeros within the fixed width, then add 1 for the rank.
+        leading_zeros = width - w.bit_length()
+        return leading_zeros + 1
     def count(self) -> int:
         """
         Estimates the total number of unique elements using the 
