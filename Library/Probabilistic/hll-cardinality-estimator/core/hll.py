@@ -45,15 +45,15 @@ class HyperLogLog:
         """
         Adds an item to the estimator.
         1. Hashes the item.
-        2. Uses the first 'p' bits to pick a register.
-        3. Counts leading zeros in the remaining bits to estimate cardinality.
+        2. Uses the lowest 'p' bits to pick a register.
+        3. Counts leading zeros in the remaining higher-order bits to estimate cardinality.
         """
         x = self._get_hash(item)
         
-        # Extract the register index (first p bits)
+        # Extract the register index (lowest p bits)
         idx = x & (self.m - 1)
         
-        # Extract the value for zero-counting (remaining bits)
+        # Extract the value for zero-counting (remaining higher-order bits)
         w = x >> self.p
         
         # Count leading zeros (plus 1 for the first set bit)
