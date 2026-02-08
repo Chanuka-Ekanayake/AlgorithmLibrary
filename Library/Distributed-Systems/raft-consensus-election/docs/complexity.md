@@ -43,14 +43,14 @@ For the **Election Module**, memory usage is near-constant ( per node) as we onl
 
 Raft follows the **Quorum Rule** for survival:
 
-- To survive \***\* failures, the cluster must have at least \*\*** nodes.
+- To survive up to *f* failures, the cluster must have at least *2f + 1* nodes.
 
-| Cluster Size () | Max Failures () | Majority Needed |
-| --------------- | --------------- | --------------- |
-| 3               | 1               | 2               |
-| 5               | 2               | 3               |
-| 7               | 3               | 4               |
-| 9               | 4               | 5               |
+| Cluster Size (2f + 1) | Max Failures (f) | Majority Needed |
+| --------------------- | ---------------- | --------------- |
+| 3                     | 1                | 2               |
+| 5                     | 2                | 3               |
+| 7                     | 3                | 4               |
+| 9                     | 4                | 5               |
 
 ---
 
