@@ -59,8 +59,8 @@ def start_simulation():
     threads = []
 
     # Start all nodes in separate threads
-    for i in range(5):
-        t = threading.Thread(target=sim.run_node, args=(i,), daemon=True)
+    for node_id in sim.nodes.keys():
+        t = threading.Thread(target=sim.run_node, args=(node_id,), daemon=True)
         t.start()
         threads.append(t)
 
