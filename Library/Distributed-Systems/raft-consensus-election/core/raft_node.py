@@ -7,7 +7,7 @@ Handles election timeouts, term management, and vote transitions.
 import time
 import random
 from enum import Enum
-from typing import List, Optional
+from typing import List
 
 class State(Enum):
     FOLLOWER = 1
