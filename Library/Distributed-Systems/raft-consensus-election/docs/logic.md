@@ -34,10 +34,10 @@ The logic follows a strict sequence:
 3. **The Request:** It sends `RequestVote` RPCs to all other nodes.
 4. **The Vote:** A Follower will grant a vote if:
 
-- The Candidate's Term is its own.
+- The Candidate's Term is **at least** the Follower's current Term (if the Candidate's Term is greater, the Follower first updates its Term and steps down to Follower, per the Safety Rule above).
 - It hasn't already voted for someone else in this Term.
 
-5. **The Victory:** If the Candidate receives votes from a **Quorum** (), it promotes itself to **Leader**.
+5. **The Victory:** If the Candidate receives votes from a **Quorum** (a strict majority of the cluster, i.e., more than half of the nodes), it promotes itself to **Leader**.
 
 ---
 
