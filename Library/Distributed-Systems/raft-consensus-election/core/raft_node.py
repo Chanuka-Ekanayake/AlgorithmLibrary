@@ -111,7 +111,17 @@ class RaftNode:
 
     def handle_heartbeat(self, term: int, leader_id: int):
         """Follower logic: Recognize a valid leader and reset election timer."""
-        if term >= self.current_term:
+        # Ignore stale heartbeats from older terms
+        if term < self.current_term:
+            return
+
+        # If we see a newer term, update term and reset election-related state
+        if term > self.current_term:
             self.current_term = term
-            self.state = State.FOLLOWER
-            self.last_heartbeat = time.time()
+            self.voted_for = None
+            # Clear any votes tracked from a previous candidacy in an older term
+            self.votes_received = set()
+
+        # For both equal and higher terms, follow the leader and reset timeout
+        self.state = State.FOLLOWER
+        self.last_heartbeat = time.time()
