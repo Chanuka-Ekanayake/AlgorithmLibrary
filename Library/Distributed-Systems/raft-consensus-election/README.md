@@ -42,8 +42,8 @@ If the Leader crashes, the remaining nodes detect the failure and automatically 
 | ---------------------- | ----------------------------------------------- |
 | **Safety Property**    | Linearizability (Strong Consistency)            |
 | **Fault Tolerance**    | Survives failures in a cluster                  |
-| **Election Speed**     | Typically                                       |
-| **Message Complexity** | during election; during stability               |
+| **Election Speed**     | Typically 150–300 ms (≈1–2 RTTs) for leader election under normal conditions |
+| **Message Complexity** | O(n) messages during election; O(1) messages per client operation during stability |
 | **State Storage**      | Volatile (Simulated) / Persistent (Logic Ready) |
 
 ---
