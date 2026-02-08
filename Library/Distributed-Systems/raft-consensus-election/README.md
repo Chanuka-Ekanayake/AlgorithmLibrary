@@ -12,7 +12,7 @@ If the Leader crashes, the remaining nodes detect the failure and automatically 
 
 - **Strong Leader Safety:** Guaranteed by the protocol to have at most one leader per "Term," preventing data corruption from "Split-Brain" scenarios.
 - **Logical Clocks (Terms):** Uses monotonically increasing terms to detect and depose stale leaders and synchronize global state.
-- **Quorum-Based Authority:** All transitions require a majority vote (), ensuring that a minority of failed nodes cannot bring down the entire system.
+- **Quorum-Based Authority:** All transitions require a majority vote (a quorum of ⌊N/2⌋ + 1 nodes in an N-node cluster; see `docs/logic.md`), ensuring that a minority of failed nodes cannot bring down the entire system.
 - **Randomized Election Jitter:** Implements randomized timeouts (150ms–300ms) to significantly reduce the probability of "Split Votes" and ensure rapid leader recovery.
 
 ---
