@@ -88,9 +88,22 @@ class RaftNode:
         Processes a vote from a peer. 
         If a majority is reached, transitions to LEADER.
         """
-        if self.state != State.CANDIDATE or term != self.current_term:
+        # Ignore responses from older terms
+        if term < self.current_term:
             return
 
+        # If we learn about a newer term, update and step down to follower
+        if term > self.current_term:
+            self.current_term = term
+            self.state = State.FOLLOWER
+            self.voted_for = None
+            # Clear any votes accumulated for the old term
+            self.votes_received.clear()
+            return
+
+        # From here, term == self.current_term
+        if self.state != State.CANDIDATE:
+            return
         if granted:
             self.votes_received.add(peer_id)
             
