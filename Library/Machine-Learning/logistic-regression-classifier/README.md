@@ -115,4 +115,4 @@ python app.py
 * **Regularization:** L1 for feature selection, L2 for weight penalty
 * **Custom Thresholds:** Adjust decision boundary for imbalanced datasets
 * **Loss Monitoring:** Track convergence through training history
-* **Gradient Clipping:** Numerical stability for extreme values
+* **Numerically Stable Sigmoid:** Logit clipping for extreme values in the sigmoid function
