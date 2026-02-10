@@ -1,12 +1,12 @@
-# Logistic Regression: Binary & Multi-Class Classifier
+# Logistic Regression: Binary Classifier
 
 ## 1. Overview
 
-**Logistic Regression** is a fundamental supervised learning algorithm used for classification tasks. Despite its name, it's a classification algorithm, not a regression one. It estimates the probability that a given input belongs to a particular class using the **sigmoid (logistic) function**.
+**Logistic Regression** is a fundamental supervised learning algorithm used for classification tasks. Despite its name, it's a classification algorithm, not a regression one. In this module, it is implemented as a **binary classifier**, estimating the probability that a given input belongs to the positive class using the **sigmoid (logistic) function**.
 
 In production systems, Logistic Regression is crucial for **Spam Detection**, **Customer Churn Prediction**, **Fraud Detection**, and **Medical Diagnosis**. Its interpretability and efficiency make it a go-to algorithm for binary classification problems.
 
-This module provides a from-scratch implementation using **NumPy**, demonstrating how to build a production-grade classifier with gradient descent optimization and regularization techniques.
+This module provides a from-scratch implementation using **NumPy**, demonstrating how to build a production-grade **binary** classifier with gradient descent optimization and regularization techniques. Multi-class extensions (e.g., softmax or one-vs-rest) are not included in this implementation.
 
 ---
 
