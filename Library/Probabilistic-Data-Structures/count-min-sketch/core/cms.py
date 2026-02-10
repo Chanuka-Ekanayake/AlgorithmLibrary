@@ -66,6 +66,9 @@ class CountMinSketch:
         return min(estimates)
 
     def get_memory_info(self) -> str:
-        """Calculates total counters used."""
+        """Calculates total counters and theoretical memory usage assuming 32-bit counters."""
         total_cells = self.width * self.depth
-        return f"{total_cells} counters (approx. {total_cells * 4 / 1024:.2f} KB)"
+        return (
+            f"{total_cells} counters "
+            f"(idealized 32-bit packed representation: {total_cells * 4 / 1024:.2f} KB)"
+        )
