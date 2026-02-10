@@ -13,7 +13,7 @@ CMS solves this by using a fixed-size sketching matrix. It provides a conservati
 * **Sub-linear Space Complexity:** The memory usage is determined by your desired accuracy, not by the number of unique items () in the stream.
 * **One-Sided Error:** The algorithm provides a "conservative" estimate. It may over-estimate due to hash collisions, but it will **never under-estimate** the true frequency.
 * **Point-Query Efficiency:** Both updates and frequency lookups are performed in constant time (), regardless of the billions of events processed.
-* **Mergeable Structure:** Multiple sketches from different servers can be combined (summed) to provide a global frequency view in a distributed architecture.
+* **Mergeable Structure (Conceptual):** In principle, multiple compatible sketches from different servers can be combined (summed) to provide a global frequency view in a distributed architecture; the reference `CountMinSketch` implementation in this repository does not yet expose a merge/addition API.
 
 ---
 
