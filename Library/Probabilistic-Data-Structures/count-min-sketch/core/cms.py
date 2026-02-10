@@ -34,7 +34,10 @@ class CountMinSketch:
         Maps an item to a specific column index using a salted hash.
         We use MD5 for speed and distribution, then take the modulo.
         """
-        h = hashlib.md5((salt + item).encode('utf-8')).hexdigest()
+        # Use an unambiguous encoding for (salt, item) to avoid collisions from
+        # simple string concatenation (e.g., ("1","23") vs ("12","3")).
+        hash_input = f"{len(salt)}:{salt}{item}".encode("utf-8")
+        h = hashlib.md5(hash_input).hexdigest()
         return int(h, 16) % self.width
 
     def add(self, item: str, count: int = 1) -> None:
