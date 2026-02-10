@@ -74,6 +74,8 @@ class LogisticRegression:
         n_samples, n_features = X.shape
         self.weights = np.zeros(n_features)
         self.bias = 0
+        # Reset loss history for this training run
+        self.losses = []
         
         # --- 2. Gradient Descent ---
         for i in range(self.n_iterations):
