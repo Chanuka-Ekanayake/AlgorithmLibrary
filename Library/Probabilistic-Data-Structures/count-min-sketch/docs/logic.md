@@ -11,13 +11,13 @@ In a high-velocity environment like your 2026 software marketplace, you might se
 
 ## 2. The Sketching Matrix
 
-The data structure is essentially a 2D array of integers with ** rows** (Depth) and ** columns** (Width).
+The data structure is essentially a 2D array of integers with **d** rows (Depth) and **w** columns (Width).
 
 1. **Independent Hashing:** Each row is associated with a different, independent hash function.
 2. **Updating (The `add` logic):**
 
-- When a model is downloaded, we hash the `model_id` using the hash function for Row 1. This gives us a column index . We increment `Matrix[Row 1][c_1]`.
-- We repeat this for Row 2, Row 3... up to Row .
+- When a model is downloaded, we hash the `model_id` using the hash function for Row 1. This gives us a column index `c_1`. We increment `Matrix[Row 1][c_1]`.
+- We repeat this for Row 2, Row 3... up to Row `d`.
 - One single event results in increments across the matrix.
 
 ---
