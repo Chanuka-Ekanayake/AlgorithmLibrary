@@ -169,7 +169,7 @@ This creates a **linear** separation in feature space.
 - **Interpretable:** Weights show feature importance
 - **Probabilistic:** Provides confidence scores
 - **Efficient:** Fast training and prediction
-- **No hyperparameters:** (except learning rate and iterations)
+- **Simple hyperparameters:** Mainly learning rate, number of iterations, regularization, and prediction threshold
 
 ### Limitations
 - **Linear Decision Boundary:** Can't model complex patterns
