@@ -61,14 +61,14 @@ def run_trending_simulation():
     # 3. Memory Audit
     # Python dict entries are approx 24-48 bytes each + key/value strings
     exact_memory_kb = (len(exact_counter) * 128) / 1024 
-    # CMS is width * depth * 4 bytes (for integer)
+    # Theoretical CMS size assuming packed 32-bit (4-byte) counters: width * depth * 4 bytes
     cms_memory_kb = (cms.width * cms.depth * 4) / 1024
 
     print("\n" + "-"*60)
     print(f"RESOURCES USED")
     print("-" * 60)
-    print(f"Standard Dictionary Memory: ~{exact_memory_kb:.2f} KB")
-    print(f"Count-Min Sketch Memory:    ~{cms_memory_kb:.2f} KB")
+    print(f"Standard Dictionary Memory (approx.):              ~{exact_memory_kb:.2f} KB")
+    print(f"Count-Min Sketch Memory (theoretical 32-bit):      ~{cms_memory_kb:.2f} KB")
     print(f"Accuracy for Heavy Hitters: High (Conservative Estimate)")
     print("="*60)
 
