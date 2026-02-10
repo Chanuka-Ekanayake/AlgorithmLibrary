@@ -88,9 +88,15 @@ def customer_churn_simulation():
     try:
         lr = float(input("Learning rate (default 0.1): ") or 0.1)
         iterations = int(input("Number of iterations (default 1000): ") or 1000)
-        regularization = input("Regularization type (l1/l2/none, default l2): ") or "l2"
-        if regularization.lower() == "none":
+        reg_input = input("Regularization type (l1/l2/none, default l2): ") or "l2"
+        reg_input = reg_input.strip().lower()
+        if reg_input == "none":
             regularization = None
+        elif reg_input in ("l1", "l2"):
+            regularization = reg_input
+        else:
+            # Fallback to safe default if input is invalid
+            regularization = "l2"
     except ValueError:
         lr, iterations, regularization = 0.1, 1000, "l2"
     
