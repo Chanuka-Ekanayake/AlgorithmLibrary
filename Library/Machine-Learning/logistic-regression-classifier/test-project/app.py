@@ -132,7 +132,6 @@ def customer_churn_simulation():
     y_pred = model.predict(X_test_norm)
     true_positives = np.sum((y_pred == 1) & (y_test == 1))
     false_positives = np.sum((y_pred == 1) & (y_test == 0))
-    true_negatives = np.sum((y_pred == 0) & (y_test == 0))
     false_negatives = np.sum((y_pred == 0) & (y_test == 1))
     
     precision = true_positives / (true_positives + false_positives) if (true_positives + false_positives) > 0 else 0
