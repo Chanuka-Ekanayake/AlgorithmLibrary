@@ -5,9 +5,9 @@ class LogisticRegression:
     """
     Logistic Regression implementation from scratch using NumPy.
     
-    This algorithm is used for binary and multi-class classification problems.
+    This algorithm is used for binary classification problems.
     It applies the sigmoid function to model the probability that a given input
-    belongs to a particular class.
+    belongs to the positive class (label 1).
     """
 
     def __init__(self, learning_rate: float = 0.01, n_iterations: int = 1000, 
