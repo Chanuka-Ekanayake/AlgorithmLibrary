@@ -198,11 +198,18 @@ def customer_churn_simulation():
     
     # 9. LOSS CONVERGENCE
     print(f"\n📉 Training Loss Curve:")
-    loss_samples = [0, len(model.losses)//4, len(model.losses)//2, 3*len(model.losses)//4, len(model.losses)-1]
-    for idx in loss_samples:
-        iteration = idx + 1
-        loss = model.losses[idx]
-        print(f"   Iteration {iteration:4d}: Loss = {loss:.6f}")
+    if len(model.losses) > 0:
+        loss_samples = [0,
+                        len(model.losses) // 4,
+                        len(model.losses) // 2,
+                        3 * len(model.losses) // 4,
+                        len(model.losses) - 1]
+        for idx in loss_samples:
+            iteration = idx + 1
+            loss = model.losses[idx]
+            print(f"   Iteration {iteration:4d}: Loss = {loss:.6f}")
+    else:
+        print("   No training iterations were run, so no loss curve is available.")
     
     print("\n" + "=" * 60)
     print("Thank you for using the Customer Churn Prediction System!")
