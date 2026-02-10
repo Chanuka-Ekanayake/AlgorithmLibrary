@@ -34,9 +34,16 @@ def run_trending_simulation():
     # Weights: Model_0 is very popular, Model_499 is rare
     weights = [1.0 / (i + 1) for i in range(UNIQUE_MODELS)]
 
+    # Precompute cumulative weights once to avoid recomputing them in the loop
+    cum_weights = []
+    total_weight = 0.0
+    for w in weights:
+        total_weight += w
+        cum_weights.append(total_weight)
+
     for _ in range(TOTAL_DOWNLOADS):
         # Pick a model based on the popularity weights (Zipf-like distribution)
-        model_id = random.choices(models, weights=weights, k=1)[0]
+        model_id = random.choices(models, cum_weights=cum_weights, k=1)[0]
         
         # Update both exact and probabilistic structures
         exact_counter[model_id] += 1
