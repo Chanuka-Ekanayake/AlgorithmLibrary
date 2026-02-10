@@ -5,7 +5,6 @@ the frequency of events in a data stream.
 """
 
 import hashlib
-from typing import List
 
 class CountMinSketch:
     """
