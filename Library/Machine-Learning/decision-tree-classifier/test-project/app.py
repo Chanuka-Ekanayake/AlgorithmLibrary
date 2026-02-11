@@ -24,14 +24,16 @@ from core.decision_tree import DecisionTreeClassifier, accuracy_score
 from typing import List, Tuple
 
 
-def load_data() -> Tuple[List[List[float]], List[int], List[str]]:
+def load_data() -> Tuple[List[List[float]], List[int], List[List[float]], List[int], List[str]]:
     """
     Load customer churn dataset.
     
     Returns:
-        (X, y, feature_names) where:
-        - X: Feature matrix
-        - y: Churn labels (0=stay, 1=churn)
+        (X_train, y_train, X_test, y_test, feature_names) where:
+        - X_train: Training feature matrix
+        - y_train: Training churn labels (0=stay, 1=churn)
+        - X_test: Test feature matrix
+        - y_test: Test churn labels (0=stay, 1=churn)
         - feature_names: Names of features
     """
     # Feature names
