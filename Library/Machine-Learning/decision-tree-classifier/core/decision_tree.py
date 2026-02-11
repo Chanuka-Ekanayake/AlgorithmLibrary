@@ -427,6 +427,9 @@ def accuracy_score(y_true: List[Any], y_pred: List[Any]) -> float:
     """
     if len(y_true) != len(y_pred):
         raise ValueError("Length mismatch")
+
+    if len(y_true) == 0:
+        raise ValueError("y_true and y_pred must be non-empty")
     
     correct = sum(1 for true, pred in zip(y_true, y_pred) if true == pred)
     return correct / len(y_true)
