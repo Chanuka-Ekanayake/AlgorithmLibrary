@@ -310,6 +310,12 @@ class DecisionTreeClassifier:
         Returns:
             List of predicted class labels
         """
+        # Ensure the tree has been trained before making predictions
+        if not hasattr(self, "root") or self.root is None:
+            raise ValueError(
+                "DecisionTreeClassifier instance is not fitted yet. "
+                "Call 'fit' with appropriate arguments before using 'predict'."
+            )
         return [self._predict_sample(sample, self.root) for sample in X]
     
     def predict_proba(self, X: List[List[float]]) -> List[Dict[Any, float]]:
