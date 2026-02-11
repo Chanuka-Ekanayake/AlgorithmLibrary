@@ -221,7 +221,7 @@ After running this demo, you should understand:
 
 ### Modify Hyperparameters
 
-Edit `app.py` line ~220 to try different settings:
+Edit `app.py` line ~270 to try different settings:
 
 ```python
 # Original
