@@ -188,8 +188,6 @@ class DecisionTreeClassifier:
         best_feature = None
         best_threshold = None
         
-        n_samples = len(X)
-        
         # Try each feature
         for feature in range(self.n_features):
             # Get unique values for this feature
