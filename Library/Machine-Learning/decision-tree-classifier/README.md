@@ -265,7 +265,7 @@ The test project demonstrates:
 
 ## 🔗 Related Algorithms
 
-- **[Logistic Regression](../logistic-regression/README.md)**: Linear classification baseline
+- **[Logistic Regression](../logistic-regression-classifier/README.md)**: Linear classification baseline
 - **[K-Means](../k-means-product-clustering/README.md)**: Unsupervised clustering
 - **Random Forest** (potential future addition): Ensemble of decision trees
 - **Gradient Boosting** (potential future addition): Boosted decision trees
