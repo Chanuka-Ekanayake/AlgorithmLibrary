@@ -134,7 +134,24 @@ def print_tree_structure(clf):
     print(f"\nTree Complexity Metrics:")
     print(f"  - Maximum Depth: {clf.get_depth()}")
     print(f"  - Number of Leaves: {clf.get_n_leaves()}")
-    print(f"  - Total Nodes: {clf.get_n_leaves() * 2 - 1}")  # Approximation
+    # Try to obtain an exact total node count if available
+    total_nodes = None
+    # scikit-learn style API
+    tree_attr = getattr(clf, "tree_", None)
+    if tree_attr is not None and hasattr(tree_attr, "node_count"):
+        total_nodes = tree_attr.node_count
+    # Alternative API where classifier exposes a node-count method
+    elif hasattr(clf, "get_n_nodes"):
+        try:
+            total_nodes = clf.get_n_nodes()
+        except TypeError:
+            # get_n_nodes exists but is not callable as used above
+            total_nodes = None
+    
+    if total_nodes is not None:
+        print(f"  - Total Nodes: {total_nodes}")
+    else:
+        print(f"  - Total Nodes: N/A (not available)")
     
     print(f"\nHyperparameters:")
     print(f"  - max_depth: {clf.max_depth}")
