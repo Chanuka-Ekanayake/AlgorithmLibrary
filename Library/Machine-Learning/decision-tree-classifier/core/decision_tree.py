@@ -391,8 +391,15 @@ class DecisionTreeClassifier:
             if node is None or node.is_leaf():
                 return
             
-            # Add this node's contribution to feature importance
-            importances[node.feature] += node.samples * node.impurity
+            # Add this node's contribution to feature importance based on
+            # the weighted impurity decrease from this split.
+            if node.left is not None and node.right is not None and node.samples > 0:
+                weighted_child_impurity = (
+                    (node.left.samples * node.left.impurity) +
+                    (node.right.samples * node.right.impurity)
+                ) / node.samples
+                impurity_decrease = node.impurity - weighted_child_impurity
+                importances[node.feature] += node.samples * impurity_decrease
             
             traverse(node.left)
             traverse(node.right)
