@@ -2,7 +2,7 @@
 Decision Tree Classifier - CART Implementation
 
 This module implements the Classification and Regression Trees (CART) algorithm
-for building decision trees using information gain (entropy-based splitting).
+for building decision trees using impurity-based splitting (Gini impurity or entropy).
 
 Algorithm:
 - Recursively split data based on feature that maximizes information gain
