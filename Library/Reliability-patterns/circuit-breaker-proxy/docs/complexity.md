@@ -13,7 +13,7 @@ The Circuit Breaker is a behavioral pattern used to manage service reliability. 
 ### 1.1 Impact on Latency
 
 - **Healthy State (`CLOSED`):** Adds negligible latency (nanoseconds) to check the state and increment a counter.
-- **Failure State (`OPEN`):** **Decreases** overall system latency. By failing fast, it prevents the application from waiting for network timeouts (which can be ).
+- **Failure State (`OPEN`):** **Decreases** overall system latency. By failing fast, it prevents the application from waiting for network timeouts (which can be several seconds or more).
 
 ---
 
