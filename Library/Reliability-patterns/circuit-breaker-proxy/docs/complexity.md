@@ -19,7 +19,7 @@ The Circuit Breaker is a behavioral pattern used to manage service reliability. 
 
 ## 2. Space Complexity
 
-The space complexity per Circuit Breaker instance is:
+The space complexity per Circuit Breaker instance is **O(1)**:
 
 Regardless of the number of requests processed, the memory footprint remains constant. We only store:
 
