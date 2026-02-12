@@ -46,7 +46,8 @@ In reliability engineering, the Circuit Breaker improves the **MTTR (Mean Time T
 ## 4. Engineering Trade-offs
 
 - **Granularity:** A single breaker for the whole API is simple but "heavy-handed." A breaker per endpoint (e.g., `/get-price` vs `/checkout`) is more complex to manage but provides better availability.
-- **Threshold Tuning:** \* **Too Low:** Leads to "False Tripping" during minor network blips.
-- **Too High:** Allows too many failures to hit the system, potentially causing the very crash it was meant to prevent.
+- **Threshold Tuning:**
+  - **Too Low:** Leads to "False Tripping" during minor network blips.
+  - **Too High:** Allows too many failures to hit the system, potentially causing the very crash it was meant to prevent.
 
 - **Half-Open Sensitivity:** The recovery logic assumes that a single successful call in `HALF_OPEN` means the system is healthy. In some 2026 architectures, a "Success Percentage" is used instead for higher confidence.
