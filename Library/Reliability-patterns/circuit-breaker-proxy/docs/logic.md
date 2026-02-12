@@ -25,8 +25,9 @@ The Circuit Breaker logic ensures that if a service is struggling, we stop calli
 ### **State 3: HALF-OPEN (The Testing Path)**
 
 * **Behavior:** A limited number of trial requests are allowed through.
-* **Monitoring:** * If a trial request **fails**, the breaker assumes the service is still down and moves back to **OPEN**, resetting the timer.
-* If a trial request **succeeds**, the breaker assumes the service is healthy and moves back to **CLOSED**, resetting the failure count.
+* **Monitoring:**
+  * If a trial request **fails**, the breaker assumes the service is still down and moves back to **OPEN**, resetting the timer.
+  * If a trial request **succeeds**, the breaker assumes the service is healthy and moves back to **CLOSED**, resetting the failure count.
 
 
 
