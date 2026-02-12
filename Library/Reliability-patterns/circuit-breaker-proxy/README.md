@@ -11,7 +11,7 @@ The Circuit Breaker wraps these dangerous calls in a state machine. If failures 
 ## 2. Technical Features
 
 - **Finite State Machine (FSM):** Operates in three distinct modes: `CLOSED` (healthy), `OPEN` (protecting), and `HALF_OPEN` (testing).
-- **Fail-Fast Mechanism:** When the circuit is open, requests are rejected in time, bypassing the network and saving thread/memory resources.
+- **Fail-Fast Mechanism:** When the circuit is open, requests are rejected immediately, bypassing the network and saving thread/memory resources.
 - **Automatic Recovery:** Uses a time-based decay logic to transition from `OPEN` to `HALF_OPEN`, allowing the system to self-heal without manual intervention.
 - **Tunable Sensitivity:** Configurable `failure_threshold` and `recovery_timeout` parameters to balance between system protection and service availability.
 
