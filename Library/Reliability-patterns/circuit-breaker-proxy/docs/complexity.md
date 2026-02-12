@@ -6,9 +6,9 @@ The Circuit Breaker is a behavioral pattern used to manage service reliability. 
 
 | Operation             | Complexity | Description                                                                                       |
 | --------------------- | ---------- | ------------------------------------------------------------------------------------------------- |
-| **Call Wrapping**     |            | Checking the current state (`OPEN`, `CLOSED`, or `HALF_OPEN`) is a constant time operation.       |
-| **State Transition**  |            | Updating failure counters and timestamps happens in constant time after the service call returns. |
-| **Fail-Fast Trigger** |            | When the circuit is `OPEN`, the rejection happens instantly, bypassing the network entirely.      |
+| **Call Wrapping**     | `O(1)`     | Checking the current state (`OPEN`, `CLOSED`, or `HALF_OPEN`) is a constant time operation.       |
+| **State Transition**  | `O(1)`     | Updating failure counters and timestamps happens in constant time after the service call returns. |
+| **Fail-Fast Trigger** | `O(1)`     | When the circuit is `OPEN`, the rejection happens instantly, bypassing the network entirely.      |
 
 ### 1.1 Impact on Latency
 
