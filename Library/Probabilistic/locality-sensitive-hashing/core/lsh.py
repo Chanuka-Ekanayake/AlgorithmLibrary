@@ -5,7 +5,7 @@ buckets, enabling sub-linear approximate nearest neighbor search.
 """
 
 import numpy as np
-from typing import List, Dict, Any, Optional
+from typing import List, Dict, Any
 
 class RandomProjectionLSH:
     """
