@@ -46,7 +46,8 @@ def run_similarity_sim():
 
     # 3. Create a 'Query Model' 
     # We'll take an existing model and add a tiny bit of noise to simulate a 'similar' one
-    target_id = "ML_Model_42"
+    target_index = 42
+    target_id = f"ML_Model_{target_index:03d}"
     target_vector = np.array(model_database[target_id])
     query_vector = (target_vector + np.random.normal(0, 0.1, DIMENSIONS)).tolist()
 
