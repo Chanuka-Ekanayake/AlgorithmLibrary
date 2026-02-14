@@ -64,8 +64,8 @@ class RandomProjectionLSH:
         vec_np = np.array(vector)
         signature = self._generate_signature(vec_np)
         
-        # Return candidates from the same bucket (if any)
-        return self.buckets.get(signature, [])
+        # Return a shallow copy of candidates from the same bucket (if any)
+        return list(self.buckets.get(signature, []))
 
     def get_stats(self) -> Dict[str, int]:
         """Returns the distribution of items across buckets."""
