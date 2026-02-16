@@ -56,9 +56,12 @@ The `elgamal` module can be used to protect sensitive numerical data, such as li
 
 ```python
 from core.elgamal import ElGamal
+from Crypto.Util.number import getPrime
 
-# Initialize with a safe prime
-crypto = ElGamal(p=65521, g=13)
+# Initialize with a cryptographically strong 2048-bit prime
+p = getPrime(2048)
+g = 2  # generator for the multiplicative group modulo p (example choice)
+crypto = ElGamal(p=p, g=g)
 
 # Receiver generates their keys
 keys = crypto.generate_keys()
