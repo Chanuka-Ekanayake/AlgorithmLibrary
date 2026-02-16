@@ -45,23 +45,26 @@ class ElGamal:
         Encrypts an integer message.
         Ciphertext is a pair (a, b).
         """
-        p, g, y = public_key
-        
-        if plaintext >= p:
-            raise ValueError(f"Plaintext must be smaller than prime p ({p})")
+        p_key, g_key, y = public_key
+
+        # Ensure that the provided public key matches this instance's group parameters.
+        if p_key != self.p or g_key != self.g:
+            raise ValueError("Public key parameters (p, g) do not match this ElGamal instance.")
+
+        if plaintext >= self.p:
+            raise ValueError(f"Plaintext must be smaller than prime p ({self.p})")
 
         # Ephemeral key k: Randomly chosen for each encryption
         # This ensures the encryption is non-deterministic (probabilistic).
-        k = random.randint(2, p - 2)
-        
+        k = random.randint(2, self.p - 2)
+
         # a = g^k mod p
-        a = pow(g, k, p)
-        
+        a = pow(self.g, k, self.p)
+
         # b = (y^k * M) mod p
         # y^k mod p is the shared secret
-        shared_secret = pow(y, k, p)
-        b = (shared_secret * plaintext) % p
-        
+        shared_secret = pow(y, k, self.p)
+        b = (shared_secret * plaintext) % self.p
         return (a, b)
 
     def decrypt(self, ciphertext: Tuple[int, int], private_key: int) -> int:
