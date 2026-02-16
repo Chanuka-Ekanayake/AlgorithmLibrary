@@ -67,21 +67,42 @@ class ElGamal:
         b = (shared_secret * plaintext) % self.p
         return (a, b)
 
-    def decrypt(self, ciphertext: Tuple[int, int], private_key: int) -> int:
+    def decrypt(
+        self,
+        ciphertext: Tuple[int, int],
+        private_key: int,
+        public_key: Tuple[int, int, int] | None = None,
+    ) -> int:
         """
         Decrypts a ciphertext pair (a, b).
         M = b * (a^x)^-1 mod p
+
+        Args:
+            ciphertext: The ciphertext pair (a, b) produced by `encrypt`.
+            private_key: The private key x corresponding to the public key.
+            public_key: Optional public key (p, g, y) used during encryption.
+                If provided, its prime p must match this instance's p; otherwise
+                a ValueError is raised to prevent using an inconsistent modulus.
         """
         a, b = ciphertext
-        
+
+        # Determine the modulus p and validate consistency if a public key is provided.
+        p = self.p
+        if public_key is not None:
+            p_from_key, _, _ = public_key
+            if p_from_key != p:
+                raise ValueError(
+                    f"Inconsistent prime modulus: decrypt() is using p={p}, "
+                    f"but the provided public_key uses p={p_from_key}."
+                )
+
         # Recover shared secret: a^x mod p
-        s = pow(a, private_key, self.p)
-        
+        s = pow(a, private_key, p)
+
         # Use Fermat's Little Theorem for the modular inverse: s^(p-2) mod p
         # This works because p is prime.
-        s_inv = pow(s, self.p - 2, self.p)
-        
+        s_inv = pow(s, p - 2, p)
+
         # Plaintext M = b * s_inv mod p
-        plaintext = (b * s_inv) % self.p
-        
+        plaintext = (b * s_inv) % p
         return plaintext
