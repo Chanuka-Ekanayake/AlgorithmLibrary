@@ -20,9 +20,9 @@ def run_licensing_sim():
     # 1. Initialization
     # We use a 16-bit prime for simulation speed. 
     # In production, this would be 2048+ bits.
-    SAFE_PRIME = 65521 
+    DEMO_PRIME = 65521 
     GENERATOR = 13
-    crypto = ElGamal(p=SAFE_PRIME, g=GENERATOR)
+    crypto = ElGamal(p=DEMO_PRIME, g=GENERATOR)
 
     # 2. Key Generation (Performed by the User)
     print("[USER] Generating Public/Private key pair...")
