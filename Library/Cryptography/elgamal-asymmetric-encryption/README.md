@@ -38,13 +38,13 @@ For your marketplace, this algorithm provides a secure method for **Digital Enve
 
 ## 4. Performance Specifications
 
-| Metric                     | Specification                                      |
-| -------------------------- | -------------------------------------------------- |
-| **Encryption Complexity**  | (Logarithmic relative to prime size)               |
-| **Decryption Complexity**  |                                                    |
-| **Space Overhead**         | 2.0x (Ciphertext is double the size of plaintext)  |
-| **Security Foundation**    | Discrete Logarithm Problem (DLP)                   |
-| **Randomness Requirement** | High (Requires a unique ephemeral key per session) |
+| Metric                     | Specification                                                     |
+| -------------------------- | ----------------------------------------------------------------- |
+| **Encryption Complexity**  | ≈ 2 modular exponentiations + O(1) multiplications (O(log p))     |
+| **Decryption Complexity**  | ≈ 1 modular exponentiation + O(1) multiplications (O(log p))      |
+| **Space Overhead**         | 2.0x (Ciphertext is double the size of plaintext)                 |
+| **Security Foundation**    | Discrete Logarithm Problem (DLP)                                  |
+| **Randomness Requirement** | High (Requires a unique ephemeral key per session)                |
 
 ---
 
