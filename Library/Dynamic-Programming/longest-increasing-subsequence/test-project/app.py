@@ -1,10 +1,10 @@
 import sys
 import time
-from pathlib import Path
+import os
 
 # Add parent directory for core logic
-root_dir = Path(__file__).resolve().parent.parent
-sys.path.append(str(root_dir))
+root_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.append(root_dir)
 
 try:
     from core.lis import LongestIncreasingSubsequence
