@@ -93,7 +93,7 @@ python app.py
 
 ## 6. Industrial Applications
 
-- **Bioinformatics:** Core logic used in DNA sequence alignment to find common genetic markers.
-- **Version Control Systems:** The foundation of the `git diff` utility, calculating the minimum number of insertions and deletions between two text files.
+- **Bioinformatics:** Core logic used in DNA sequence analysis and as a conceptual building block for more complex alignment algorithms.
+- **Version Control Systems (Related Concept):** Diff tools such as `git diff` are based on the Longest Common Subsequence (LCS) problem, a different dynamic programming problem that is often discussed alongside LIS in sequence analysis.
 - **Financial Modeling:** Extracting the longest continuous upward or downward trends hidden within highly volatile market data.
 - **Mathematics:** Used to solve variations of the Box Stacking Problem and Russian Doll Envelopes problem.
