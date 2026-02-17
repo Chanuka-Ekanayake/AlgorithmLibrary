@@ -4,7 +4,6 @@ Implements sequence analysis using both standard Dynamic Programming
 and highly optimized Binary Search methodologies.
 """
 
-import bisect
 from typing import List, Tuple
 
 class LongestIncreasingSubsequence:
