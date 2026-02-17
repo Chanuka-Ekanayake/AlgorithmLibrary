@@ -40,8 +40,8 @@ This module is a masterclass in algorithmic optimization. It demonstrates the ev
 
 | Metric               | Classic DP                | Optimal Binary Search        |
 | -------------------- | ------------------------- | ---------------------------- |
-| **Time Complexity**  |                           | \*\*\*\*                     |
-| **Space Complexity** |                           |                              |
+| **Time Complexity**  | O(N^2)                    | O(N log N)                   |
+| **Space Complexity** | O(N)                      | O(N)                         |
 | **Search Mechanism** | Exhaustive Back-tracking  | Bisection / Binary Search    |
 | **Scalability**      | Fails on massive datasets | Instantaneous up to millions |
 
