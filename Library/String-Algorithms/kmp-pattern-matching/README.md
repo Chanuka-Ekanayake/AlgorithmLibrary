@@ -38,12 +38,12 @@ The fundamental flaw of naive (brute-force) string matching is that it backtrack
 
 ## 4. Performance Specifications
 
-| Metric                     | Specification                                            |
-| -------------------------- | -------------------------------------------------------- |
-| **Search Time Complexity** | (Strictly linear relative to text size)                  |
-| **Prep Time Complexity**   | (Strictly linear relative to pattern size)               |
-| **Space Complexity**       | (Requires integer array equal to pattern length)         |
-| **Pointer Movement**       | Text pointer strictly increments; Pattern pointer shifts |
+| Metric                     | Specification                                                         |
+| -------------------------- | --------------------------------------------------------------------- |
+| **Search Time Complexity** | O(N) (Strictly linear relative to text size)                          |
+| **Prep Time Complexity**   | O(M) (Strictly linear relative to pattern size)                       |
+| **Space Complexity**       | O(M) (Requires integer array equal to pattern length)                 |
+| **Pointer Movement**       | Text pointer strictly increments; Pattern pointer shifts              |
 
 ---
 
