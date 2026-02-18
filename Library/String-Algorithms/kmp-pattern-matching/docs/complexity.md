@@ -26,8 +26,8 @@ Therefore, the search phase executes in strict time.
 
 | Requirement   | Complexity | Description                                                                          |
 | ------------- | ---------- | ------------------------------------------------------------------------------------ |
-| **LPS Array** | \*\*\*\*   | An integer array of the exact same length as the search pattern is stored in memory. |
-| **Pointers**  |            | Only a few integer variables (`i`, `j`, `length`) are maintained during execution.   |
+| **LPS Array** | O(M)       | An integer array of the exact same length as the search pattern is stored in memory. |
+| **Pointers**  | O(1)       | Only a few integer variables (`i`, `j`, `length`) are maintained during execution.   |
 
 **The Memory Trade-off:**
 KMP trades a small amount of memory () to achieve its massive speedup. Since search patterns (like a software model name or a specific tag) are typically very short compared to the text being searched, this memory footprint is entirely negligible in real-world systems.
