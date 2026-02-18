@@ -51,7 +51,7 @@ Once the LPS array is built, the search begins using two pointers: for the Text,
 - We shift our pattern pointer to `j = LPS[j - 1]`.
 - **Crucially, the text pointer never moves backward.**
 
-By shifting instead of , we align the known prefix of our pattern with the matching suffix we just found in the text, allowing the search to continue seamlessly.
+By shifting instead of restarting, we align the known prefix of our pattern with the matching suffix we just found in the text, allowing the search to continue seamlessly.
 
 ---
 
