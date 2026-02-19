@@ -52,7 +52,8 @@ def run_dna_compressor():
     end_decode = time.perf_counter()
 
     # 5. Validation
-    assert dna_sequence == decoded_sequence, "CRITICAL ERROR: Data loss detected."
+    if dna_sequence != decoded_sequence:
+        raise RuntimeError("CRITICAL ERROR: Data loss detected.")
 
     print("\n" + "="*65)
     print("COMPRESSION REPORT")
