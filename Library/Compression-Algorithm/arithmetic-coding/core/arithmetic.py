@@ -5,7 +5,7 @@ to a single fractional number in the interval [0.0, 1.0).
 """
 
 from decimal import Decimal, getcontext
-from typing import Dict, List, Tuple
+from typing import Dict, Tuple
 
 class ArithmeticCoder:
     """
