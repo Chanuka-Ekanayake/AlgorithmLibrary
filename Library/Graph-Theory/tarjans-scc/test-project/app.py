@@ -13,7 +13,7 @@ import os
 # Allow running from the test-project directory directly
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 
-from core.tarjans_scc import find_sccs_with_names, analyze_graph_connectivity
+from core.tarjans_scc import analyze_graph_connectivity
 
 SEPARATOR = "=" * 60
 
