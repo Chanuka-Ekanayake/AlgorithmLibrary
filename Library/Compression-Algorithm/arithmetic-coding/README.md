@@ -2,7 +2,7 @@
 
 ## 1. Overview
 
-**Arithmetic Coding** is an advanced entropy encoding algorithm utilized in high-performance data compression. While traditional algorithms like Huffman Coding translate each character into a discrete series of whole bits (e.g., `A = 01`), Arithmetic Coding encodes an entire message into a single, high-precision fractional number strictly between **0.0** and **1.0**.
+**Arithmetic Coding** is an advanced entropy encoding algorithm utilized in high-performance data compression. While traditional algorithms like Huffman Coding translate each character into a discrete series of whole bits (e.g., `A = 01`), Arithmetic Coding encodes an entire message into a single, high-precision fractional number in the range **[0.0, 1.0)**.
 
 By utilizing continuous mathematical interval subdivision, this algorithm can assign _fractional_ bits to symbols. This allows it to compress highly repetitive data down to the theoretical limit of Shannon Entropy, making it vastly superior for long, predictable datasets where assigning a whole bit to a highly probable character would be a mathematical waste.
 
