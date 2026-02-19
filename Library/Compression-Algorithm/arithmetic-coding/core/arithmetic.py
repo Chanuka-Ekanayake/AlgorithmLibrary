@@ -81,19 +81,30 @@ class ArithmeticCoder:
         Decodes a Decimal number back into the original string.
         Requires the original message length to know when to stop decoding.
         """
+        # Validate that the encoded value lies within the expected interval.
+        if not (Decimal(0) <= encoded_value < Decimal(1)):
+            raise ValueError("encoded_value must be within the interval [0, 1).")
+
         decoded_message = []
         current_value = encoded_value
 
-        for _ in range(message_length):
+        for position in range(message_length):
+            symbol_found = False
             # 1. Find which character's interval contains the current_value
             for char, (char_low, char_high) in self.probability_table.items():
                 if char_low <= current_value < char_high:
                     decoded_message.append(char)
-                    
+
                     # 2. "Zoom in" on this interval for the next iteration
                     # V_new = (V_old - low) / (high - low)
                     current_range = char_high - char_low
                     current_value = (current_value - char_low) / current_range
+                    symbol_found = True
                     break
 
+            if not symbol_found:
+                raise ValueError(
+                    f"Encoded value does not correspond to a valid symbol "
+                    f"at position {position}."
+                )
         return "".join(decoded_message)
