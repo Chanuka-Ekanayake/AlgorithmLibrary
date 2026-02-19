@@ -1,7 +1,6 @@
 import sys
 import time
 from pathlib import Path
-from decimal import Decimal
 
 # Add parent directory for core logic
 root_dir = Path(__file__).resolve().parent.parent
