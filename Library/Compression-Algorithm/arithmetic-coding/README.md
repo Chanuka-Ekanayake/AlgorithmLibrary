@@ -38,12 +38,12 @@ By utilizing continuous mathematical interval subdivision, this algorithm can as
 
 ## 4. Performance Specifications
 
-| Metric                  | Specification                                             |
-| ----------------------- | --------------------------------------------------------- |
-| **Time Complexity**     | (Where is the arbitrary precision overhead)               |
-| **Space Complexity**    | for probability table; massive precision strings for data |
-| **Compression Ratio**   | Approaches absolute Shannon Entropy limit                 |
-| **Decoding Constraint** | Must know original message length to terminate the loop   |
+| Metric                  | Specification                                                                                                   |
+| ----------------------- | --------------------------------------------------------------------------------------------------------------- |
+| **Time Complexity**     | Encoding and decoding: O(n · p), where n is the message length (symbols) and p is the arbitrary-precision scale |
+| **Space Complexity**    | O(|Σ| + p), for the probability table over alphabet Σ and the high-precision interval bounds / encoded value    |
+| **Compression Ratio**   | Approaches the Shannon entropy limit of the source distribution                                                |
+| **Decoding Constraint** | Must know the original message length n to determine when to stop symbol reconstruction                        |
 
 ---
 
