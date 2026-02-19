@@ -2,7 +2,7 @@
 Decision Tree Classifier - CART Implementation
 
 This module implements the Classification and Regression Trees (CART) algorithm
-for building decision trees using information gain (entropy-based splitting).
+for building decision trees using impurity-based splitting (Gini impurity or entropy).
 
 Algorithm:
 - Recursively split data based on feature that maximizes information gain
@@ -188,8 +188,6 @@ class DecisionTreeClassifier:
         best_feature = None
         best_threshold = None
         
-        n_samples = len(X)
-        
         # Try each feature
         for feature in range(self.n_features):
             # Get unique values for this feature
@@ -310,6 +308,12 @@ class DecisionTreeClassifier:
         Returns:
             List of predicted class labels
         """
+        # Ensure the tree has been trained before making predictions
+        if not hasattr(self, "root") or self.root is None:
+            raise ValueError(
+                "DecisionTreeClassifier instance is not fitted yet. "
+                "Call 'fit' with appropriate arguments before using 'predict'."
+            )
         return [self._predict_sample(sample, self.root) for sample in X]
     
     def predict_proba(self, X: List[List[float]]) -> List[Dict[Any, float]]:
@@ -385,8 +389,15 @@ class DecisionTreeClassifier:
             if node is None or node.is_leaf():
                 return
             
-            # Add this node's contribution to feature importance
-            importances[node.feature] += node.samples * node.impurity
+            # Add this node's contribution to feature importance based on
+            # the weighted impurity decrease from this split.
+            if node.left is not None and node.right is not None and node.samples > 0:
+                weighted_child_impurity = (
+                    (node.left.samples * node.left.impurity) +
+                    (node.right.samples * node.right.impurity)
+                ) / node.samples
+                impurity_decrease = node.impurity - weighted_child_impurity
+                importances[node.feature] += node.samples * impurity_decrease
             
             traverse(node.left)
             traverse(node.right)
@@ -414,6 +425,9 @@ def accuracy_score(y_true: List[Any], y_pred: List[Any]) -> float:
     """
     if len(y_true) != len(y_pred):
         raise ValueError("Length mismatch")
+
+    if len(y_true) == 0:
+        raise ValueError("y_true and y_pred must be non-empty")
     
     correct = sum(1 for true, pred in zip(y_true, y_pred) if true == pred)
     return correct / len(y_true)

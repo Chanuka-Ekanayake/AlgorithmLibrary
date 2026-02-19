@@ -217,10 +217,12 @@ class TreeNode:
 #### 2. Number of Nodes
 
 **Balanced tree**:
-- Depth: d = log₂(n)
-- Internal nodes: 2^d - 1 ≈ n - 1
-- Leaf nodes: 2^d ≈ n
-- **Total nodes: 2n - 1 ≈ O(n)**
+- Let L = number of leaf nodes
+- Depth: d ≈ log₂(L) for a full, balanced binary tree
+- Internal nodes: L - 1
+- Leaf nodes: L
+- **Total nodes: 2L - 1 = O(L)**  
+  If each leaf contains on average k samples, then L ≈ n / k and total nodes are O(n / k) = O(n).
 
 **With min_samples_leaf**:
 - Each leaf has ≥ min_samples_leaf samples
