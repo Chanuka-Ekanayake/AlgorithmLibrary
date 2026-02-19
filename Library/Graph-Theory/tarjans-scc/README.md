@@ -198,7 +198,7 @@ SCCs: {A}, {B}, {C, D}
 |-----------|--------|--------------------|--------------------|
 | **Tarjan's (this)** | **1** | **No** | **Yes** |
 | Kosaraju's | 2 | Yes | Partial |
-| Naive | O(V²) | No | No |
+| Naive | V | No | No |
 
 ## Contributing
 Follow the existing structure when adding examples or optimizations.
