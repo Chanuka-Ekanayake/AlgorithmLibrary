@@ -34,7 +34,7 @@ Given a graph, find a walk that uses every edge exactly once:
 
 ### 5. Graph Theory Foundation 🎓
 **Problem**: The historic Königsberg Bridge Problem (1736)
-- Proved NO Eulerian path exists when nodes have odd degree
+- Showed that no Eulerian path or circuit exists when more than two vertices have odd degree (as in the Königsberg graph, which has four)
 - **Used in**: Teaching graph theory, algorithm courses
 
 ## Algorithm: Hierholzer's (1873)
