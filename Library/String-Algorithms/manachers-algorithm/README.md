@@ -44,8 +44,8 @@ It solves two massive headaches in string processing simultaneously:
 
 | Metric                   | Specification                                         |
 | ------------------------ | ----------------------------------------------------- |
-| **Time Complexity**      | \*\*\*\* (Strictly linear via boundary tracking)      |
-| **Space Complexity**     | (Requires preprocessed string and radius array)       |
+| **Time Complexity**      | O(N) (strictly linear via boundary tracking)          |
+| **Space Complexity**     | O(N) (requires preprocessed string and radius array)  |
 | **Bottleneck Addressed** | Eliminates redundant center expansions                |
 | **Core Mechanism**       | Amortized dynamic programming / String transformation |
 
