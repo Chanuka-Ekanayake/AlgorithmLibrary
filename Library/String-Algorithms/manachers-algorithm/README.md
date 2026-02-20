@@ -16,7 +16,7 @@ It solves two massive headaches in string processing simultaneously:
 ## 2. Technical Features
 
 - **Linear Time Execution:** Guarantees O(N) performance via amortized boundary tracking of the current center C and right boundary R. The inner `while` loop only executes when pushing the absolute right boundary R forward, meaning it runs at most N times across the _entire_ algorithm.
-- **Sentinel Injection:** Uses `^` and `$` at the absolute bounds of the transformed string to naturally prevent `IndexOutOfBounds` errors during expansion, saving expensive `if` checks in the inner loop.
+- **Sentinel Injection:** Uses `^` and `$` at the absolute bounds of the transformed string to naturally prevent `IndexError` during expansion, saving expensive `if` checks in the inner loop.
 - **Symmetry Exploitation:** Implements the mathematical formula `mirror = 2 * C - i` to instantly copy valid palindrome lengths from the left side of a known boundary to the right side.
 
 ---
