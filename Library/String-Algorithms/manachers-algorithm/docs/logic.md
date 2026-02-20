@@ -12,7 +12,7 @@ To eliminate the even/odd center problem, we transform the string by injecting a
 - **Odd Example:** `"aba"` becomes `"^#a#b#a#$"` (Length 9)
 - **Even Example:** `"abba"` becomes `"^#a#b#b#a#$"` (Length 11)
 
-Now, _every_ palindrome has a distinct, physical center (either a letter or a `#`). The sentinels `^` and `$` guarantee that when we expand our search outwards, we will hit a boundary character before throwing an `IndexOutOfBounds` error, saving us from writing expensive `if/else` edge checks in our loop.
+Now, _every_ palindrome has a distinct, physical center (either a letter or a `#`). The sentinels `^` and `$` guarantee that when we expand our search outwards, we will hit a boundary character before throwing an `IndexError`, saving us from writing expensive `if/else` edge checks in our loop.
 
 ---
 
