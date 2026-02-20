@@ -2,8 +2,8 @@
 
 ## Time Complexity: O(V + E)
 
-Each edge is traversed exactly once. Each vertex is pushed and popped from
-the stack exactly once.
+Each edge is traversed exactly once, and each vertex is added to the final
+path exactly once.
 
 | Operation | Cost |
 |-----------|------|
