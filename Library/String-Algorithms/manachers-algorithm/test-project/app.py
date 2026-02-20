@@ -44,7 +44,8 @@ def run_genomic_scanner():
     print(f"Sequence Length:              {len(longest_palindrome)} base pairs")
     
     # Verify we extracted the exact sequence and not a preprocessed string
-    assert "#" not in longest_palindrome, "CRITICAL ERROR: Preprocessing characters leaked into output."
+    if "#" in longest_palindrome:
+        raise RuntimeError("CRITICAL ERROR: Preprocessing characters leaked into output.")
 
     print("-" * 65)
     print(f"Execution Time: {(end_time - start_time) * 1000:.4f} ms")
