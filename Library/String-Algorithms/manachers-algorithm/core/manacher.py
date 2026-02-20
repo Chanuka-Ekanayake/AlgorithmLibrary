@@ -37,7 +37,7 @@ class Manacher:
         Returns:
             The longest palindromic substring.
         """
-        if not s or len(s) == 0:
+        if not s:
             return ""
 
         # 1. Transform the string
