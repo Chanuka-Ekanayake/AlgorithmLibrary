@@ -137,7 +137,7 @@ def johnsons(
 
     HANDLES: Negative edge weights (detects negative cycles).
     BEST FOR: Sparse graphs where E << V², outperforms Floyd-Warshall.
-    TIME: O(V² log V + VE) with binary heap.
+    TIME: O(VE log V + VE) with binary heap (often written as O(VE log V) worst-case).
     SPACE: O(V²) for the all-pairs result matrices.
 
     Args:
