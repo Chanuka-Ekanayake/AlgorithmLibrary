@@ -254,7 +254,8 @@ def scenario_flight_network():
         route = ' → '.join(path) if path else 'N/A'
         print(f"    {src} → {dst}: ${d:.0f}  via  {route}")
 
-    diameter = get_graph_diameter(graph)
+    finite_distances = [d for d in distances.values() if d < float('inf')]
+    diameter = max(finite_distances) if finite_distances else float('inf')
     print(f"\n  📏 Network diameter (worst fuel cost): ${diameter:.0f}")
     print()
     input("  Press Enter to continue...\n")
