@@ -160,9 +160,15 @@ def johnsons(
         return {}, {}
 
     # --- Phase 1: Reweight via Bellman-Ford ---
-    VIRTUAL = "__johnson_source__"
-    h = _bellman_ford_reweight(graph, vertices, VIRTUAL)
+    base_virtual_source = "__johnson_source__"
+    virtual_source = base_virtual_source
+    counter = 0
+    # Ensure the virtual source name does not collide with any existing vertex
+    while virtual_source in vertices:
+        counter += 1
+        virtual_source = f"{base_virtual_source}_{counter}"
 
+    h = _bellman_ford_reweight(graph, vertices, virtual_source)
     if h is None:
         raise ValueError(
             "Johnson's Algorithm: Negative cycle detected in graph. "
