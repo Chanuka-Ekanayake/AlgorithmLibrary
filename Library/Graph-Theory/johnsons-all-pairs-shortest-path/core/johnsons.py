@@ -362,10 +362,20 @@ def get_graph_center(graph: Graph) -> Tuple[Optional[str], float]:
     best_ecc = float('inf')
 
     for u in vertices:
-        ecc = max(
-            (distances.get((u, v), float('inf')) for v in vertices if v != u),
-            default=0.0
-        )
+        # Collect distances only to reachable vertices (ignore infinite distances).
+        finite_dists: List[float] = []
+        for v in vertices:
+            if v == u:
+                continue
+            d = distances.get((u, v), float('inf'))
+            if d != float('inf'):
+                finite_dists.append(d)
+
+        if finite_dists:
+            ecc = max(finite_dists)
+        else:
+            # No reachable vertices from u; treat eccentricity as infinite.
+            ecc = float('inf')
         if ecc < best_ecc:
             best_ecc = ecc
             best_vertex = u
