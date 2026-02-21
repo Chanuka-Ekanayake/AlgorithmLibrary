@@ -38,12 +38,12 @@ When hosting and deploying predictive models on your e-commerce platform, the re
 
 ## 4. Performance Specifications
 
-| Metric                  | Specification                                        |
-| ----------------------- | ---------------------------------------------------- |
-| **Time Complexity**     | (Where is epochs and is dataset size)                |
-| **Space Complexity**    | (Requires only weight, bias, and gradient variables) |
-| **Optimization Target** | Minimizes Mean Squared Error (MSE)                   |
-| **Failure Risk**        | Divergence (if the Learning Rate is set too high)    |
+| Metric                  | Specification                                                                 |
+| ----------------------- | ----------------------------------------------------------------------------- |
+| **Time Complexity**     | O(E · N), where `E` is the number of epochs and `N` is the dataset size       |
+| **Space Complexity**    | O(1) auxiliary (O(E) if storing full `cost_history` across all epochs)        |
+| **Optimization Target** | Minimizes Mean Squared Error (MSE)                                            |
+| **Failure Risk**        | Divergence (if the Learning Rate is set too high)                             |
 
 ---
 
