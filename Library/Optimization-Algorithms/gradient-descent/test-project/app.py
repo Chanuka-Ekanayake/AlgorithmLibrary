@@ -49,8 +49,13 @@ def run_ml_trainer():
 
     # 4. Display Training Progress (Cost Curve)
     print("\n[LOG] Training Progress (Mean Squared Error):")
-    for epoch in [0, 9, 99, 499, 999]:
-        print(f"      Epoch {epoch+1:<4} | Cost: {cost_history[epoch]:.6f}")
+    total_epochs = len(cost_history)
+    if total_epochs > 0:
+        num_samples = 5
+        step = max(total_epochs // num_samples, 1)
+        sample_epochs = list(range(0, total_epochs, step))[:num_samples]
+        for epoch in sample_epochs:
+            print(f"      Epoch {epoch+1:<4} | Cost: {cost_history[epoch]:.6f}")
 
     # 5. Final Report
     print("\n" + "="*65)
