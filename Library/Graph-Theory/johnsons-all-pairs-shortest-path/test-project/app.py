@@ -2,7 +2,7 @@ import sys
 import os
 
 # Allow importing from the parent directory
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from core.johnsons import (
     johnsons, reconstruct_path, detect_negative_cycle,
     get_distance_matrix, get_graph_diameter, get_graph_center
