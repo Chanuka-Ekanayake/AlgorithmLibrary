@@ -4,7 +4,7 @@ from pathlib import Path
 
 # Add parent directory for core logic
 root_dir = Path(__file__).resolve().parent.parent
-sys.path.append(str(root_dir))
+sys.path.insert(0, str(root_dir))
 
 try:
     from core.optimizer import GradientDescentOptimizer
