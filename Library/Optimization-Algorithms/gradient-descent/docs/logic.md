@@ -22,8 +22,19 @@ We calculate the partial derivative of the Cost Function with respect to both ou
 
 - **Derivative with respect to :**
 
+  \[
+  \frac{\partial J}{\partial w}
+  = \frac{2}{N} \sum_{i=1}^{N} (\hat{y}_i - y_i) x_i
+  = \frac{2}{N} \sum_{i=1}^{N} ((w x_i + b) - y_i) x_i
+  \]
+
 - **Derivative with respect to :**
 
+  \[
+  \frac{\partial J}{\partial b}
+  = \frac{2}{N} \sum_{i=1}^{N} (\hat{y}_i - y_i)
+  = \frac{2}{N} \sum_{i=1}^{N} ((w x_i + b) - y_i)
+  \]
 ### How the Slope Guides Us
 
 - If the slope is **positive**, it means we are on the right side of the bowl heading upward. We need to decrease our weight to move left toward the minimum.
