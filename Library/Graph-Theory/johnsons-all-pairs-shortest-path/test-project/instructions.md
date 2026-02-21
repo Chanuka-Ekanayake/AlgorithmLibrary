@@ -59,6 +59,6 @@ graph = {
 }
 
 distances, next_node = johnsons(graph)
-print(distances[('A', 'D')])      # 10
-print(reconstruct_path(next_node, 'A', 'D'))  # ['A', 'B', 'C', 'D'] or ['A', 'C', 'D']
+print(distances[('A', 'D')])      # 9
+print(reconstruct_path(next_node, 'A', 'D'))  # ['A', 'B', 'D']
 ```
