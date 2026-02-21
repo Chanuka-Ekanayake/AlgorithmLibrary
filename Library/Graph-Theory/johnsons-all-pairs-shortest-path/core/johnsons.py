@@ -261,7 +261,14 @@ def detect_negative_cycle(graph: Graph) -> bool:
     vertices = sorted(
         set(graph.keys()) | {v for nbrs in graph.values() for v in nbrs}
     )
-    h = _bellman_ford_reweight(graph, vertices, "__neg_cycle_check__")
+    virtual_source = "__neg_cycle_check__"
+    if virtual_source in vertices:
+        base = virtual_source
+        suffix = 1
+        while virtual_source in vertices:
+            virtual_source = f"{base}_{suffix}"
+            suffix += 1
+    h = _bellman_ford_reweight(graph, vertices, virtual_source)
     return h is None
 
 
