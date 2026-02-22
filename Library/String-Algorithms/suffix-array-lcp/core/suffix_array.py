@@ -2,8 +2,9 @@
 Suffix Array + LCP Array
 Constructs the Suffix Array in O(N log N) using the prefix-doubling
 (Manber & Myers) technique, then builds the LCP Array in O(N) using
-Kasai's algorithm. Together they power O(N log N) substring search,
-longest-repeated-substring detection, and more.
+Kasai's algorithm. Together they power O(M log N) substring search
+(and O(N log N) construction), longest-repeated-substring detection,
+and more.
 """
 
 from typing import List, Tuple
