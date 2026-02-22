@@ -66,7 +66,7 @@ sa = SuffixArray(text)
 # Query many times — O(M log N) each
 positions = sa.search("cat")
 print(f"'cat' found at indices: {positions}")
-# Output: 'cat' found at indices: [4, 29]
+# Output: 'cat' found at indices: [4, 30]
 
 # Longest repeated substring — O(N)
 lrs = sa.longest_repeated_substring()
