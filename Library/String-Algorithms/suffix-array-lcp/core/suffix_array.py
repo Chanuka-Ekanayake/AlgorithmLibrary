@@ -194,7 +194,15 @@ class SuffixArray:
 
         Time Complexity: O((N+M) log(N+M))
         """
-        separator = "#"
+        # Choose a separator character that does not appear in either string
+        # to avoid corrupting the joint suffix array construction.
+        separator = None
+        for candidate in ("\0", "\x01", "\x02", "\x03", "\uFFFF"):
+            if candidate not in self.original and candidate not in other:
+                separator = candidate
+                break
+        if separator is None:
+            raise ValueError("Unable to find a separator character not present in the input strings.")
         combined = self.original + separator + other
         joint = SuffixArray(combined)
 
