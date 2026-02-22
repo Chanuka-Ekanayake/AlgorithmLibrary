@@ -226,8 +226,15 @@ class SuffixArray:
             in_original_prev = prev_sa < n
             in_original_curr = curr_sa < n
 
-            if in_original_prev != in_original_curr and lcp_val > best_len:
-                best_len = lcp_val
-                best_start = curr_sa if in_original_curr else prev_sa
+            if in_original_prev != in_original_curr and lcp_val > 0:
+                # Ensure the common substring does not cross the separator at index n
+                max_len = lcp_val
+                if in_original_prev and prev_sa + max_len > n:
+                    max_len = n - prev_sa
+                if in_original_curr and curr_sa + max_len > n:
+                    max_len = min(max_len, n - curr_sa)
 
+                if max_len > best_len:
+                    best_len = max_len
+                    best_start = curr_sa if in_original_curr else prev_sa
         return combined[best_start: best_start + best_len]
