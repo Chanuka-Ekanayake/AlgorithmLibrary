@@ -132,6 +132,11 @@ class SuffixArray:
             Sorted list of starting indices where the pattern occurs.
         """
         m = len(pattern)
+        if m == 0:
+            # For an empty pattern, return an empty list to avoid undefined
+            # behavior in the binary search logic and to mirror the behavior
+            # of other matchers (e.g., KMP) that handle this case explicitly.
+            return []
         n = len(self.sa)
 
         def _compare(sa_idx: int) -> int:
