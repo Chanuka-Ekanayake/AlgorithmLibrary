@@ -169,7 +169,12 @@ class SuffixArray:
                 hi = mid
         right = lo
 
-        return sorted(self.sa[i] for i in range(left, right))
+        original_len = len(self.original)
+        return sorted(
+            pos
+            for pos in (self.sa[i] for i in range(left, right))
+            if pos < original_len and pos + m <= original_len
+        )
 
     def longest_repeated_substring(self) -> str:
         """
