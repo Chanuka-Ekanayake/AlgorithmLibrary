@@ -30,7 +30,7 @@ The defining mathematical rule of Paxos is the **Majority Quorum**. To guarantee
 
 ### The Rule
 
-To survive node failures (crashes, network partitions, or hardware destruction), a Paxos cluster mathematically requires total nodes.
+To survive `F` node failures (crashes, network partitions, or hardware destruction), a Paxos cluster mathematically requires `2F+1` total nodes, where `F` is the number of failures to tolerate.
 
 | Desired Fault Tolerance (F) | Total Nodes Required (N) | Quorum Size Needed |
 | --------------------------- | ------------------------ | ------------------ |
