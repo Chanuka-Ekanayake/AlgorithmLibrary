@@ -26,7 +26,7 @@ Before a Proposer can tell the database what to write, it must ask for permissio
 
 Once the Proposer receives a `PROMISE` from a **strict majority** of the Acceptors (e.g., 2 out of 3), it moves to Phase 2.
 
-1. **The Crucial Rule (Value Adoption):** * If *any\* Acceptor returned an already accepted value during Phase 1, the Proposer **must abandon its own value**. It must adopt the existing value and propose it instead. This is how Paxos forces competing Proposers to eventually converge on the exact same data.
+1. **The Crucial Rule (Value Adoption):** If *any* Acceptor returned an already accepted value during Phase 1, the Proposer **must abandon its own value**. It must adopt the existing value and propose it instead. This is how Paxos forces competing Proposers to eventually converge on the exact same data.
 
 - If no Acceptor returned an existing value, the Proposer is free to propose its original value (e.g., "User 1").
 
