@@ -15,7 +15,7 @@ If two users attempt to purchase the exact same digital asset at the exact same 
 - **Strict Two-Phase Commit:** Implements a rigorous `PREPARE` and `ACCEPT` protocol. Proposers must gather intelligence and secure promises from the cluster before attempting to write data, mathematically preventing split-brain data corruption.
 - **Quorum Enforcement:** Operations only proceed when a strict majority (⌊N/2⌋ + 1) of nodes agree. This ensures that any two successful quorums will always overlap by at least one node, making it impossible for the cluster to accidentally accept two conflicting values.
 - **Dynamic Value Adoption:** If a Proposer discovers during Phase 1 that the cluster has already begun accepting a different value from a competing transaction, it abandons its own data and helps finalize the existing data, sacrificing individual liveness to guarantee cluster-wide safety.
-- **High Fault Tolerance:** A cluster of nodes can seamlessly survive simultaneous node failures without dropping a transaction or corrupting the state.
+- **High Fault Tolerance:** A cluster of **N** nodes can seamlessly survive **F** simultaneous node failures, where **N = 2F + 1**, without dropping a transaction or corrupting the state.
 
 ---
 
