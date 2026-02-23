@@ -38,7 +38,7 @@ To survive `F` node failures (crashes, network partitions, or hardware destructi
 | 2 Node Failures             | 5 Nodes                  | 3 Nodes            |
 | 3 Node Failures             | 7 Nodes                  | 4 Nodes            |
 
-If you have a 5-node cluster and 3 nodes go offline, the remaining 2 nodes cannot form a majority (). The cluster will safely halt all writes rather than risk corrupting the data.
+If you have a 5-node cluster and 3 nodes go offline, the remaining 2 nodes cannot form a majority (2 < 3). The cluster will safely halt all writes rather than risk corrupting the data.
 
 ---
 
