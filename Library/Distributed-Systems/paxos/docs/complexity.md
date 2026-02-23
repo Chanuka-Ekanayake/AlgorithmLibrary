@@ -12,11 +12,11 @@ To achieve consensus on a single value, a Proposer must communicate with a clust
 
 | Phase                      | Action                                            | Messages Sent |
 | -------------------------- | ------------------------------------------------- | ------------- |
-| **Phase 1 (Prepare)**      | Proposer sends `PREPARE` to all Acceptors.        |               |
-| **Phase 1 (Promise)**      | Acceptors reply with `PROMISE` (or reject).       |               |
-| **Phase 2 (Accept)**       | Proposer sends `ACCEPT` request to all Acceptors. |               |
-| **Phase 2 (Acknowledge)**  | Acceptors reply with `ACCEPTED` to the Proposer.  |               |
-| **Total Message Overhead** | **Strictly Linear**                               | \*\*\*\*      |
+| **Phase 1 (Prepare)**      | Proposer sends `PREPARE` to all Acceptors.        | N             |
+| **Phase 1 (Promise)**      | Acceptors reply with `PROMISE` (or reject).       | N             |
+| **Phase 2 (Accept)**       | Proposer sends `ACCEPT` request to all Acceptors. | N             |
+| **Phase 2 (Acknowledge)**  | Acceptors reply with `ACCEPTED` to the Proposer.  | N             |
+| **Total Message Overhead** | **Strictly Linear**                               | 4N            |
 
 ### The Bottleneck: Round Trip Time (RTT)
 
