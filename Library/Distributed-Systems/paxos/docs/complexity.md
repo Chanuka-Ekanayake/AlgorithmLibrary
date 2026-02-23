@@ -59,4 +59,4 @@ If two Proposers (Node A and Node B) try to write data at the exact same time, t
 2. Node B completes Phase 1 with a higher ID, invalidating Node A.
 3. Node A retries Phase 1 with an even higher ID, invalidating Node B.
 
-In this worst-case scenario, the time complexity drops to . Modern implementations (like Multi-Paxos or Raft) solve this livelock by electing a single "Leader" who handles all proposals, effectively bypassing Phase 1 in standard operations.
+In this worst-case scenario, the time complexity becomes effectively unbounded (it can approach infinity in the presence of continuous dueling proposers). Modern implementations (like Multi-Paxos or Raft) solve this livelock by electing a single "Leader" who handles all proposals, effectively bypassing Phase 1 in standard operations.
