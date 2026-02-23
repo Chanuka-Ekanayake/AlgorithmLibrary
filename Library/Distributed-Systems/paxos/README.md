@@ -40,12 +40,12 @@ If two users attempt to purchase the exact same digital asset at the exact same 
 
 ## 4. Performance Specifications
 
-| Metric                  | Specification                                                 |
-| ----------------------- | ------------------------------------------------------------- |
-| **Network Complexity**  | messages per phase                                            |
-| **Optimal Speed**       | 2 Round Trip Times (RTT) to achieve consensus                 |
-| **Fault Tolerance**     | Requires nodes to survive failures                            |
-| **Safety vs. Liveness** | Strictly guarantees Safety (No data corruption) over Liveness |
+| Metric                  | Specification                                                                 |
+| ----------------------- | ----------------------------------------------------------------------------- |
+| **Network Complexity**  | N messages per phase (2N messages total), where N is the number of acceptors |
+| **Optimal Speed**       | 2 Round Trip Times (RTT) to achieve consensus                                 |
+| **Fault Tolerance**     | Requires nodes to survive failures                                            |
+| **Safety vs. Liveness** | Strictly guarantees Safety (No data corruption) over Liveness                 |
 
 ---
 
