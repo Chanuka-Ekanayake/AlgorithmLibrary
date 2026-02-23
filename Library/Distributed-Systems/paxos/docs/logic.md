@@ -50,7 +50,7 @@ Let's look at how Phase 1 prevents our User 1 vs. User 2 conflict:
 3. **Node A** sends `ACCEPT(100, "User 1")` to Nodes A and C.
 
 - Node A accepts it.
-- Node C **rejects** it, because Node C promised Node B it would only listen to IDs .
+- Node C **rejects** it, because Node C promised Node B it would only listen to proposal IDs greater than or equal to 105.
 
 4. **Node A fails** to get a majority.
 5. **Node B** sends `ACCEPT(105, "User 2")` to Nodes B and C. Both accept it.
