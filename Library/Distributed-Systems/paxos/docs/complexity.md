@@ -32,11 +32,11 @@ The defining mathematical rule of Paxos is the **Majority Quorum**. To guarantee
 
 To survive node failures (crashes, network partitions, or hardware destruction), a Paxos cluster mathematically requires total nodes.
 
-| Desired Fault Tolerance () | Total Nodes Required () | Quorum Size Needed |
-| -------------------------- | ----------------------- | ------------------ |
-| 1 Node Failure             | 3 Nodes                 | 2 Nodes            |
-| 2 Node Failures            | 5 Nodes                 | 3 Nodes            |
-| 3 Node Failures            | 7 Nodes                 | 4 Nodes            |
+| Desired Fault Tolerance (F) | Total Nodes Required (N) | Quorum Size Needed |
+| --------------------------- | ------------------------ | ------------------ |
+| 1 Node Failure              | 3 Nodes                  | 2 Nodes            |
+| 2 Node Failures             | 5 Nodes                  | 3 Nodes            |
+| 3 Node Failures             | 7 Nodes                  | 4 Nodes            |
 
 If you have a 5-node cluster and 3 nodes go offline, the remaining 2 nodes cannot form a majority (). The cluster will safely halt all writes rather than risk corrupting the data.
 
