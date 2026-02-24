@@ -13,7 +13,7 @@ The process has a simple overarching structure:
 4. **XOR:** The keystream block is XORed tightly with 64 bytes of plaintext data. The block counter increments for the next 64 bytes, generating new keystream block.
 
 ## The Quarter-Round Operation (`QR`)
-The foundation of the entire algorithm is the Quarter-Round operation (`QR(a, b, c, d)`), which takes four 32-bit words as input and operates entirely linearly. No large lookup tables or complex multiplications are needed, which guards against cache-timing side-channel attacks.
+The foundation of the entire algorithm is the Quarter-Round operation (`QR(a, b, c, d)`), which takes four 32-bit words as input and operates entirely using simple arithmetic and bitwise operations. No large lookup tables or complex multiplications are needed, which guards against cache-timing side-channel attacks.
 
 ```text
 a += b; d ^= a; d <<<= 16;
