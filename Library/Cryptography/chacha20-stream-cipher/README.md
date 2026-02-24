@@ -1,7 +1,7 @@
 # ChaCha20 Stream Cipher
 
 ## Overview
-ChaCha20 is an extremely fast and highly secure stream cipher, standardizes in cryptographic applications around the world. It provides equivalent security to AES-256 (a block cipher) but inherently acts differently by running on purely algorithmic CPU addition, rotation, and XOR operations—making it faster on modern machines without specialized encryption instruction sets.
+ChaCha20 is an extremely fast and highly secure stream cipher, standardized in cryptographic applications around the world. It provides equivalent security to AES-256 (a block cipher) but inherently acts differently by running on purely algorithmic CPU addition, rotation, and XOR operations—making it faster on modern machines without specialized encryption instruction sets.
 
 It takes a 256-bit symmetric key, a 96-bit nonce, and an initial block counter.
 
