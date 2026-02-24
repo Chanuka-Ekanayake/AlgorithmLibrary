@@ -24,11 +24,11 @@ c += d; b ^= c; b <<<= 7;
 *(where `<<<=` is bitwise left rotation).*
 
 ## Iterating 20 Rounds
-The standard ChaCha20 operates 20 times (alternating between targeting the matrix "columns" vs the matrix "diagonals"):
+The standard ChaCha20 performs **20 rounds**, usually organized as **10 double-rounds**. Each double-round applies:
 
-- **Odd rounds (Columns):** 
-`QR(0,4,8,12)`, `QR(1,5,9,13)`, `QR(2,6,10,14)`, `QR(3,7,11,15)`
-- **Even rounds (Diagonals):** 
-`QR(0,5,10,15)`, `QR(1,6,11,12)`, `QR(2,7,8,13)`, `QR(3,4,9,14)`
+- a **column round**, operating on the four columns of the 4×4 state matrix:
+  `QR(0,4,8,12)`, `QR(1,5,9,13)`, `QR(2,6,10,14)`, `QR(3,7,11,15)`
+- followed by a **diagonal round**, operating on the diagonals of the matrix:
+  `QR(0,5,10,15)`, `QR(1,6,11,12)`, `QR(2,7,8,13)`, `QR(3,4,9,14)`
 
 This simple combination of addition, rotation, and XOR (ARX) provides fast and highly secure encryption without dedicated crypto CPU instructions (though they do exist for AES).
