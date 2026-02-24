@@ -5,12 +5,11 @@
 - No external non-standard dependencies are required (e.g., `pip install`).
 
 ## How to Run
-Navigate to the root directory of your project (or directly to the `test-project` folder) and execute the standard Python application runner:
+You can run the test project either from the root of the repository or from within the `test-project` folder:
 
-```bash
-python Library/Cryptography/chacha20-stream-cipher/test-project/app.py
-```
-
+- **From the repository root**:
+  ```bash
+  python Library/Cryptography/chacha20-stream-cipher/test-project/app.py
 ## What it does
 The simulation acts as a secure messaging system transferring a highly confidential plain text message over an ostensibly insecure simulated network:
 
