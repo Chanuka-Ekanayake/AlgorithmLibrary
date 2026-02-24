@@ -104,10 +104,7 @@ class ChaCha20:
             block = plaintext[i:i+64]
             xor_block = bytes(a ^ b for a, b in zip(block, key_stream_block))
             ciphertext.extend(xor_block)
-                
-        # Reset counter for potential re-use (though normally a new nonce should be used)
-        self.block_counter = 0
-                
+        
         return bytes(ciphertext)
 
     def decrypt(self, ciphertext: bytes) -> bytes:
