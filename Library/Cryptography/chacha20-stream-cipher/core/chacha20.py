@@ -25,6 +25,21 @@ class ChaCha20:
         self.nonce = nonce
         self.block_counter = 0
 
+    def reset(self, nonce: bytes, block_counter: int = 0) -> None:
+        """
+        Resets the internal state of the cipher with a new nonce and block counter.
+
+        This allows safely reusing a ChaCha20 instance. For security, the same
+        (key, nonce) pair should not be reused with overlapping block counters.
+
+        Args:
+            nonce (bytes): A 12-byte (96-bit) unique nonce.
+            block_counter (int): The initial 32-bit block counter value. Defaults to 0.
+        """
+        if len(nonce) != 12:
+            raise ValueError("Nonce must be exactly 12 bytes (96 bits).")
+        self.nonce = nonce
+        self.block_counter = block_counter
     @staticmethod
     def _rotl32(v: int, c: int) -> int:
         """Rotates a 32-bit integer left by c bits."""
