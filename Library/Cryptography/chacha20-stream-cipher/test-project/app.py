@@ -73,7 +73,13 @@ def run_secure_messaging_simulation() -> None:
     print()
 
     # 4. Decrypt the message
-    # The receiver instances a new ChaCha20 with the same key and nonce
+    # The receiver instantiates a new ChaCha20 with the same key and nonce.
+    # NOTE: This is safe here only because both cipher instances start from the
+    # initial block counter (e.g., 0) and are each used exactly once over the
+    # same contiguous stream of bytes. In real applications, you should either
+    # reuse the same ChaCha20 instance for the whole stream, or ensure that any
+    # new instance continues from the correct block counter so that the same
+    # (key, nonce, counter) tuple is never reused.
     print("[RX] Receiving message and decrypting...")
     
     cipher_rx = ChaCha20(key, nonce)
