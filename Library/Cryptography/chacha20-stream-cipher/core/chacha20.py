@@ -77,7 +77,7 @@ class ChaCha20:
         # Working state for the rounds
         x = list(state)
         
-        # 20 rounds (10 column rounds and 10 diagonal rounds)
+        # 10 double-rounds: each iteration does one column round and one diagonal round (20 rounds total)
         for i in range(0, 20, 2):
             # Column rounds
             self._quarter_round(x, 0, 4,  8, 12)
