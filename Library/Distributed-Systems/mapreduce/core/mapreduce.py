@@ -101,24 +101,30 @@ class MapReduceEngine:
         # ==========================================
         # In a real distributed system, this involves heavy network I/O
         # as nodes exchange data so all values for 'Key A' end up on 'Node A'.
-        shuffled_data = collections.defaultdict(list)
-        for key, value in mapped_results:
-            shuffled_data[key].append(value)
+        # Instead of building an unbounded in-memory list per key, we will
+        # reorganize the intermediate pairs and stream groups of values to
+        # the reducers during the reduce phase.
 
-        print(f"[ENGINE] Shuffle Phase Complete. Grouped into {len(shuffled_data)} unique keys.")
+        print(f"[ENGINE] Shuffle Phase Complete. Generated {len(mapped_results)} intermediate pairs ready for grouping.")
 
         # ==========================================
         # PHASE 3: REDUCE
         # ==========================================
         # Now we process each key's list of values in parallel.
         final_output = {}
+
+        # Group mapped results by key without storing a long-lived list per key.
+        # We sort once by key so that itertools.groupby can stream contiguous groups.
+        mapped_results.sort(key=lambda kv: kv[0])
         
         with ProcessPoolExecutor(max_workers=num_workers) as executor:
             # Submit a reduction job for each unique key
-            future_to_key = {
-                executor.submit(cls._reduce_worker, key, values, reducer): key
-                for key, values in shuffled_data.items()
-            }
+            future_to_key = {}
+            for key, group in itertools.groupby(mapped_results, key=lambda kv: kv[0]):
+                # Extract just the values for this key as a short-lived list
+                values = [value for _, value in group]
+                future = executor.submit(cls._reduce_worker, key, values, reducer)
+                future_to_key[future] = key
             
             for future in future_to_key:
                 key = future_to_key[future]
