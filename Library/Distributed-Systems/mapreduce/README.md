@@ -38,12 +38,12 @@ As an e-commerce platform grows, analyzing user behavior, server access logs, an
 
 ## 4. Performance Specifications
 
-| Metric                 | Specification                                           |
-| ---------------------- | ------------------------------------------------------- |
-| **Time Complexity**    | (Data size divided by Worker count)                     |
-| **Space Complexity**   | (Where is the number of unique grouped keys)            |
-| **Primary Bottleneck** | Network Bandwidth during the Shuffle phase              |
-| **Scaling Limit**      | Amdahl's Law (Bounded by the strictly sequential logic) |
+| Metric                 | Specification                                                                 |
+| ---------------------- | ----------------------------------------------------------------------------- |
+| **Time Complexity**    | O(N / W), where N is the input data size and W is the number of workers       |
+| **Space Complexity**   | O(\|K\|), where \|K\| is the number of unique grouped keys after the Shuffle   |
+| **Primary Bottleneck** | Network Bandwidth during the Shuffle phase                                    |
+| **Scaling Limit**      | Amdahl's Law (Bounded by the strictly sequential logic)                       |
 
 ---
 
