@@ -34,7 +34,7 @@ However, during the **Shuffle** phase, every server must exchange intermediate k
 
 If you are analyzing e-commerce logs and you group by `User_ID`, the space complexity looks fine. But if you group by `Country`, and 90% of your traffic comes from one country, the Reducer assigned to that country will receive 90% of the data.
 
-This causes an memory spike on a single machine, crashing it with an `OutOfMemoryError`, while the other servers sit idle. Dealing with this "data skew" is a primary challenge in distributed space complexity.
+This causes a memory spike on a single machine, crashing it with an `OutOfMemoryError`, while the other servers sit idle. Dealing with this "data skew" is a primary challenge in distributed space complexity.
 
 ---
 
