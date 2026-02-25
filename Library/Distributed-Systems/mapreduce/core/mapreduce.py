@@ -6,7 +6,6 @@ and parallel reducing.
 """
 
 import collections
-import itertools
 from concurrent.futures import ProcessPoolExecutor
 from typing import Any, Callable, Dict, Iterable, List, Tuple
 
