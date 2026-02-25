@@ -23,12 +23,12 @@ However, during the **Shuffle** phase, every server must exchange intermediate k
 
 ## 2. Space Complexity
 
-| Storage Phase         | Complexity | Description                                                                                                                           |
-| --------------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------- |
-| **Input Data**        |            | Distributed across the cluster's hard drives (e.g., HDFS).                                                                            |
-| **Intermediate Data** |            | The output of the Mappers. In real systems (like Hadoop), this is written to local disk, _not_ RAM, to prevent out-of-memory crashes. |
-| **Output Data**       |            | Where is the number of unique keys produced by the Reducers.                                                                          |
-| **RAM Utilization**   |            | A single Reducer must hold all values () for a given key in memory simultaneously to process them.                                    |
+| Storage Phase         | Complexity            | Description                                                                                                                                      |
+| --------------------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Input Data**        |                       | Distributed across the cluster's hard drives (e.g., HDFS).                                                                                       |
+| **Intermediate Data** |                       | The output of the Mappers. In real systems (like Hadoop), this is written to local disk, _not_ RAM, to prevent out-of-memory crashes.           |
+| **Output Data**       | O(&#124;K&#124;)      | Where &#124;K&#124; is the number of unique keys produced by the Reducers.                                                                      |
+| **RAM Utilization**   | O(max<sub>k</sub> &#124;V<sub>k</sub>&#124;) | A single Reducer must hold all values V(k) (a list of size &#124;V<sub>k</sub>&#124; for key k) in memory simultaneously in order to process them. |
 
 ### The "Hot Key" Problem (Data Skew)
 
