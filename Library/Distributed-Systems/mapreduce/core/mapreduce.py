@@ -82,29 +82,28 @@ class MapReduceEngine:
         # ==========================================
         # 1. Split data into chunks for each worker
         chunks = cls._chunk_data(data, num_workers)
-        
-        mapped_results: List[KV] = []
-        
+
         # 2. Parallel Execution: Send chunks to worker processes
         # This simulates sending code to data on different servers.
+        total_pairs = 0
+        shuffled_data = collections.defaultdict(list)
         with ProcessPoolExecutor(max_workers=num_workers) as executor:
             # We map the '_map_worker' function over our chunks
             futures = [executor.submit(cls._map_worker, chunk, mapper) for chunk in chunks]
-            
-            for future in futures:
-                mapped_results.extend(future.result())
 
-        print(f"[ENGINE] Map Phase Complete. Generated {len(mapped_results)} intermediate pairs.")
+            for future in futures:
+                chunk_results = future.result()
+                total_pairs += len(chunk_results)
+                for key, value in chunk_results:
+                    shuffled_data[key].append(value)
+
+        print(f"[ENGINE] Map Phase Complete. Generated {total_pairs} intermediate pairs.")
 
         # ==========================================
         # PHASE 2: SHUFFLE (The Bottleneck)
         # ==========================================
         # In a real distributed system, this involves heavy network I/O
         # as nodes exchange data so all values for 'Key A' end up on 'Node A'.
-        # Instead of building an unbounded in-memory list per key, we will
-        # reorganize the intermediate pairs and stream groups of values to
-        # the reducers during the reduce phase.
-
         print(f"[ENGINE] Shuffle Phase Complete. Generated {len(mapped_results)} intermediate pairs ready for grouping.")
 
         # ==========================================
