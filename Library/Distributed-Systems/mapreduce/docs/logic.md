@@ -2,7 +2,7 @@
 
 MapReduce forces you to completely change how you think about data processing. Instead of telling the computer _how_ to iterate through the data, you define two specific behaviors: what to do with a single piece of data (**Map**), and what to do with a grouped set of results (**Reduce**).
 
-The framework handles the distribution, parallelization, and fault tolerance automatically.
+In production systems (like Hadoop or Apache Spark), the MapReduce framework handles distribution, parallelization, and fault tolerance automatically; in this educational engine, we only simulate the distribution and parallelization logic and do not implement automatic retries or worker failure recovery.
 
 ## 1. The Map Phase (Extraction)
 
