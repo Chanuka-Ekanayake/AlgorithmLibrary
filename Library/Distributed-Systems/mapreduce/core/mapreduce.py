@@ -1,7 +1,7 @@
 """
 MapReduce Distributed Processing Engine
-Simulates a Google-style MapReduce framework using multi-processing.
-It orchestrates the splitting of data, parallel mapping, network shuffling, 
+Simulates a Google-style MapReduce framework using multiprocessing.
+It orchestrates the splitting of data, parallel mapping, network shuffling,
 and parallel reducing.
 """
 
