@@ -54,7 +54,7 @@ As an e-commerce platform grows, analyzing user behavior, server access logs, an
 The `MapReduceEngine` can be imported to process large datasets (like transaction logs or ML training data) by simply defining pure `mapper` and `reducer` functions:
 
 ```python
-from core.engine import MapReduceEngine
+from core.mapreduce import MapReduceEngine
 
 # 1. Define stateless functions
 def word_mapper(text: str):
