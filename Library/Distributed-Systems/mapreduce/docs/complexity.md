@@ -11,7 +11,7 @@ Let be the total size of the dataset and be the number of worker nodes (servers)
 | **Map**     |                 |                  | Disk Read Speed (Local) |
 | **Shuffle** |                 |                  | **Network Bandwidth**   |
 | **Reduce**  |                 |                  | CPU / Memory (Local)    |
-| **Total**   |                 | \*\*\*\*         | The Shuffle Phase       |
+| **Total**   |                 |                  | The Shuffle Phase       |
 
 ### The Shuffle Bottleneck
 
