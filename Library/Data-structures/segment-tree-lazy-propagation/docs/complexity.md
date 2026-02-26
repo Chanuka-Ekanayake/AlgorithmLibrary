@@ -40,7 +40,7 @@ The factor of 4 comes from the worst-case tree size when `n` is not a power of 2
 | **Point Update** | `O(1)` | `O(n)` (rebuild) | `O(log n)` | `O(log n)` |
 | **Code Complexity** | Low | Low | Medium-High | Medium |
 
-**Key insight:** The Segment Tree with Lazy Propagation is the only standard structure that handles **both** range queries AND range updates efficiently at `O(log n)`.
+**Key insight:** Segment Trees with Lazy Propagation are a standard, flexible choice when you need **both** range queries AND range updates in `O(log n)`, especially for operations beyond simple sums where typical Fenwick Tree setups are less convenient.
 
 ---
 
