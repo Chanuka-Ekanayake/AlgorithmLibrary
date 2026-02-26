@@ -2,7 +2,7 @@
 
 ## 1. Overview
 
-The **Segment Tree with Lazy Propagation** is a powerful data structure that answers **range queries** (sum, min, max) and applies **range updates** — both in `O(log n)` time. It is the go-to choice whenever an algorithm must repeatedly ask "what is the total of elements X through Y?" and also modify ranges of elements efficiently.
+The **Segment Tree with Lazy Propagation** is a powerful data structure that answers **range-sum queries** and applies **range updates** — both in `O(log n)` time. It is the go-to choice whenever an algorithm must repeatedly ask "what is the total of elements X through Y?" and also modify ranges of elements efficiently.
 
 This module demonstrates a production-grade implementation tailored for an **E-commerce Price Engine** where product prices must be queried and bulk-adjusted in real-time.
 
