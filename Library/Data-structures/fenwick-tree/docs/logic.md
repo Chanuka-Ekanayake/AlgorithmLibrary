@@ -73,4 +73,4 @@ When you update the value at index 5, you must also update every "parent" node t
 - Add LSB (8). Move to **16**.
 - (Continue until the array boundary is reached).
 
-Instead of updating everything after index 5, you only updated the specific binary parent nodes, completing the operation in time.
+Instead of updating everything after index 5, you only updated the specific binary parent nodes, completing the operation in **O(log n)** time.
