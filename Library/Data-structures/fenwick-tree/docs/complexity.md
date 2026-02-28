@@ -6,13 +6,13 @@ A Binary Indexed Tree abandons the idea of updating every single index that come
 
 Let be the total size of the array (e.g., the number of days in your sales history).
 
-| Operation        | Complexity | Explanation                                                                                                                   |
-| ---------------- | ---------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| **Point Update** |            | Adding a value to a specific index. The algorithm only touches the nodes that strictly "cover" this index, skipping the rest. |
-| **Prefix Query** |            | Summing from index 1 to . The algorithm jumps backward, collecting pre-calculated sub-sums, instead of iterating one by one.  |
-| **Range Query**  |            | Summing from index to . This is just two prefix queries executed back-to-back: `Query(R) - Query(L-1)`.                       |
-| **Naive Build**  |            | Inserting items into an empty tree one by one.                                                                                |
-| **Linear Build** |            | Constructing the tree in a single pass by explicitly adding each node's value to its direct mathematical parent.              |
+| Operation        | Complexity  | Explanation                                                                                                                   |
+| ---------------- | ----------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| **Point Update** | O(log n)    | Adding a value to a specific index. The algorithm only touches the nodes that strictly "cover" this index, skipping the rest. |
+| **Prefix Query** | O(log n)    | Summing from index 1 to . The algorithm jumps backward, collecting pre-calculated sub-sums, instead of iterating one by one.  |
+| **Range Query**  | O(log n)    | Summing from index to . This is just two prefix queries executed back-to-back: `Query(R) - Query(L-1)`.                       |
+| **Naive Build**  | O(n log n)  | Inserting items into an empty tree one by one.                                                                                |
+| **Linear Build** | O(n)        | Constructing the tree in a single pass by explicitly adding each node's value to its direct mathematical parent.              |
 
 ### The Bounds Explained
 
