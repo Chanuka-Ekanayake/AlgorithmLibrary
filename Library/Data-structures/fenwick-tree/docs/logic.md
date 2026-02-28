@@ -24,10 +24,10 @@ In computer memory, negative numbers are stored using Two's Complement. To make 
 
 Let's look at the index 10 (Binary `1010`):
 
-1. **:** `0000 1010` (Decimal 10)
+1. **Original:** `0000 1010` (Decimal 10)
 2. **Flip bits:** `1111 0101`
-3. **Add 1 ():** `1111 0110` (Decimal -10)
-4. **:**
+3. **Add 1 (to complete two's complement):** `1111 0110` (Decimal -10)
+4. **Bitwise AND:** `0000 1010 & 1111 0110`
 
 ```text
   0000 1010  (10)
