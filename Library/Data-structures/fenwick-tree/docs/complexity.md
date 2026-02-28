@@ -27,13 +27,13 @@ In a Fenwick Tree, the number 1,000,000 in binary is `11110100001001000000` (whi
 
 The Fenwick Tree is legendary for its incredibly minimal memory footprint.
 
-| Structure              | Space Required | Description                                                                        |
-| ---------------------- | -------------- | ---------------------------------------------------------------------------------- |
-| **Tree Array**         |                | The tree is stored as a flat, 1-dimensional array of size (index 0 is left empty). |
-| **Auxiliary Overhead** |                | No node objects, no left/right pointers, and no recursion stacks are used.         |
+| Structure              | Space Required     | Description                                                                                 |
+| ---------------------- | ------------------ | ------------------------------------------------------------------------------------------- |
+| **Tree Array**         | Θ(n) (n+1 entries) | The tree is stored as a flat, 1-dimensional array of size `n + 1` (index 0 is left empty). |
+| **Auxiliary Overhead** | Θ(1)               | No node objects, no left/right pointers, and no recursion stacks are used.                  |
 
 ### Fenwick Tree vs. Segment Tree
 
-A Segment Tree can do everything a Fenwick Tree can do, plus more (like finding the minimum/maximum in a range). However, a Segment Tree requires allocating an array of size to represent the full binary tree structure.
+A Segment Tree can do everything a Fenwick Tree can do, plus more (like finding the minimum/maximum in a range). However, a Segment Tree requires allocating an array of size about `4n` to represent the full binary tree structure.
 
 If you are building a real-time revenue dashboard that tracks 10,000,000 individual user accounts, a Segment Tree forces you to allocate memory for 40,000,000 nodes. A Fenwick Tree requires exactly 10,000,001 indices. When memory and cache-locality matter, the Fenwick Tree wins flawlessly.
