@@ -38,12 +38,12 @@ The **Fenwick Tree**, or Binary Indexed Tree (BIT), is the industrial solution t
 
 ## 4. Performance Specifications
 
-| Operation               | Time Complexity | Space Complexity         |
-| ----------------------- | --------------- | ------------------------ |
-| **Point Update**        |                 |                          |
-| **Prefix Query**        |                 |                          |
-| **Range Query**         |                 |                          |
-| **Bulk Initialization** |                 | (for the internal array) |
+| Operation               | Time Complexity | Space Complexity                  |
+| ----------------------- | --------------- | --------------------------------- |
+| **Point Update**        | O(log N)        | O(1) auxiliary                    |
+| **Prefix Query**        | O(log N)        | O(1) auxiliary                    |
+| **Range Query**         | O(log N)        | O(1) auxiliary                    |
+| **Bulk Initialization** | O(N)            | O(N) (for the internal array)     |
 
 ---
 
