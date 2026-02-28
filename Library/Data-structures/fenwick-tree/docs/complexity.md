@@ -16,7 +16,7 @@ Let be the total size of the array (e.g., the number of days in your sales histo
 
 ### The Bounds Explained
 
-The time complexity of a Fenwick Tree query or update is strictly bound by the number of set bits (1s) in the binary representation of the index .
+The time complexity of a Fenwick Tree query or update is strictly bound by the number of set bits (1s) in the binary representation of the index i.
 
 If you have an array of 1,000,000 elements, in a standard loop, querying the sum up to the end takes 1,000,000 operations.
 In a Fenwick Tree, the number 1,000,000 in binary is `11110100001001000000` (which has 7 set bits). To calculate the sum of the first 1,000,000 elements, the Fenwick Tree executes exactly **7 addition operations**. Even in the absolute worst-case scenario, the maximum number of operations for a 1,000,000-element tree is about 20.
