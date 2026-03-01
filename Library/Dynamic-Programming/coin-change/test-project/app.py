@@ -88,8 +88,11 @@ def run_allocation_simulator():
     print("=" * 65)
     
     # 5. Performance Metrics
-    overhead_saved = len(greedy_receipt) - len(dp_receipt)
-    print(f"[METRIC] DP Engine saved {overhead_saved} unnecessary database allocations.")
+    if greedy_receipt and dp_receipt:
+        overhead_saved = len(greedy_receipt) - len(dp_receipt)
+        print(f"[METRIC] DP Engine saved {overhead_saved} unnecessary database allocations.")
+    else:
+        print("[METRIC] Overhead comparison N/A (one or both allocations failed).")
     print(f"[METRIC] Greedy Exec Time: {(end_greedy - start_greedy) * 1000:.4f} ms")
     print(f"[METRIC] DP Exec Time:     {(end_dp - start_dp) * 1000:.4f} ms")
     print("=" * 65)
