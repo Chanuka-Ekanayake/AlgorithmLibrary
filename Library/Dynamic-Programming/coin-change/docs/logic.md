@@ -52,6 +52,12 @@ The engine iterates from 1 to 6. At each step, it looks back at the array to see
 - Try bundle `4`: $1 + dp[0] = 1$. (New Minimum!)
 - _Result:_ `dp[4] = 1`.
 
+**Step 5: Target = 5**
+
+- Try bundle `1`: $1 + dp[4] = 2$.
+- Try bundle `3`: $1 + dp[2] = 3$.
+- Try bundle `4`: $1 + dp[1] = 2$.
+- _Result:_ `dp[5] = 2`.
 **Step 6 (The Trap): Target = 6**
 
 - Try bundle `1`: $1 + dp[5] = 3$.
