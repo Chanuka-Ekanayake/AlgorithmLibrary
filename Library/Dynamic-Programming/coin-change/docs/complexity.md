@@ -27,7 +27,7 @@ If a user requests 1,000,000 API credits, and you have 5 bundle types, the DP en
 | **State Tracker Array** | $O(T)$         | An array of size $T + 1$ storing the specific bundle used to reach that amount.            |
 | **Total Space**         | **$O(T)$**     | The memory footprint scales linearly with the target amount.                               |
 
-If $T$ is 1,000,000, the arrays require allocating 2,000,000 integers. In Python, this consumes roughly 16 MB of RAM. While this is slightly heavier than a Greedy algorithm's $O(1)$ space, the guarantee of an optimal allocation easily justifies the memory footprint.
+If $T$ is 1,000,000, the arrays require allocating 2,000,000 integers. In CPython, this typically consumes on the order of a few tens of megabytes of RAM, though the exact amount depends on the Python implementation and platform. While this is slightly heavier than a Greedy algorithm's $O(1)$ space, the guarantee of an optimal allocation easily justifies the memory footprint.
 
 ---
 
