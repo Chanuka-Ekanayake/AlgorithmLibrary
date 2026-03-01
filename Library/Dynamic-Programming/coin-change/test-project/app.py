@@ -53,8 +53,14 @@ def run_allocation_simulator():
     # 3. Execute DP Optimizer
     print("[PROCESSING] Running Dynamic Programming Engine...")
     start_dp = time.perf_counter()
-    dp_receipt = ResourceOptimizer.get_optimal_allocation(available_bundles, target_credits)
-    end_dp = time.perf_counter()
+    try:
+        dp_receipt = ResourceOptimizer.get_optimal_allocation(available_bundles, target_credits)
+    except ValueError as exc:
+        end_dp = time.perf_counter()
+        print(f"[ERROR] Dynamic Programming Engine could not fulfill the exact target: {exc}")
+        dp_receipt = []
+    else:
+        end_dp = time.perf_counter()
 
     # 4. Output Results & Comparison
     print("\n" + "=" * 65)
