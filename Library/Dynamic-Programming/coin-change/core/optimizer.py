@@ -30,6 +30,11 @@ class ResourceOptimizer:
         if target == 0:
             return []
 
+        # Validate bundle denominations to ensure safe DP indexing
+        for bundle in bundles:
+            if not isinstance(bundle, int) or bundle <= 0:
+                raise ValueError(f"Invalid bundle denomination {bundle!r}. "
+                                 "All bundle values must be positive integers.")
         # 1. Initialize the DP Array
         # dp[i] will store the minimum number of bundles needed for amount 'i'.
         # We use (target + 1) as our "infinity" placeholder.
