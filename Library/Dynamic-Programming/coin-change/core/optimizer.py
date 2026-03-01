@@ -68,6 +68,12 @@ class ResourceOptimizer:
         # Walk backward through the tracker array until we hit 0
         while remaining_target > 0:
             used_bundle = tracker[remaining_target]
+            # Defensive check: ensure the tracker contains a valid, positive bundle
+            if used_bundle <= 0:
+                raise ValueError(
+                    f"Inconsistent allocation state: no valid bundle recorded for remaining target "
+                    f"{remaining_target} with bundles {bundles}."
+                )
             allocation.append(used_bundle)
             remaining_target -= used_bundle
 
