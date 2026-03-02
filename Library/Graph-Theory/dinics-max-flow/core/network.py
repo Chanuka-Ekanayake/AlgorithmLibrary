@@ -109,7 +109,9 @@ class DinicMaxFlow:
         """
         if source < 0 or source >= self.n or sink < 0 or sink >= self.n:
             raise IndexError("Source or sink node index is out of bounds.")
-            
+
+        if source == sink:
+            raise ValueError("Source and sink must be different nodes.")
         max_flow = 0.0
         
         # Loop until the BFS can no longer find a valid path to the sink
