@@ -42,7 +42,7 @@ In dense network architectures (like a fully connected server cluster), $E$ is r
 
 - Edmonds-Karp would run in $O(V^5)$.
 - Dinic's runs in $O(V^4)$.
-  At scale, Dinic's is exponentially faster.
+  At scale, Dinic's is asymptotically faster, with a lower-degree polynomial running time.
 
 ---
 
