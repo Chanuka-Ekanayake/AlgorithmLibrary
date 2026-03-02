@@ -72,10 +72,13 @@ def run_cdn_simulator():
     # Contextualizing the speed for the e-commerce platform
     model_size_gb = 50.0 # 50 Gigabyte ML Model
     # Convert Gbps (Gigabits) to GBps (Gigabytes) by dividing by 8
-    download_time_seconds = model_size_gb / (max_bandwidth / 8.0)
-    
-    print(f"Platform Metric:    A 50 GB Machine Learning Model will")
-    print(f"                    download in exactly {download_time_seconds:.2f} seconds.")
+    if max_bandwidth > 0:
+        download_time_seconds = model_size_gb / (max_bandwidth / 8.0)
+        print(f"Platform Metric:    A 50 GB Machine Learning Model will")
+        print(f"                    download in exactly {download_time_seconds:.2f} seconds.")
+    else:
+        print("Platform Metric:    Unable to estimate download time because")
+        print("                    the maximum throughput to the buyer is 0 Gbps.")
     print("-" * 65)
     print(f"Engine Exec Time:   {(end_time - start_time) * 1000:.4f} ms")
     print("=" * 65)
