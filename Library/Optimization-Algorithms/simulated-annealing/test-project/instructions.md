@@ -14,7 +14,7 @@ This project demonstrates **Simulated Annealing** solving the **Travelling Sales
 
 | Hyperparameter | File Location | Effect |
 |---|---|---|
-| `COOLING_RATE` | `app.py` line ~61 | Lower → slower cool → better quality |
-| `INITIAL_TEMP` | `app.py` line ~60 | Must be high enough to accept early bad moves |
-| `ITERATIONS_PER_TEMP` | `app.py` line ~63 | More → more thorough search at each step |
-| `NUM_CITIES` | `app.py` line ~36 | Increase to make the problem harder |
+| `COOLING_RATE` | `app.py` | Lower → slower cool → better quality |
+| `INITIAL_TEMP` | `app.py` | Must be high enough to accept early bad moves |
+| `ITERATIONS_PER_TEMP` | `app.py` | More → more thorough search at each step |
+| `NUM_CITIES` | `app.py` | Increase to make the problem harder |
