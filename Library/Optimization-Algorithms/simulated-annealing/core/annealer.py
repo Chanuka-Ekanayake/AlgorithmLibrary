@@ -149,12 +149,20 @@ class SimulatedAnnealingOptimizer:
         return total
 
     @staticmethod
-    def tsp_neighbour(route: List[Tuple[float, float]]) -> List[Tuple[float, float]]:
+    def tsp_neighbour(
+        route: List[Tuple[float, float]],
+        rng: "random.Random" | None = None,
+    ) -> List[Tuple[float, float]]:
         """
         2-opt swap: pick two random positions and reverse the segment
         between them — the gold-standard neighbourhood move for TSP.
+
+        If an RNG is provided, it will be used for sampling to support
+        reproducible runs with a seeded optimizer. Otherwise, the global
+        module-level random generator is used (backwards compatible).
         """
         n = len(route)
-        i, j = sorted(random.sample(range(n), 2))
+        sampler = rng.sample if rng is not None else random.sample
+        i, j = sorted(sampler(range(n), 2))
         route[i:j + 1] = reversed(route[i:j + 1])
         return route
