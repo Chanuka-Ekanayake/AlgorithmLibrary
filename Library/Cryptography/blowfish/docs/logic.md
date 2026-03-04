@@ -25,7 +25,7 @@ $$Swap(L_i, R_i)$$
 ### The Magic of Decryption
 
 Why use a Feistel Network? Because **XOR is perfectly reversible**.
-If you XOR a value twice with the same key, you get the original value back ($A \oplus B \oplus B = A$). Because of this mathematical property, the hardware or software doesn't need a separate "decryption" algorithm. To decrypt the ciphertext, you simply run the exact same 16-round encryption process, but you apply the P-array keys in reverse order (starting from $P_{17}$ down to $P_0$).
+If you XOR a value twice with the same key, you get the original value back ($A \oplus B \oplus B = A$). Because of this mathematical property, the hardware or software doesn't need a separate "decryption" algorithm. To decrypt the ciphertext, you simply run the exact same 16-round encryption process, but you apply the P-array keys in reverse: the 16 rounds use $P_{17}$ down to $P_2$, followed by final XORs with $P_{1}$ and $P_{0}$.
 
 ---
 
