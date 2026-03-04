@@ -87,8 +87,10 @@ class ParticleSwarmOptimizer:
                              exploration but higher compute per iteration.
             max_iterations:  Total number of velocity/position update cycles.
             inertia:         Weight (ω) applied to the particle's previous
-                             velocity — controls momentum. The classic
-                             Shi & Eberhart (1998) constriction value is 0.729.
+                             velocity — controls momentum. A popular choice,
+                             derived from Clerc & Kennedy’s constriction-factor
+                             analysis, is ω ≈ 0.729 when used with
+                             c₁ = c₂ ≈ 1.494.
             cognitive_coeff: Weight (c₁) on the personal-best pull.
                              Typical range: [1.4, 2.0].
             social_coeff:    Weight (c₂) on the global-best pull.
