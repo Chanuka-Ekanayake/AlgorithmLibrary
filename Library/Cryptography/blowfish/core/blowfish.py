@@ -6,7 +6,6 @@ via a computationally expensive key expansion phase.
 """
 
 import struct
-from typing import List
 
 # Standard Blowfish initialization constants (derived from the fractional part of Pi).
 # Note: In a full production file, these arrays contain 18 and 1024 hex values respectively.
