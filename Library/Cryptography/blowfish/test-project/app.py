@@ -7,7 +7,7 @@ root_dir = Path(__file__).resolve().parent.parent
 sys.path.append(str(root_dir))
 
 try:
-    from core.cipher import BlowfishCipher
+    from core.blowfish import BlowfishCipher
 except ImportError:
     print("Error: Ensure 'core/cipher.py' and 'core/__init__.py' exist.")
     sys.exit(1)
