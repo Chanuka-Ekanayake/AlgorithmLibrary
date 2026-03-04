@@ -18,9 +18,23 @@ def pad_data(data: bytes, block_size: int = 8) -> bytes:
     # Append the byte value of the padding length, padding_len times
     return data + bytes([padding_len] * padding_len)
 
-def unpad_data(data: bytes) -> bytes:
-    """Removes PKCS5 padding after decryption."""
+def unpad_data(data: bytes, block_size: int = 8) -> bytes:
+    """Removes PKCS5 padding after decryption, validating the padding."""
+    if not data:
+        raise ValueError("Cannot unpad empty data.")
+
     padding_len = data[-1]
+
+    # Validate padding length is within acceptable PKCS5 range
+    if padding_len < 1 or padding_len > block_size:
+        raise ValueError("Invalid padding length.")
+
+    if len(data) < padding_len:
+        raise ValueError("Invalid padding: data shorter than padding length.")
+
+    # Verify all padding bytes match the expected value
+    if data[-padding_len:] != bytes([padding_len]) * padding_len:
+        raise ValueError("Invalid PKCS5 padding.")
     return data[:-padding_len]
 
 def run_encryptor_simulator():
