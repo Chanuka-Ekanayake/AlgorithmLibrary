@@ -73,7 +73,7 @@ Controls how much of the previous velocity is retained.
 
 - **High ω (> 1.0):** Particles accelerate — wide exploration but risk overshooting.
 - **Low ω (< 0.4):** Particles decelerate quickly — tight local search.
-- **Classic value (Shi & Eberhart, 1998): ω = 0.729** — proven to guarantee convergence on most well-behaved functions.
+- **Commonly used value: ω ≈ 0.729** — motivated by constriction-factor analyses (e.g. Clerc & Kennedy) and often yielding a good exploration–exploitation balance in many benchmark problems; formal convergence guarantees depend on the specific PSO variant and assumptions.
 
 ### 4.2 Cognitive Coefficient (c₁)
 
