@@ -6,7 +6,7 @@
 
 Its defining property is **swarm diversity**: unlike single-trajectory optimisers (Gradient Descent, Simulated Annealing), PSO evaluates dozens of candidate solutions in parallel, dramatically reducing the risk of entrapment in any single local minimum.
 
-The classic demonstration domain is the **Rastrigin Function** — a highly multimodal surface with hundreds of local minima — where gradient-based methods immediate fail and single-point heuristics frequently get stuck.
+The classic demonstration domain is the **Rastrigin Function** — a highly multimodal surface with hundreds of local minima — where gradient-based methods immediately fail and single-point heuristics frequently get stuck.
 
 ---
 
