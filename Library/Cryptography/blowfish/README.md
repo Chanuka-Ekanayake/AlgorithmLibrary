@@ -40,12 +40,12 @@ When operating an e-commerce platform that distributes proprietary Machine Learn
 
 Let $K$ represent the length of the encryption key and $N$ represent the number of 64-bit data blocks.
 
-| Phase / Metric        | Complexity | Description                                                |
-| --------------------- | ---------- | ---------------------------------------------------------- |
-| **Key Setup Time**    | $O(K)$     | Intentionally slow; requires 521 block encryptions.        |
-| **Block Encryption**  | $O(1)$     | Blazing fast; fixed 16-round bitwise mutations.            |
-| **Stream Encryption** | $O(N)$     | Scales perfectly linearly with the file size.              |
-| **Space Complexity**  | $O(1)$     | Strictly ~4.1 KB overhead (fits entirely in CPU L1 Cache). |
+| Phase / Metric        | Complexity | Description                                                              |
+| --------------------- | ---------- | ------------------------------------------------------------------------ |
+| **Key Setup Time**    | $O(1)$     | Dominated by a fixed 521 block encryptions; weak dependence on key size.|
+| **Block Encryption**  | $O(1)$     | Blazing fast; fixed 16-round bitwise mutations.                          |
+| **Stream Encryption** | $O(N)$     | Scales perfectly linearly with the file size.                            |
+| **Space Complexity**  | $O(1)$     | Strictly ~4.1 KB overhead (fits entirely in CPU L1 Cache).               |
 
 ---
 
