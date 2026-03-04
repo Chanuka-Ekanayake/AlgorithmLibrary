@@ -4,11 +4,11 @@ Blowfish operates in two distinct phases: **Key Expansion** (the setup) and **Da
 
 ## 1. Time Complexity
 
-| Phase                 | Time Complexity | Explanation                                                                                                                  |
-| --------------------- | --------------- | ---------------------------------------------------------------------------------------------------------------------------- |
-| **Key Expansion**     | $O(K)$          | Initialization requires exactly 521 consecutive block encryptions, heavily dependent on the key length $K$ (up to 448 bits). |
-| **Block Encryption**  | $O(1)$          | Encrypting a single 64-bit block takes a fixed 16 rounds of simple bitwise operations.                                       |
-| **Stream Encryption** | $O(N)$          | Encrypting a file of $N$ blocks scales perfectly linearly.                                                                   |
+| Phase                 | Time Complexity | Explanation                                                                                                                             |
+| --------------------- | --------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| **Key Expansion**     | $O(1)$          | Initialization performs a fixed 521 block encryptions plus a small constant-size XOR-keying step; cost is independent of message size. |
+| **Block Encryption**  | $O(1)$          | Encrypting a single 64-bit block takes a fixed 16 rounds of simple bitwise operations.                                                  |
+| **Stream Encryption** | $O(N)$          | Encrypting a file of $N$ blocks scales perfectly linearly.                                                                              |
 
 ### The "Slow Setup" Defense Mechanism
 
