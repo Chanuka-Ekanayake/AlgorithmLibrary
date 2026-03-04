@@ -131,6 +131,12 @@ class ParticleSwarmOptimizer:
         # 1. Initialise swarm
         swarm = self._initialise_swarm()
 
+        # Guard against an empty swarm to avoid ValueError from min()
+        if not swarm:
+            raise ValueError(
+                "ParticleSwarmOptimizer.optimize() requires a non-empty swarm. "
+                "Ensure that 'num_particles' is at least 1 before calling optimize()."
+            )
         # 2. Bootstrap the global best from the initial generation
         global_best_particle = min(swarm, key=lambda p: p.best_cost)
         global_best_position: Position = list(global_best_particle.best_position)
