@@ -54,7 +54,7 @@ For the Rastrigin benchmark (`C = O(d)`) with a 10-dimensional search space:
 | ω | Effect |
 |---|---|
 | 0.9–1.2 | Strong momentum → broad exploration, slow convergence |
-| **0.729** | **Classic Shi/Eberhart value** — theoretical convergence guarantee |
+| **0.729** | Common value from constriction-factor analysis (e.g. Clerc & Kennedy, 2002); convergence properties depend on the PSO variant and assumptions |
 | 0.4–0.6 | Rapid local search → risk of premature convergence |
 
 ### 3.3 Cognitive & Social Coefficients (c₁, c₂)
