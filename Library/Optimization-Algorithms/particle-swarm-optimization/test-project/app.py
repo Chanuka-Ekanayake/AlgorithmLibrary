@@ -55,7 +55,16 @@ def run_benchmark(
 
     print_section("PROBLEM")
     print(f"  Dimensions       : {dimensions}")
-    print(f"  Search bounds    : [{bounds[0][0]}, {bounds[0][1]}] per dimension")
+    if not bounds:
+        print("  Search bounds    : <no bounds provided>")
+    else:
+        first_bound = bounds[0]
+        if all(b == first_bound for b in bounds):
+            # Uniform bounds across all dimensions; preserve original message style.
+            print(f"  Search bounds    : [{first_bound[0]}, {first_bound[1]}] per dimension")
+        else:
+            # Non-uniform per-dimension bounds; show the full bounds list.
+            print(f"  Search bounds    : {bounds}")
     print(f"  Known optimum    : f(x*) = {known_optimum}")
     print(f"  Swarm size       : {num_particles} particles")
     print(f"  Max iterations   : {max_iterations}")
