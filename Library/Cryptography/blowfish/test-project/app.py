@@ -9,7 +9,7 @@ sys.path.append(str(root_dir))
 try:
     from core.blowfish import BlowfishCipher
 except ImportError:
-    print("Error: Ensure 'core/cipher.py' and 'core/__init__.py' exist.")
+    print("Error: Ensure 'core/blowfish.py' and 'core/__init__.py' exist.")
     sys.exit(1)
 
 def pad_data(data: bytes, block_size: int = 8) -> bytes:
