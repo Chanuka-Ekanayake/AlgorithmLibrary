@@ -13,7 +13,7 @@ The classic demonstration domain is the **Rastrigin Function** — a highly mult
 ## 2. Technical Features
 
 - **Velocity Update Equation:** Each particle's movement is governed by three balanced forces — inertia (momentum), cognitive pull (personal best), and social pull (global best) — implemented via the canonical Kennedy & Eberhart velocity formula.
-- **Clerc Constriction Coefficients:** Ships with the theoretically-derived hyperparameter values (ω = 0.729, c₁ = c₂ = 1.494) proven to guarantee convergence on well-behaved functions.
+- **Clerc–Kennedy Constriction Parameters:** Ships with the standard constriction-factor–based hyperparameter values (ω = 0.729, c₁ = c₂ = 1.494) derived from Clerc & Kennedy’s analysis and widely used as empirically stable defaults under common PSO variants (with formal convergence results only under specific theoretical assumptions).
 - **Swarm Initialisation:** Particles are scattered uniformly at random across the search bounds; initial velocities are set to half the per-dimension range to prevent immediate boundary collisions.
 - **Bound Clamping:** Particle positions are hard-clamped to the feasible region after every update, enforcing the constraint that all evaluations remain within the defined search space.
 - **Personal Best Tracking:** Each particle independently maintains its own historical best position, providing the cognitive memory that prevents the swarm from collapsing prematurely.
