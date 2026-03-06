@@ -38,7 +38,7 @@ class MatrixChainOptimizer:
         for L in range(2, n + 1):
             for i in range(1, n - L + 2):
                 j = i + L - 1
-                dp[i][j] = float('inf')
+                dp[i][j] = int('inf')
                 for k in range(i, j):
                     # q is the cost of multiplying A_i...A_k and A_{k+1}...A_j
                     q = dp[i][k] + dp[k + 1][j] + dimensions[i - 1] * dimensions[k] * dimensions[j]
