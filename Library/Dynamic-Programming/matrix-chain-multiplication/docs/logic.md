@@ -21,4 +21,4 @@ Let $m[i,j]$ be the minimum number of scalar multiplications needed to compute t
 - If $i < j$, we can split the product at any matrix $k$ ($i \le k < j$). The cost of multiplying the chain $A_i \dots A_j$ optimally by splitting at $k$ is:
   $$m[i,j] = \min_{i \le k < j} \left( m[i,k] + m[k+1,j] + p_{i-1} \cdot p_k \cdot p_j \right)$$
 
-This recurrence naturally leads to a bottom-up dynamic programming approach where we first solve paths of length 1, then length 2, up to length $n$.
+This recurrence naturally leads to a bottom-up dynamic programming approach where we first solve chains (subchains) of length 1, then length 2, up to length $n$.
