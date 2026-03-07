@@ -21,7 +21,7 @@ Executions of the algorithm should be done from the command line interface utili
 ### Windows Context
 
 1.  Open Command Prompt or PowerShell.
-2.  Navigate to the directory utilizing windows trailing slashes:
+2.  Navigate to the directory using Windows backslashes as path separators:
     ```cmd
     cd path\to\AlgorithmLibrary\Library\Dynamic-Programming\viterbi-hmm\
     ```
