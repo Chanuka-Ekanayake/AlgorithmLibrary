@@ -89,4 +89,4 @@ If you wish to test your own unique algorithms mathematically inside this layout
 4. Design mathematically sound matrices where probabilities map to $1.0$.
 5. Pass them dynamically to `ViterbiDecoder` logic execution method and trace. Ensure to append it to the `main()` function execution tree! 
 
-Note again that floating point multiplication natively suffers from underflow issues over $T > 100$ string arrays without algorithmic Log-Space conversions. The `app.py` module limits input variables to strictly $T<50$ instances dynamically avoiding zero-drop precision bugs locally.
+Note again that floating point multiplication natively suffers from underflow issues over $T > 100$ string arrays without algorithmic log-space conversions. To reduce the risk of zero-drop precision bugs in this sandbox, you should manually keep input sequences reasonably short (for example, $T < 50$) or adapt the implementation to work in log-space if you need to handle much longer sequences.
