@@ -49,10 +49,26 @@ def run_weather_example():
     print(f"Calculated Sequence Probability: {path_prob:.8f}")
     
     # Expected output derived from hand-calculation:
-    # 1. Start: Sunny(0.4*0.6=0.24) > Rainy(0.6*0.1=0.06) -> Day 1 = Sunny
-    # 2. Trans to Day 2 (shop): 
-    #    Sunny->Sunny(0.24*0.6*0.3=0.0432)
-    #    Sunny->Rainy(0.24*0.4*0.4=0.0384) -> Day 2 = Rainy (due to shop multiplier)
+    # 1. Day 1 (walk):
+    #    Rainy: 0.6 * 0.1 = 0.06
+    #    Sunny: 0.4 * 0.6 = 0.24  -> best state at Day 1 is Sunny
+    # 2. Day 2 (shop), Viterbi keeps best path *to each state*:
+    #    To Rainy:
+    #      from Rainy: 0.06  * 0.7 * 0.4 = 0.0168
+    #      from Sunny: 0.24 * 0.4 * 0.4 = 0.0384  -> best to Rainy is 0.0384 via Sunny
+    #    To Sunny:
+    #      from Rainy: 0.06  * 0.3 * 0.3 = 0.0054
+    #      from Sunny: 0.24 * 0.6 * 0.3 = 0.0432  -> best to Sunny is 0.0432 via Sunny
+    #    So at Day 2 alone, Sunny has the higher score (0.0432 > 0.0384).
+    # 3. Day 3 (clean), using the best Day 2 scores:
+    #    To Rainy:
+    #      from Rainy: 0.0384 * 0.7 * 0.5 = 0.01344
+    #      from Sunny: 0.0432 * 0.4 * 0.5 = 0.00864  -> best to Rainy is 0.01344 via Rainy
+    #    To Sunny:
+    #      from Rainy: 0.0384 * 0.3 * 0.1 = 0.001152
+    #      from Sunny: 0.0432 * 0.6 * 0.1 = 0.002592 -> best to Sunny is 0.002592 via Sunny
+    #    The overall best final state is Rainy at Day 3 with probability 0.01344,
+    #    and the corresponding best path is Sunny -> Rainy -> Rainy (Day 2 = Rainy in the final path).
     print("-" * 60)
 
 
