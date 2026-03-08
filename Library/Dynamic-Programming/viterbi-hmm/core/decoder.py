@@ -171,10 +171,12 @@ class ViterbiDecoder:
         best_path = [best_final_state]
         curr_state = best_final_state
         
-        # Go backwards from T-1 down to 1
+        # Go backwards from T-1 down to 1, collecting states in reverse order
         for t in range(T - 1, 0, -1):
             prev_state_for_curr = backpointer[t][curr_state]
-            best_path.insert(0, prev_state_for_curr)
+            best_path.append(prev_state_for_curr)
             curr_state = prev_state_for_curr
 
+        # Reverse to obtain the path from the first to the last time step
+        best_path.reverse()
         return best_path, max_path_probability
