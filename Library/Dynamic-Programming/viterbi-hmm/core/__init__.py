@@ -97,7 +97,7 @@ Usage Guidelines
 
 3. Instantiate the decoder:
    ```python
-   decoder = ViterbiDecoder(states, obs, start_p, trans_p, emit_p)
+   decoder = ViterbiDecoder(states, observations, start_p, trans_p, emit_p)
    ```
 
 4. Decode your sequence:
