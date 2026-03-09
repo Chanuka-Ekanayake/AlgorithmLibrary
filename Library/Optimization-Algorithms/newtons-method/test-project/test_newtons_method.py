@@ -8,6 +8,12 @@ and appropriate error handling.
 
 import unittest
 import math
+import sys
+import os
+
+# Add the 'core' directory to the system path to allow imports
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'core')))
+
 from newtons_method import newtons_method_root, newtons_method_optimization, compute_numerical_derivative
 from newtons_method_multivariate import newtons_method_multivariate, gaussian_elimination_solve
 
