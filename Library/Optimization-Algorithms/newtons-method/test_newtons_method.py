@@ -41,9 +41,9 @@ class TestNewtonsMethodRoot(unittest.TestCase):
         self.assertAlmostEqual(root, 2.09455148, places=6)
         
     def test_zero_derivative(self):
-        # f(x) = x^2, f'(x) = 2x
-        # Guess x=0 gives f'(0) = 0
-        def f(x): return x**2
+        # f(x) = x^2 + 1, f'(x) = 2x
+        # Guess x=0 gives f(0)=1, f'(0) = 0
+        def f(x): return x**2 + 1
         def df(x): return 2*x
         
         with self.assertRaises(ZeroDivisionError):
