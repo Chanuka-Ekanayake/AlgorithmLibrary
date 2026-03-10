@@ -17,8 +17,6 @@ import math
 from typing import List, Callable, Optional, Tuple
 import logging
 
-# Basic logging configuration for the module
-logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
 logger = logging.getLogger(__name__)
 
 # Type aliases for enhanced readability
