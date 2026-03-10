@@ -20,9 +20,10 @@ from typing import Callable, Tuple, Optional, Union
 import logging
 
 
-# Set up basic logging for debugging and tracking convergence
-logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
+# Module-level logger; configuration is the responsibility of the calling application.
 logger = logging.getLogger(__name__)
+if not logger.handlers:
+    logger.addHandler(logging.NullHandler())
 
 
 def compute_numerical_derivative(
