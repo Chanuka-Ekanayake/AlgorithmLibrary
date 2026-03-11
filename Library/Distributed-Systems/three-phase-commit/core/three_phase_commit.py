@@ -184,7 +184,8 @@ class Coordinator:
 
     def _broadcast_decision(self, tx_id: str, decision: MessageType):
         """
-        Helper method to broadcast final Phase 3 results.
+        Helper method to broadcast the coordinator's final decision (COMMIT or ABORT)
+        to all participants, regardless of which phase determined that outcome.
         """
         decision_msg = TransactionMessage(tx_id, self.coordinator_id, decision)
         for p in self.participants:
