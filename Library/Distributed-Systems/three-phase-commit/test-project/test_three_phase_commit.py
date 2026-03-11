@@ -2,7 +2,7 @@ import unittest
 import sys
 import os
 import logging
-from unittest.mock import patch, MagicMock
+from unittest.mock import MagicMock
 
 # Adjust sys.path to allow importing from the core package
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
