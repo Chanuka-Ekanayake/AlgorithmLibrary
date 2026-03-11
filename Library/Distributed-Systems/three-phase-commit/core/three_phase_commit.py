@@ -103,7 +103,7 @@ class Participant:
         self.logger.info(f"Received decision {message.msg_type.value} for TX: {message.tx_id}")
 
         if message.msg_type == MessageType.DO_COMMIT:
-            if self.state in [ParticipantState.PRECOMMIT, ParticipantState.READY]:
+            if self.state == ParticipantState.PRECOMMIT:
                 self.logger.info(f"Executing DO_COMMIT locally. Applying changes.")
                 self.state = ParticipantState.COMMITTED
             else:
