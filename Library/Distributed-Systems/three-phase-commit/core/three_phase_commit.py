@@ -88,13 +88,29 @@ class Participant:
             self.logger.error(f"Cannot process PRE_COMMIT. Current state is {self.state.value}")
             raise RuntimeError(f"Participant {self.participant_id} in invalid state {self.state.value}")
 
+        # Ensure the PRE_COMMIT message corresponds to the current transaction.
+        if self.current_tx_id is None:
+            # Initialize current transaction from the incoming message if not already set.
+            self.logger.warning(
+                f"Current transaction ID is None. Initializing from PRE_COMMIT message: {message.tx_id}"
+            )
+            self.current_tx_id = message.tx_id
+        elif self.current_tx_id != message.tx_id:
+            # Mismatched transaction IDs indicate a protocol or state error.
+            self.logger.error(
+                f"PRE_COMMIT tx_id mismatch: current_tx_id={self.current_tx_id}, message_tx_id={message.tx_id}"
+            )
+            raise RuntimeError(
+                f"Participant {self.participant_id} received PRE_COMMIT for unexpected transaction {message.tx_id}"
+            )
+
         if random.random() < self.failure_rate_p2:
             self.logger.error(f"Node crashed simulating network timeout before sending ACK for PRE_COMMIT")
             raise ConnectionError("Network Timeout")
 
         self.state = ParticipantState.PRECOMMIT
         self.logger.info(f"Entered PRECOMMIT state. Sending ACK.")
-        return TransactionMessage(self.current_tx_id, self.participant_id, MessageType.ACK)
+        return TransactionMessage(message.tx_id, self.participant_id, MessageType.ACK)
 
     def receive_decision(self, message: TransactionMessage):
         """
