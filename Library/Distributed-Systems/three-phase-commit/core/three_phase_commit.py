@@ -194,17 +194,6 @@ class Coordinator:
                 self.logger.error(f"Failed to deliver decision to {p.participant_id}: {e}")
 
 if __name__ == "__main__":
-    coord = Coordinator("Coord-Node")
-    
-    # 3 Participants (1 has a slight chance of voting NO in Phase 1)
-    p1 = Participant("DB-Node-A")
-    p2 = Participant("DB-Node-B", failure_rate_p1=0.2)
-    p3 = Participant("Kafka-Node")
-
-    coord.register_participant(p1)
-    coord.register_participant(p2)
-    coord.register_participant(p3)
-
     print("\n--- TEST: Happy Path ---")
     # Using independent instances just for the demo
     clean_p1 = Participant("Node-A")
