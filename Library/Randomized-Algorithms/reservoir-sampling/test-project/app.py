@@ -63,16 +63,16 @@ def run_fairness_test():
         diff = ((actual - expected) / expected) * 100
         print(f"  Item {i}: {actual} (Deviation: {diff:+.2f}%)")
 
-    # Summary Stats
-    max_freq = max(counts.values())
-    min_freq = min(counts.values())
+    # Summary Stats (include items that never appeared by iterating over full range)
+    max_freq = max(counts[i] for i in range(STREAM_SIZE))
+    min_freq = min(counts[i] for i in range(STREAM_SIZE))
     max_dev = ((max_freq - expected) / expected) * 100
     min_dev = ((min_freq - expected) / expected) * 100
 
     print("\n" + "=" * 65)
     print("STATISTICAL REPORT")
     print("=" * 65)
-    print(f"  Average frequency : {sum(counts.values()) / STREAM_SIZE}")
+    print(f"  Average frequency : {sum(counts[i] for i in range(STREAM_SIZE)) / STREAM_SIZE}")
     print(f"  Max frequency     : {max_freq} ({max_dev:+.2f}%)")
     print(f"  Min frequency     : {min_freq} ({min_dev:+.2f}%)")
     print("-" * 65)
