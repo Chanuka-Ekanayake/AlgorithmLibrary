@@ -22,7 +22,7 @@ The constraints are:
 The most common version, Algorithm R, works as follows:
 
 1.  **Initialization:** Fill the "reservoir" (the sample array) with the first $k$ items from the stream.
-2.  **Iterative Step:** For every subsequent item at index $i$ (where $i > k$):
+2.  **Iterative Step:** For every subsequent item at 0-based index $i$ (where $i \ge k$):
     -   Generate a random integer $j$ between $0$ and $i$ (inclusive).
     -   If $j < k$, replace the item at `reservoir[j]` with the new item.
     -   Otherwise, discard the new item.
