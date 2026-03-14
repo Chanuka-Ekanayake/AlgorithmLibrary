@@ -1,0 +1,6 @@
+This is some sample text for testing the Lempel-Ziv-Welch (LZW) lossless data compression algorithm.
+LZW is great for repetitive sequences.
+Repetitive sequences are great for LZW.
+Testing testing one two three.
+Testing testing one two three four.
+The more repetitive the text, the better LZW performs because the dynamically built dictionary will have longer sequences matching the incoming text!
