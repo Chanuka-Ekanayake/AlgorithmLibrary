@@ -38,7 +38,7 @@ The space complexity is determined by the size of the dictionary built during ex
 | **Compression Time** | O(N) avg, O(N²) worst-case | String concatenation in the current Python implementation can cause superlinear behavior on some inputs. |
 | **Decompression Time** | O(N) | Very fast. |
 | **Space Complexity** | O(N) | Can be O(1) if dictionary size is strictly capped. |
-| **Data Types** | Any Byte Stream | Very effective on repetitive text/images. |
+| **Data Types** | Text strings (Python `str`, e.g., UTF-8 text) | Very effective on repetitive text/images. |
 
 ---
 
