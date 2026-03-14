@@ -13,7 +13,7 @@ This makes it exceptionally elegant and very useful for data streams where the d
 * **Dynamic Dictionary:** Automatically builds a dictionary of sequences on-the-fly without needing a pre-computation pass.
 * **Lossless Decompression:** Reconstructs the exact dictionary using only the compressed integer codes.
 * **End-to-End Pipeline:** Provides both `compress` and `decompress` methods.
-* **O(N) Complexity:** Processes streams in linear time.
+* **Algorithmic O(N) Complexity:** The LZW algorithm processes streams in linear time under standard RAM assumptions; this particular implementation may have additional overhead due to practical design choices (e.g., dictionary growth and string handling).
 
 ---
 
@@ -39,8 +39,8 @@ This makes it exceptionally elegant and very useful for data streams where the d
 
 | Metric | Specification |
 | --- | --- |
-| **Time Complexity** | `O(N)` |
-| **Space Complexity** | `O(N)` (or `O(1)` strictly bounded) |
+| **Time Complexity** | `O(N)` (algorithmic, assuming idealized operations; actual runtime depends on this implementation's data structures and string handling) |
+| **Space Complexity** | `O(N)` for this implementation (dictionary grows with input); `O(1)` would require an explicitly bounded/resetting dictionary, which is not enabled by default here |
 | **Paradigm** | Dictionary-Based Compression |
 | **Data Integrity** | 100% Lossless |
 
