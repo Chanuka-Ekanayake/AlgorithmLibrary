@@ -13,6 +13,16 @@ class LZWCompressor:
         if not uncompressed:
             return [], 0.0
 
+        # Validate that all characters are within the initial dictionary alphabet (0–255).
+        # This algorithm operates on single-byte character values and does not support
+        # arbitrary Unicode code points outside the Latin-1 range.
+        for ch in uncompressed:
+            if ord(ch) > 255:
+                raise ValueError(
+                    f"Unsupported character {ch!r} (code point {ord(ch)}). "
+                    "LZWCompressor only supports characters with ord(c) <= 255."
+                )
+
         # Initialize the dictionary with single character strings
         dict_size = 256
         dictionary = {chr(i): i for i in range(dict_size)}
