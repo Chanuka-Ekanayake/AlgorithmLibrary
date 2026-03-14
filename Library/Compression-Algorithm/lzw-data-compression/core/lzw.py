@@ -45,9 +45,9 @@ class LZWCompressor:
             result.append(dictionary[w])
 
         # Calculate a simple compression ratio estimate
-        # Assuming original is 1 byte per char (ASCII)
-        # Assuming compressed codes take 2 bytes (16-bit integers)
-        original_size = len(uncompressed)
+        # Assuming original is UTF-8 encoded text
+        # and compressed codes take 2 bytes (16-bit integers)
+        original_size = len(uncompressed.encode("utf-8"))
         compressed_size = len(result) * 2
         ratio = compressed_size / original_size if original_size > 0 else 0
 
