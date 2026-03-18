@@ -83,6 +83,11 @@ class SuffixTree:
                 self.active_node = self.active_node.suffix_link if self.active_node.suffix_link else self.root
 
     def search(self, pattern):
+        # Reject patterns containing the reserved terminator, which is only used
+        # internally to build the augmented text for the suffix tree.
+        if "$" in pattern:
+            return False
+
         curr = self.root
         i = 0
         while i < len(pattern):
@@ -102,6 +107,11 @@ class SuffixTree:
         return True
 
     def find_all(self, pattern):
+        # Reject patterns containing the reserved terminator, which is only used
+        # internally to build the augmented text for the suffix tree.
+        if "$" in pattern:
+            return []
+
         # Find node representing the pattern
         curr = self.root
         i = 0
