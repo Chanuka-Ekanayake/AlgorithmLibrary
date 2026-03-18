@@ -17,7 +17,7 @@ A **Suffix Tree** is a compressed Trie of all the suffixes of a given string. It
 
 ## 2. Construction Rules
 
-1.  **Rule 1 (Extension of a Leaf)**: When adding a new character, all leaves automatically extend. This is implemented using a global `current_end` pointer that increment in each phase.
+1.  **Rule 1 (Extension of a Leaf)**: When adding a new character, all leaves automatically extend. This is implemented using a global `current_end` pointer that increments in each phase.
 2.  **Rule 2 (Split an Edge)**: When the character being added doesn't exist on the current edge, we split the edge into an internal node and a new leaf.
 3.  **Rule 3 (Early Termination)**: If the character already exists on the edge, we simply increment the `active_length` and move to the next phase, as all subsequent suffixes in this phase will also already be in the tree.
 
