@@ -10,6 +10,8 @@ class SuffixTreeNode:
 
 class SuffixTree:
     def __init__(self, text):
+        if "$" in text:
+            raise ValueError("Input text for SuffixTree must not contain the terminator character '$'.")
         self.text = text + "$"
         self.n = len(self.text)
         self.root = SuffixTreeNode(-1, [-1])
