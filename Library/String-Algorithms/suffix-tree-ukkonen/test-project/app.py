@@ -25,10 +25,13 @@ def run_test_cases():
     print(" Suffix Tree (Ukkonen's) - Test Suite ")
     print("="*50 + "\n")
     
+    any_failed = False
     for text, pattern, expected in test_cases:
         tree = SuffixTree(text)
         result = tree.search(pattern)
         status = "PASSED" if result == expected else "FAILED"
+        if status == "FAILED":
+            any_failed = True
         print(f"[{status}] Text: '{text}' | Pattern: '{pattern}' | Expected: {expected} | Got: {result}")
 
     print("\n" + "="*50)
@@ -44,6 +47,9 @@ def run_test_cases():
         print(f"[FOUND] Pattern '{pattern}' is present in the sequence.")
     else:
         print(f"[NOT FOUND] Pattern '{pattern}' not found.")
+    
+    return 1 if any_failed else 0
 
 if __name__ == "__main__":
-    run_test_cases()
+    exit_code = run_test_cases()
+    sys.exit(exit_code)
