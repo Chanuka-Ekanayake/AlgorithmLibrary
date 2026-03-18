@@ -136,8 +136,33 @@ class SuffixTree:
             self._collect_leaf_indices(child, results)
 
     def _get_depth(self, node):
-        # This implementation requires a depth calculation or storing index in leaves
-        # Let's adjust the node structure to store index or calculate it.
-        # Actually, let's keep it simple for the user and just do a search for basic existence
-        # unless full indexing is required.
-        pass
+        """
+        Compute the depth (in characters) from the root to the given node.
+
+        The depth is the total length of all edge labels on the path from the
+        root to `node`. This is used by `_collect_leaf_indices` to reconstruct
+        the starting index of the suffix represented by a leaf:
+
+            suffix_start = len(self.text) - depth
+        """
+        target = node
+
+        def _dfs(current, depth):
+            # If we've reached the target node, return the accumulated depth.
+            if current is target:
+                return depth
+
+            # Explore children, accumulating edge lengths.
+            for child in current.children.values():
+                edge_len = child.length(self.current_end[0])
+                found_depth = _dfs(child, depth + edge_len)
+                if found_depth is not None:
+                    return found_depth
+
+            return None
+
+        result = _dfs(self.root, 0)
+        if result is None:
+            # This should not happen for nodes that are part of the tree.
+            raise ValueError("Node is not reachable from the root")
+        return result
