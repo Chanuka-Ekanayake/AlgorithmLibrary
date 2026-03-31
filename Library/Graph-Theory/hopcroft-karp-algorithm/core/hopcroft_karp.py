@@ -40,9 +40,14 @@ class HopcroftKarp:
             u = queue.popleft()
             if self.dist[u] < self.dist[None]:
                 for v in self.graph[u]:
-                    if self.dist.get(self.pair_v[v], float('inf')) == float('inf'):
-                        self.dist[self.pair_v[v]] = self.dist[u] + 1
-                        queue.append(self.pair_v[v])
+                    if self.pair_v[v] is None:
+                        # Found an unmatched vertex in V; update distance to NIL (None)
+                        if self.dist[None] == float('inf'):
+                            self.dist[None] = self.dist[u] + 1
+                    else:
+                        if self.dist.get(self.pair_v[v], float('inf')) == float('inf'):
+                            self.dist[self.pair_v[v]] = self.dist[u] + 1
+                            queue.append(self.pair_v[v])
         return self.dist[None] != float('inf')
 
     def dfs(self, u):
