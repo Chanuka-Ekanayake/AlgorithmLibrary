@@ -21,4 +21,4 @@ The overall space complexity is **$O(V + E)$**.
 - **BFS Structure:** The `dist` dictionary mapping distances for all nodes requires $O(V)$ auxiliary space. A queue to perform BFS needs $O(V)$ space.
 - **DFS Recursion:** Due to recursion during the augmentation phase, the call stack might grow up to the depth of the graph, bounded by $O(V)$ space.
 
-Because no single component takes more than linear time with respect to sizes of vertices and edges, the space footprint remains well-optimized at **$O(V + E)$**.
+Because each of these components uses at most linear space in the numbers of vertices and edges, the overall space footprint remains well-optimized at **$O(V + E)$**.
