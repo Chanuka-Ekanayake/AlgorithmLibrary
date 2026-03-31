@@ -5,7 +5,7 @@ The Hopcroft-Karp algorithm finds a maximum cardinality matching in a bipartite 
 ## Overview
 A bipartite graph consists of two disjoint sets of vertices (for example, workers and jobs), such that edges only go between sets, never internally within a set. The objective is to match the highest possible number of edges while making sure no two edges share a common vertex.
 
-The Hopcroft-Karp algorithm achieves an extremely efficient time limit by running breadth-first search (BFS) to simultaneously find multiple shortest augmenting paths, and resolving them securely via depth-first search (DFS).
+The Hopcroft-Karp algorithm operates by using breadth-first search (BFS) to identify layers of shortest augmenting paths and then depth-first search (DFS) to augment along these shortest paths, leading to the overall $O(E \sqrt{V})$ running time.
 
 ## Algorithm Details
 - **Time Complexity:** $O(E \sqrt{V})$
