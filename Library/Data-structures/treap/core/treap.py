@@ -42,8 +42,8 @@ class Treap:
             if node.right.priority > node.priority:
                 node = self._left_rotate(node)
         else:
-            # If the key already exists, overwrite the value
-            node.value = value
+            # If the key already exists, overwrite the value, normalizing None to key
+            node.value = value if value is not None else key
             
         return node
         
