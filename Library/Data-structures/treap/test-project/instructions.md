@@ -14,7 +14,7 @@ python app.py
 ```
 
 ### Explanation of the Output Check
-- **Insertion Tracker:** The program sequentially loads a fixed target array string into a fresh memory Treap.
-- **BST Sequence Verification:** It prints the Treap keys via "In-Order" algorithms to demonstrably prove that sequential rules haven't forcefully broken via unpredictable priority bubbling routines.
-- **Key Recovery:** Tests extraction of node payloads on-demand while dealing accurately with uninitialized errors.
-- **Recursion Trimming Base:** Drops random root segments within the layout array and queries extraction algorithms to check if nodes effectively survived subtree rotation swaps correctly.
+- **Insertion Demo:** The program inserts a fixed list of integer keys into a fresh in-memory Treap.
+- **BST Sequence Verification:** It prints the Treap keys using an in-order traversal to show that the BST ordering is preserved even though node priorities are randomized.
+- **Search/Delete Checks:** The script exercises basic search and delete operations on some of the inserted keys so you can see how the structure updates between traversals.
+- **Exploring Further:** If you want to experiment with error handling (for missing keys, etc.) or randomized deletion patterns, you can extend `app.py` with additional operations and re-run the script to observe the results.
