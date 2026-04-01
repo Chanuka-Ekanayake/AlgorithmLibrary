@@ -3,7 +3,7 @@
 ## Overview
 A Treap (Tree + Heap) is a randomized binary search tree that maintains keys and randomly generated priorities for its nodes. It guarantees that operations like insertion, deletion, and search run in expected $O(\log n)$ time.
 
-Self-balancing algorithms like AVL and Red-Black Trees require intense rotations governed by strict invariants, making them complicated to build and prone to subtle bugs. The Treap eliminates these strict loops by assigning each new node a mathematical random priority value upon creation. Because it ensures nodes strictly abide by the BST rule laterally and the Max-Heap rule vertically, it statistically stays perfectly balanced.
+Self-balancing algorithms like AVL and Red-Black Trees require intense rotations governed by strict invariants, making them complicated to build and prone to subtle bugs. The Treap eliminates these strict loops by assigning each new node a mathematical random priority value upon creation. Because it ensures nodes strictly abide by the BST rule laterally and the Max-Heap rule vertically, it tends to remain well balanced with high probability, yielding expected $O(\log n)$ height rather than a guaranteed perfectly balanced shape.
 
 ## Core Logic
 Each node in a Treap holds two primary dimensions of data governing structural arrangement:
