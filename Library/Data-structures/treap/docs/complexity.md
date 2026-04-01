@@ -18,5 +18,5 @@ A Treap achieves balancing purely on probabilistic properties.
 A treap's performance relies heavily on random variables structuring the hierarchy evenly. The worst-case computational timeline arises only when randomly assigned priorities cause elements to degrade into a skewed linear linked list (e.g., sequentially larger keys mysteriously drawing exponentially smaller random constraints). Because priorities are strictly randomized uniformly, the probability of encountering structurally skewed layouts scales to insignificance when dealing with larger $n$. Expected time remains strictly pinned against logarithmic margins.
 
 ## Space Complexity
-- **Overall Space Complexity:** $O(n)$ where $n$ is tracked uniformly with allocated array states.
-- **Call-Stack Depth:** Both Insertion and Deletion lean on recursive frames up to depth height $h$, giving average auxiliary overhead of $O(\log n)$, strictly bounded identically to memory requirements.
+- **Overall Space Complexity:** $O(n)$, where $n$ is the number of nodes stored in the treap.
+- **Call-Stack Depth:** Both insertion and deletion use recursion up to the tree height $h$. In expectation, $h = O(\log n)$, giving expected auxiliary stack space $O(\log n)$, but in the worst case a highly skewed treap can have $h = O(n)$.
