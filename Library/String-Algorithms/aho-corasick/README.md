@@ -4,6 +4,7 @@ The Aho-Corasick string matching algorithm is a highly efficient dictionary-matc
 
 The algorithm constructs a finite state machine (specifically, a trie with additional "failure" links) that resembles a DFA (Deterministic Finite Automaton). These failure links allow fast transitions between failed string matches (e.g., if a search for "ab" fails, it gracefully falls back to check "b" rather than starting over).
 
+> **Related implementation:** This repository also includes another Aho-Corasick implementation in [`Library/String-Algorithms/aho-corasick-multi-pattern-matcher/`](../aho-corasick-multi-pattern-matcher/). This directory documents the implementation described below; if you are comparing alternatives in the repo, review the other directory as well to choose the API/features/intended usage that best matches your needs.
 ## Folder Structure
 
 - `core/`: Contains the Python implementation of the Aho-Corasick Algorithm.
