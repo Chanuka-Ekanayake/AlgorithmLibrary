@@ -8,7 +8,14 @@ import os
 # Add the core directory to sys.path to allow easy importing
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'core')))
 
-from aho_corasick import AhoCorasick
+try:
+    from aho_corasick import AhoCorasick
+except ImportError:
+    print(
+        "Error: Could not import AhoCorasick from the core module. "
+        "Ensure 'core/aho_corasick.py' exists and is accessible from this test project."
+    )
+    sys.exit(1)
 
 def main():
     parser = argparse.ArgumentParser(description="Test project for Aho-Corasick Algorithm")
