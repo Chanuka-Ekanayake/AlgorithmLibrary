@@ -2,10 +2,20 @@ import sys
 import os
 import math
 import time
+from pathlib import Path
 
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from core.aco import AntColonyOptimizer
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+project_root_str = str(PROJECT_ROOT)
+if project_root_str not in sys.path:
+    sys.path.insert(0, project_root_str)
 
+try:
+    from core.aco import AntColonyOptimizer
+except ImportError as exc:
+    raise ImportError(
+        f"Unable to import AntColonyOptimizer from 'core.aco'. "
+        f"Ensure the project root is available on sys.path: {PROJECT_ROOT}"
+    ) from exc
 def generate_random_cities(n_cities, seed=42):
     import random
     rng = random.Random(seed)
