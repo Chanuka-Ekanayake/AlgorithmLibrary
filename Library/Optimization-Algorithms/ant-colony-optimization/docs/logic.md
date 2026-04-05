@@ -15,7 +15,7 @@ $$ P_{ij} = \frac{[\tau_{ij}]^\alpha \cdot [\eta_{ij}]^\beta}{\sum_{unvisited} [
 - $\alpha$ (Alpha): Influences the reliance on pheromones.
 - $\beta$ (Beta): Influences the reliance on purely local distances.
 
-If $\alpha = 0$, ants ignore other ants and make a purely greedy random search.
+If $\alpha = 0$, ants ignore pheromone information from other ants and select among unvisited cities using only the heuristic term, still as a probabilistic choice weighted by $[\eta_{ij}]^\beta$ (approaching greedy nearest-neighbor behavior as $\beta$ becomes very large).
 If $\beta = 0$, ants ignore the distance and rapidly trace the exact same paths other ants found, which leads to highly premature convergence to sub-optimal traps.
 
 ## 3. Pheromone Evaporation
