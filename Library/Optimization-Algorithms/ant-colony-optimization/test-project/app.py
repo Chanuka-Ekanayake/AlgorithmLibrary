@@ -65,9 +65,15 @@ def main():
     print(f"Optimal Tour Length Found: {best_length:.2f}")
     
     print("\nCost History (first, middle, last):")
-    print(f"Iteration 0:   {cost_history[0]:.2f}")
-    print(f"Iteration {n_iterations//2}:  {cost_history[n_iterations//2]:.2f}")
-    print(f"Iteration {n_iterations-1}:  {cost_history[-1]:.2f}")
+    if cost_history:
+        history_len = len(cost_history)
+        middle_index = history_len // 2
+        last_index = history_len - 1
+        print(f"Iteration 0:   {cost_history[0]:.2f}")
+        print(f"Iteration {middle_index}:  {cost_history[middle_index]:.2f}")
+        print(f"Iteration {last_index}:  {cost_history[last_index]:.2f}")
+    else:
+        print("No cost history available.")
     
     print("\nBest Tour Structure:")
     tour_str = " -> ".join(map(str, best_tour))
