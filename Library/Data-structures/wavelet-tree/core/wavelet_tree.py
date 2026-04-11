@@ -70,8 +70,8 @@ class WaveletTree:
         """
         Builds the Wavelet Tree from the input array.
 
-        Time Complexity:  O(n log V)  where V = max_value - min_value + 1
-        Space Complexity: O(n log V)
+        Time Complexity:  O(n log V)  where V = number of distinct values in arr
+        Space Complexity: O(n log V)  where V = number of distinct values in arr
 
         Args:
             arr: A list of non-negative integers. Must be non-empty.
