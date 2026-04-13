@@ -59,7 +59,7 @@ def test_splay_to_root():
     print(f"Initial root: {tree.root.key}")
     print(f"Initial height: {tree.height()}")
     
-    # Access deepen node
+    # Access deepest node
     print(f"\nSearching for 1 (deepest in chain)...")
     tree.search(1)
     print(f"Root after splay: {tree.root.key}")
