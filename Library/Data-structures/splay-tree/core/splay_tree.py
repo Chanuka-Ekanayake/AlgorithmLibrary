@@ -92,11 +92,13 @@ class SplayTree:
             
             # Zig-Zag case: node and parent are on opposite sides
             else:
+                grandparent = parent.parent
                 if node == parent.left:
                     self._rotate_right(parent)
+                    self._rotate_left(grandparent)
                 else:
                     self._rotate_left(parent)
-                self._splay(node)
+                    self._rotate_right(grandparent)
     
     def search(self, key):
         """Search for key and splay the accessed node to root"""
