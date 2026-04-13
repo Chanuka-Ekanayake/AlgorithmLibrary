@@ -5,7 +5,7 @@ A **Splay Tree** is a self-balancing Binary Search Tree that optimizes for recen
 Unlike Red-Black Trees which enforce strict color-based invariants, or Treaps which use randomized priorities, splay trees use **adaptive rebalancing**: the tree shape changes based on access patterns. This provides **amortized O(log n)** performance for all operations, with exceptional performance for skewed access patterns.
 
 Splay trees are used in:
-- **C++ STL** (`std::set` and `std::map` alternatives)
+- **Ordered sets/maps with temporal locality** (custom associative containers optimized for repeated accesses)
 - **Network routers** (splaying improves cache locality)
 - **Data compression** (Move-To-Front encoding)
 - **Self-adjusting algorithms** where access patterns dominate
