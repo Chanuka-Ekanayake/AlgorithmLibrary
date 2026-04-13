@@ -7,10 +7,10 @@ Test various operations and show adaptive behavior of splay trees.
 import sys
 from pathlib import Path
 
-# Add parent directory to path
-sys.path.insert(0, str(Path(__file__).parent.parent / 'core'))
+# Add algorithm root directory to path so imports go through the core package
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from splay_tree import SplayTree
+from core.splay_tree import SplayTree
 
 
 def test_basic_operations():
