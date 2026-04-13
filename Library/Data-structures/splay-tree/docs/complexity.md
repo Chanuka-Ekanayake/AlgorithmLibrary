@@ -98,7 +98,7 @@ Amortized: O(log n) when divided by optimal access patterns
    - Splay: Frequently accessed elements approach O(1)
 
 2. **Simpler than AVL (fewer rotations)**
-   - AVL: Color maintenance required
+   - AVL: Height/balance-factor maintenance required
    - Splay: Just rotate to root
 
 3. **No randomness like Treap**
