@@ -18,11 +18,19 @@ class SplayNode:
 
 
 class SplayTree:
-    """Splay Tree data structure with amortized O(log n) operations"""
+    """Splay Tree data structure with amortized O(log n) operations.
+    
+    `access_count` tracks successful insertions only. It is incremented when a
+    new node is added to the tree and is not changed for duplicate inserts.
+    """
     
     def __init__(self):
         self.root = None
         self.access_count = 0
+    
+    def get_access_count(self):
+        """Return the number of successful insertions recorded by this tree."""
+        return self.access_count
     
     def _rotate_right(self, node):
         """Right rotation: node goes down, its left child comes up"""
