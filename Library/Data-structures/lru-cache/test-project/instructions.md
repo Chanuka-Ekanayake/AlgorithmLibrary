@@ -133,7 +133,7 @@ def fetch_api(endpoint, params):
     cache_key = f"{endpoint}:{serialized_params}"
     
     cached_response = cache.get(cache_key)
-    if cached_response:
+    if cached_response is not None:
         return cached_response
     
     response = requests.get(endpoint, params=params)
