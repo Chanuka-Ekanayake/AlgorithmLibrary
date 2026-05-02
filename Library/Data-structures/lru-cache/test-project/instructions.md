@@ -124,10 +124,13 @@ def get_user(user_id):
 ### 2. API Response Cache
 
 ```python
+import json
+
 cache = LRUCache(capacity=100)
 
 def fetch_api(endpoint, params):
-    cache_key = f"{endpoint}:{params}"
+    serialized_params = json.dumps(params, sort_keys=True, separators=(",", ":"))
+    cache_key = f"{endpoint}:{serialized_params}"
     
     cached_response = cache.get(cache_key)
     if cached_response:
