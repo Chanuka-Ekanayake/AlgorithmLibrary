@@ -116,7 +116,7 @@ def get_user(user_id):
         return cached_user
     
     # Cache miss - fetch from database
-    user = database.query(f"SELECT * FROM users WHERE id={user_id}")
+    user = database.query("SELECT * FROM users WHERE id = %s", (user_id,))
     cache.put(user_id, user)
     return user
 ```
