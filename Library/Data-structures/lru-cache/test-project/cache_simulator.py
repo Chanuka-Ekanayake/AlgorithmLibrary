@@ -183,12 +183,17 @@ def main():
     print("\nSelect mode:")
     print("1. Interactive (manual commands)")
     print("2. Automated Demo")
-    mode = input("Enter choice (1 or 2): ").strip()
-    
-    if mode == "2":
-        simulator.run_demo()
-    else:
-        simulator.run_interactive()
+    while True:
+        mode = input("Enter choice (1 or 2): ").strip()
+        
+        if mode == "1":
+            simulator.run_interactive()
+            break
+        if mode == "2":
+            simulator.run_demo()
+            break
+        
+        print("Invalid choice. Please enter 1 or 2.")
 
 
 if __name__ == "__main__":
