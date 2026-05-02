@@ -148,7 +148,8 @@ An item becomes "recently used" when:
 1. **PUT (new key):** Item added at the end
 2. **PUT (existing key):** Item updated and moved to end
 3. **GET:** Item accessed and moved to end
-4. **DELETE:** Item removed entirely
+
+**DELETE** removes the item from the cache entirely; it does not make the item recently used or change the recency ordering of remaining items.
 
 ```python
 cache.put(1, 'a')     # 1 is now most recent
