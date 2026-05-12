@@ -4,7 +4,7 @@ from collections import OrderedDict
 
 class LRUCache:
     """
-    Least Recently Used (LRU) Cache implementation using a doubly-linked list and hash map.
+    Least Recently Used (LRU) Cache implementation using ``OrderedDict`` to track usage order.
     Evicts the least recently used item when capacity is exceeded.
     
     This is a production-grade implementation optimized for system design and optimization scenarios,
