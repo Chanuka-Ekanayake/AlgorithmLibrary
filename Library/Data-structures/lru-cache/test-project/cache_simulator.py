@@ -109,7 +109,11 @@ class CacheSimulator:
                     break
                 
                 else:
-                    print("Invalid command. Try 'help' for usage.")
+                    print(
+                        "Invalid command. Available commands: "
+                        "put <key> <value>, get <key>, delete <key>, "
+                        "status, history, demo, exit."
+                    )
             
             except KeyboardInterrupt:
                 print("\n\nExiting simulator...")
