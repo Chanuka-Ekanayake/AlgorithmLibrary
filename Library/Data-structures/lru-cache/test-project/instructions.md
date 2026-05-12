@@ -112,7 +112,7 @@ cache = LRUCache(capacity=1000)
 def get_user(user_id):
     # Check cache first
     cached_user = cache.get(user_id)
-    if cached_user:
+    if cached_user is not None:
         return cached_user
     
     # Cache miss - fetch from database
