@@ -112,11 +112,11 @@ cache = LRUCache(capacity=1000)
 def get_user(user_id):
     # Check cache first
     cached_user = cache.get(user_id)
-    if cached_user:
+    if cached_user is not None:
         return cached_user
     
     # Cache miss - fetch from database
-    user = database.query(f"SELECT * FROM users WHERE id={user_id}")
+    user = database.query("SELECT * FROM users WHERE id = %s", (user_id,))
     cache.put(user_id, user)
     return user
 ```
@@ -124,13 +124,16 @@ def get_user(user_id):
 ### 2. API Response Cache
 
 ```python
+import json
+
 cache = LRUCache(capacity=100)
 
 def fetch_api(endpoint, params):
-    cache_key = f"{endpoint}:{params}"
+    serialized_params = json.dumps(params, sort_keys=True, separators=(",", ":"))
+    cache_key = f"{endpoint}:{serialized_params}"
     
     cached_response = cache.get(cache_key)
-    if cached_response:
+    if cached_response is not None:
         return cached_response
     
     response = requests.get(endpoint, params=params)

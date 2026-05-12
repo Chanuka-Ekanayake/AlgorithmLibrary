@@ -86,7 +86,7 @@ class CacheSimulator:
                 elif cmd == "get" and len(command) >= 2:
                     key = command[1]
                     result = self.cache.get(key)
-                    self.log_operation("GET", key, f"found '{result}'" if result else "NOT FOUND")
+                    self.log_operation("GET", key, f"found '{result}'" if result is not None else "NOT FOUND")
                     self.display_status()
                 
                 elif cmd == "delete" and len(command) >= 2:
@@ -183,12 +183,17 @@ def main():
     print("\nSelect mode:")
     print("1. Interactive (manual commands)")
     print("2. Automated Demo")
-    mode = input("Enter choice (1 or 2): ").strip()
-    
-    if mode == "2":
-        simulator.run_demo()
-    else:
-        simulator.run_interactive()
+    while True:
+        mode = input("Enter choice (1 or 2): ").strip()
+        
+        if mode == "1":
+            simulator.run_interactive()
+            break
+        if mode == "2":
+            simulator.run_demo()
+            break
+        
+        print("Invalid choice. Please enter 1 or 2.")
 
 
 if __name__ == "__main__":
