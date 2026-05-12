@@ -86,7 +86,7 @@ class CacheSimulator:
                 elif cmd == "get" and len(command) >= 2:
                     key = command[1]
                     result = self.cache.get(key)
-                    self.log_operation("GET", key, f"found '{result}'" if result else "NOT FOUND")
+                    self.log_operation("GET", key, f"found '{result}'" if result is not None else "NOT FOUND")
                     self.display_status()
                 
                 elif cmd == "delete" and len(command) >= 2:
