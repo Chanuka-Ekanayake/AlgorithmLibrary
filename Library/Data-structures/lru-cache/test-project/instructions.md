@@ -12,7 +12,7 @@ This test project provides practical examples and performance benchmarks for the
 
 ## Prerequisites
 
-- Python 3.7 or higher
+- Python 3.8 or higher
 - Parent directory structure must be intact (core module accessible)
 
 ## Running the Simulator
