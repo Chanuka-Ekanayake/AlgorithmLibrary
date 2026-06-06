@@ -59,7 +59,7 @@ def generate_prime_candidate(length):
     Generate an odd integer randomly.
     """
     # generate random bits
-    p = random.getrandbits(length)
+    p = rand.getrandbits(length)
     # apply a mask to set MSB and LSB to 1
     p |= (1 << (length - 1)) | 1
     return p
