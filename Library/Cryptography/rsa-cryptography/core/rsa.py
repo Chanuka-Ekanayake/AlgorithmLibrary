@@ -113,6 +113,8 @@ def encrypt(public_key, plaintext):
     Encrypts a string into an array of integers using the public key.
     """
     e, n = public_key
+    if any(ord(ch) >= n for ch in plaintext):
+        raise ValueError("Plaintext contains a character whose code point is >= modulus n.")
     # Convert each character into its numerical ASCII representation,
     # then apply the encryption formula: c = m^e mod n
     cipher = [pow(ord(char), e, n) for char in plaintext]
