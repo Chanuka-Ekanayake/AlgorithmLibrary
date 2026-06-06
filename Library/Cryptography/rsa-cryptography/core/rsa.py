@@ -42,7 +42,7 @@ def is_prime(num, test_count=40):
         d //= 2
 
     for _ in range(test_count):
-        a = random.randrange(2, num - 1)
+        a = rand.randrange(2, num - 1)
         x = pow(a, d, num)
         if x == 1 or x == num - 1:
             continue
