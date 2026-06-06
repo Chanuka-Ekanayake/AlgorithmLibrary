@@ -75,17 +75,20 @@ def generate_prime_number(length=1024):
 def generate_keypair(keysize=1024):
     """
     Generates a public/private key pair.
-    Keysize should be 1024, 2048, 4096, etc.
+    Keysize is the bit-length of the RSA modulus n (e.g., 1024, 2048, 4096).
     Returns:
         public_key (e, n), private_key (d, n)
     """
-    p = generate_prime_number(keysize)
-    q = generate_prime_number(keysize)
+    if keysize < 16 or keysize % 2 != 0:
+        raise ValueError("keysize must be an even integer >= 16 (bit-length of modulus n).")
+
+    half = keysize // 2
+    p = generate_prime_number(half)
+    q = generate_prime_number(half)
     
     # Ensure p and q are distinct
     while p == q:
-        q = generate_prime_number(keysize)
-
+        q = generate_prime_number(half)
     n = p * q
     phi = (p - 1) * (q - 1)
 
