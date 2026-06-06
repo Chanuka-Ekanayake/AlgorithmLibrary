@@ -61,7 +61,7 @@ def generate_prime_candidate(length):
     # generate random bits
     p = random.getrandbits(length)
     # apply a mask to set MSB and LSB to 1
-    p |= (1 << length - 1) | 1
+    p |= (1 << (length - 1)) | 1
     return p
 
 def generate_prime_number(length=1024):
