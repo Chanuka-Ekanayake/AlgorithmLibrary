@@ -99,9 +99,9 @@ def generate_keypair(keysize=1024):
     
     if gcd(e, phi) != 1:
         # Fallback if 65537 is not coprime
-        e = random.randrange(2, phi)
+        e = rand.randrange(2, phi)
         while gcd(e, phi) != 1:
-            e = random.randrange(2, phi)
+            e = rand.randrange(2, phi)
 
     # Use Extended Euclid's Algorithm to generate the private key
     d = multiplicative_inverse(e, phi)
