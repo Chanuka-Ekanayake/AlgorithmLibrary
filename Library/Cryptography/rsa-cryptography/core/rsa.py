@@ -1,5 +1,6 @@
-import random
+from random import SystemRandom
 
+rand = SystemRandom()
 def gcd(a, b):
     """
     Euclid's algorithm for determining the greatest common divisor.
