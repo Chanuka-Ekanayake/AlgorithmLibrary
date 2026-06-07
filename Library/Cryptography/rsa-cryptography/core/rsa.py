@@ -1,5 +1,6 @@
-import random
+from random import SystemRandom
 
+rand = SystemRandom()
 def gcd(a, b):
     """
     Euclid's algorithm for determining the greatest common divisor.
@@ -41,7 +42,7 @@ def is_prime(num, test_count=40):
         d //= 2
 
     for _ in range(test_count):
-        a = random.randrange(2, num - 1)
+        a = rand.randrange(2, num - 1)
         x = pow(a, d, num)
         if x == 1 or x == num - 1:
             continue
@@ -58,9 +59,9 @@ def generate_prime_candidate(length):
     Generate an odd integer randomly.
     """
     # generate random bits
-    p = random.getrandbits(length)
+    p = rand.getrandbits(length)
     # apply a mask to set MSB and LSB to 1
-    p |= (1 << length - 1) | 1
+    p |= (1 << (length - 1)) | 1
     return p
 
 def generate_prime_number(length=1024):
@@ -75,17 +76,20 @@ def generate_prime_number(length=1024):
 def generate_keypair(keysize=1024):
     """
     Generates a public/private key pair.
-    Keysize should be 1024, 2048, 4096, etc.
+    Keysize is the bit-length of the RSA modulus n (e.g., 1024, 2048, 4096).
     Returns:
         public_key (e, n), private_key (d, n)
     """
-    p = generate_prime_number(keysize)
-    q = generate_prime_number(keysize)
+    if keysize < 16 or keysize % 2 != 0:
+        raise ValueError("keysize must be an even integer >= 16 (bit-length of modulus n).")
+
+    half = keysize // 2
+    p = generate_prime_number(half)
+    q = generate_prime_number(half)
     
     # Ensure p and q are distinct
     while p == q:
-        q = generate_prime_number(keysize)
-
+        q = generate_prime_number(half)
     n = p * q
     phi = (p - 1) * (q - 1)
 
@@ -95,9 +99,9 @@ def generate_keypair(keysize=1024):
     
     if gcd(e, phi) != 1:
         # Fallback if 65537 is not coprime
-        e = random.randrange(2, phi)
+        e = rand.randrange(2, phi)
         while gcd(e, phi) != 1:
-            e = random.randrange(2, phi)
+            e = rand.randrange(2, phi)
 
     # Use Extended Euclid's Algorithm to generate the private key
     d = multiplicative_inverse(e, phi)
@@ -109,6 +113,8 @@ def encrypt(public_key, plaintext):
     Encrypts a string into an array of integers using the public key.
     """
     e, n = public_key
+    if any(ord(ch) >= n for ch in plaintext):
+        raise ValueError("Plaintext contains a character whose code point is >= modulus n.")
     # Convert each character into its numerical ASCII representation,
     # then apply the encryption formula: c = m^e mod n
     cipher = [pow(ord(char), e, n) for char in plaintext]
