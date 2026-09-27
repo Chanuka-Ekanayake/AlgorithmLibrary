@@ -192,7 +192,7 @@ class NeuralNetwork:
             for input_array, target_array in dataset:
                 self.train_step(input_array, target_array)
                 
-            if verbose and (epoch % (epochs // 10) == 0 or epoch == 1):
+            if verbose and (epoch % max(epochs // 10, 1) == 0 or epoch == 1):
                 mse = self.calculate_mse(X, y)
                 print(f"Epoch {epoch:5d}/{epochs} | MSE: {mse:.6f}")
 
