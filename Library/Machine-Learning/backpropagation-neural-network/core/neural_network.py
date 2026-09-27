@@ -203,4 +203,4 @@ class NeuralNetwork:
             prediction = self.predict(input_array)
             for p, t in zip(prediction, target_array):
                 total_error += (t - p) ** 2
-        return total_error / len(X)
+        return total_error / (len(X) * self.output_nodes)
