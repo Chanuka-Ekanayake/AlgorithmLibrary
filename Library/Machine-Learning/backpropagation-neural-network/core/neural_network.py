@@ -138,6 +138,7 @@ class NeuralNetwork:
 
         # 2. Gradients for Output Layer
         # Gradient = Error * dsigmoid(Output) * LearningRate
+        weights_ho_before_update = [row[:] for row in self.weights_ho]
         for i in range(self.output_nodes):
             gradient = output_errors[i] * self._dsigmoid(final_outputs[i]) * self.learning_rate
             
@@ -155,7 +156,7 @@ class NeuralNetwork:
             error = 0.0
             for j in range(self.output_nodes):
                 # The error is proportional to the weight connecting them
-                error += output_errors[j] * self.weights_ho[j][i]
+                error += output_errors[j] * weights_ho_before_update[j][i]
             hidden_errors.append(error)
 
         # 4. Gradients for Hidden Layer
